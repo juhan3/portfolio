@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>VOICE HELPER</title>
+	<title>Portfolio</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -13,77 +13,16 @@
 		
 
 		<div class="animated fadeInDown logo_area">
-			<img src="assets/logo.svg">
+			
 			<span>VOICE HELPER</span>
 		</div>
-
-		<div class="animated fadeInDown select_user blackStyle1">
-		    <span id="teacherBtn" class="btn_basic">교사<small>teacher</small></span>
-		    <span id="studentBtn">학생<small>student</small></span>
-		</div>
-
-		<div class="animated fadeInLeft card_box blackStyle1 box1">
-			<div class="wrap_80">
-				<span class="text_left">선생님 이름</span>
-				<input type="text" name="name" placeholder="학년,반과 이름을 입력하세요">
-				<a href="loading_room.html"><button class="create_room btn_basic">소통 채널 만들기&nbsp;&nbsp;<i class="fa fa-plus-square-o" aria-hidden="true"></i></button></a>
-			</div>
-			<span class="info">입력장치를 통해 음성을 소통 채널내의<br>학생들에게 TEXT로 공유할 수 있습니다.</span>
-			
-		</div>
-
-
-		<div class="animated fadeInLeft card_box blackStyle1 box2">
-			<div class="wrap_80">
-				<span class="text_left">소통 채널명</span>
-				<input type="text" name="chanel_code" placeholder="채널 코드를 입력하세요">
-				<span class="text_left">학생 이름</span>
-				<input type="text" name="name" placeholder="학년,반과 이름을 입력하세요">
-				<a href="loading_room.html"><button class="create_room btn_basic">소통 채널 입장하기&nbsp;&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></button></a>
-			</div>
-			<span class="info">선생님의 음성을 TEXT로 확인할 수 있습니다.</span>
-			
-		</div>
-
-
-
-		<div class="animated fadeInUp footer">
-			<button class="create_room btn_outline"><i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;&nbsp;사용방법 가이드 확인하기</button>
-			<span>Copyright 2023 enbrain.AI Corp. All rights reserved.</span>
-		</div>
-	</div>
 	
 
 
 
 	
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var teacherBtn = document.getElementById("teacherBtn");
-        var studentBtn = document.getElementById("studentBtn");
-        var teacherCardBox = document.querySelectorAll('.card_box')[0];
-        var studentCardBox = document.querySelectorAll('.card_box')[1];
 
-        teacherBtn.addEventListener("click", function() {
-            teacherCardBox.style.display = "inline-flex";
-            studentCardBox.style.display = "none";
-
-            // btn_basic 클래스 속성 토글
-            teacherBtn.classList.add('btn_basic');
-            studentBtn.classList.remove('btn_basic');
-        });
-
-        studentBtn.addEventListener("click", function() {
-            teacherCardBox.style.display = "none";
-            studentCardBox.style.display = "inline-flex";
-
-            // btn_basic 클래스 속성 토글
-            teacherBtn.classList.remove('btn_basic');
-            studentBtn.classList.add('btn_basic');
-        });
-    });
-</script>
 
 
 </html>
