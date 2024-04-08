@@ -1,0 +1,41 @@
+.shadow-down {
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow: 0px -1px 4px 0px rgba(50, 50, 50, 0.57);
+  box-shadow: 0px -1px 4px 0px rgba(50, 50, 50, 0.57);
+}
+
+.horitzontalScroll {
+  min-width: 100%;
+  min-height: 100px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.custlnk {
+  color: black;
+  text-decoration: none;
+}
+
+.custlnk:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.horitzontalScroll {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 11px;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
