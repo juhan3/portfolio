@@ -1,0 +1,23 @@
+<svg id="Group151" width="100%" height="auto" viewBox="0 0 937 520" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; max-height: 100%;">
+<rect x="321.259" y="131.461" width="267" height="471" rx="25" transform="rotate(135 321.259 131.461)" stroke="white" stroke-width="2" stroke-dasharray="0,0,0,1432.067626953125"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.9411764705882355s" values="0,0,0,1432.067626953125; 
+          0,716.0338134765625,716.0338134765625,0; 
+          1432.067626953125,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></rect>
+<rect x="1232.26" y="401.461" width="267" height="471" rx="25" transform="rotate(135 1232.26 401.461)" stroke="white" stroke-width="2" stroke-dasharray="0,0,0,1432.067626953125"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.9411764705882355s" values="0,0,0,1432.067626953125; 
+          0,716.0338134765625,716.0338134765625,0; 
+          1432.067626953125,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></rect>
+<circle cx="455.02" cy="265.875" r="52.8517" stroke="white" stroke-width="2" stroke-dasharray="0,0,0,331.54052734375"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.9411764705882355s" values="0,0,0,331.54052734375; 
+          0,165.770263671875,165.770263671875,0; 
+          331.54052734375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></circle>
+<line x1="453.535" y1="159" x2="453.535" y2="344.581" stroke="white" stroke-width="2" stroke-dasharray="0,0,0,185.58099365234375"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.9411764705882355s" values="0,0,0,185.58099365234375; 
+          0,92.79049682617188,92.79049682617188,0; 
+          185.58099365234375,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></line>
+<line x1="373" y1="267.361" x2="658" y2="267.361" stroke="white" stroke-width="2" stroke-dasharray="0,0,0,285"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.9411764705882355s" values="0,0,0,285; 
+          0,142.5,142.5,0; 
+          285,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></line>
+<path d="M476 217.5L620.224 267.421" stroke="white" stroke-width="1.99614" stroke-dasharray="0,0,0,152.61935424804688"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.9411764705882355s" values="0,0,0,152.61935424804688; 
+          0,76.30967712402344,76.30967712402344,0; 
+          152.61935424804688,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></path>
+<line x1="476.644" y1="217.406" x2="453.446" y2="268.772" stroke="white" stroke-width="2" stroke-dasharray="0,0,0,56.361446380615234"><animate attributeType="XML" attributeName="stroke-dasharray" repeatCount="1" dur="2.9411764705882355s" values="0,0,0,56.361446380615234; 
+          0,28.180723190307617,28.180723190307617,0; 
+          56.361446380615234,0,0,0" keyTimes="0; 0.5; 1" fill="freeze"></animate></line>
+</svg>
