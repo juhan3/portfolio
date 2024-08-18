@@ -1,7 +1,7 @@
 div.jumbotron.hero-photography {
   color: #fff;
   text-align: center;
-  background: url('../../assets/img/hero-background-photography.jpg');
+  background: url('hero-background-photography.jpg');
   background-size: cover;
   background-position: center;
   padding-top: 100px;
