@@ -1,12 +1,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/loaders/GLTFLoader.js"></script>
-
 <body>
     <script>
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 5;
-
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
@@ -16,22 +13,27 @@
         scene.add(light);
 
         const loader = new THREE.GLTFLoader();
+        let mixer;
+
         loader.load('assets/model/scene.gltf', function (gltf) {
             scene.add(gltf.scene);
-        }, undefined, function (error) {
-            console.error(error);
+
+            // 애니메이션이 있는 경우 mixer 초기화
+            if (gltf.animations.length) {
+                mixer = new THREE.AnimationMixer(gltf.scene);
+                gltf.animations.forEach((clip) => {
+                    mixer.clipAction(clip).play();
+                });
+            }
+
+            camera.position.set(0, 1, 5);
+            animate();
         });
 
         function animate() {
             requestAnimationFrame(animate);
+            if (mixer) mixer.update(0.01); // 애니메이션 업데이트
             renderer.render(scene, camera);
         }
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
     </script>
 </body>
