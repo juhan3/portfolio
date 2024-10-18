@@ -1,1 +1,28 @@
-<div class="sketchfab-embed-wrapper"> <iframe title="Guy Is Waiting" frameborder="0" allowfullscreen mozallowfullscreen="true" width="100%" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e1503969234b484ea1652e32aa7fe7d2/embed?autospin=1&autostart=1&camera=0"> </iframe> </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/loaders/GLTFLoader.js"></script>
+
+<body>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Add a light
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(0, 1, 1).normalize();
+        scene.add(light);
+    </script>
+</body>
+
+<script>
+    const loader = new THREE.GLTFLoader();
+    loader.load('assets/model/scene.gltf', function (gltf) {
+        scene.add(gltf.scene);
+        renderer.render(scene, camera);
+    }, undefined, function (error) {
+        console.error(error);
+    });
+</script>
