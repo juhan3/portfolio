@@ -10,19 +10,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <script>
+    // ======= Web Audio Context 설정 =======
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
-
-function beep() {
-  const osc = ctx.createOscillator();
-  osc.type = "sine"; // sine, square, triangle, sawtooth
-  osc.frequency.value = 440; // A4 음
-  osc.connect(ctx.destination);
-  osc.start();
-  osc.stop(ctx.currentTime + 0.15); // 0.15초
-}
-
-beep();
-</script>
+    let audioUnlocked = false;
+    
+    // ======= 사운드 생성 함수 =======
+    function beep() {
+      if (!audioUnlocked) return;
+    
+      const osc = ctx.createOscillator();
+      osc.type = "sine";         // sine, square, triangle, sawtooth
+      osc.frequency.value = 440; // Hz (A4)
+      const gainNode = ctx.createGain();
+      gainNode.gain.value = 0.2; // 볼륨
+    
+      osc.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.15); // 0.15초
+    }
+    
+    // ======= 진동 함수 =======
+    function vibrate(duration = 30) {
+      if (navigator.vibrate) navigator.vibrate(duration);
+    }
+    
+    // ======= 첫 터치 이벤트 =======
+    function unlockAudioAndStart() {
+      if (audioUnlocked) return;
+    
+      // AudioContext 언락
+      const temp = ctx.createBufferSource();
+      temp.connect(ctx.destination);
+      temp.start(0);
+    
+      audioUnlocked = true;
+      console.log("Audio unlocked!");
+    
+      // 예제: 1초마다 beep + 진동 반복
+      setInterval(() => {
+        beep();
+        vibrate(30);
+      }, 1000);
+    }
+    
+    // 화면 어디든 터치/클릭하면 활성화 (버튼 필요 없음)
+    window.addEventListener("touchstart", unlockAudioAndStart, { once: true });
+    window.addEventListener("click", unlockAudioAndStart, { once: true }); // 데스크탑용
+    </script>
 <body>
     <div class="bg">
     <header>
