@@ -25,7 +25,38 @@
         
         <section id="home">
             <div id="anim"></div>
-            <img src="avatar.svg">
+            <!---시작-->
+            <svg preserveAspectRatio="none" width="100%" height="auto" viewBox="0 0 542 794" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Frame3" clip-path="url(#clip0_2_49)">
+                <rect width="542" height="794" ></rect>
+                <path id="Polygon1" d="M246.244 440.075C257.548 421.548 284.452 421.548 295.756 440.075L453.669 698.896C465.459 718.22 451.551 743 428.913 743H113.087C90.4494 743 76.5405 718.22 88.331 698.896L246.244 440.075Z" fill="url(#paint0_linear_2_49)" style="transform-origin: center center; transform: translate(3.0015px, 8.03647px) rotateX(6.47059deg) rotateY(-2.41667deg);"></path>
+                <ellipse id="Ellipse134" cx="271" cy="499.5" rx="80" ry="172" fill="url(#paint1_radial_2_49)" style="transform-origin: center center; transform: translate(6.003px, 16.0729px) rotateX(6.47059deg) rotateY(-2.41667deg);"></ellipse>
+                <path id="Ellipse132" d="M409 366.5C409 461.493 347.215 538.5 271 538.5C194.785 538.5 133 461.493 133 366.5C133 271.507 133 160 271 160C409 160 409 271.507 409 366.5Z" fill="url(#paint2_radial_2_49)" style="transform-origin: center center; transform: translate(9.0045px, 24.1094px) rotateX(6.47059deg) rotateY(-2.41667deg);"></path>
+                <ellipse id="Ellipse133" opacity="0.85" cx="240" cy="349" rx="80" ry="87.5" fill="url(#paint3_radial_2_49)" fill-opacity="0.85" style="transform-origin: center center; transform: translate(12.006px, 32.1459px) rotateX(6.47059deg) rotateY(-2.41667deg);"></ellipse>
+                </g>
+                <defs>
+                <linearGradient id="paint0_linear_2_49" x1="271" y1="399.5" x2="242.239" y2="728.292" gradientUnits="userSpaceOnUse">
+                <stop offset="0.134615" stop-color="#003268"></stop>
+                <stop offset="1" stop-color="white"></stop>
+                </linearGradient>
+                <radialGradient id="paint1_radial_2_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(271 499.5) rotate(90) scale(172 80)">
+                <stop stop-color="#003268"></stop>
+                <stop offset="1" stop-color="#8098BE"></stop>
+                </radialGradient>
+                <radialGradient id="paint2_radial_2_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(271 366.5) rotate(90) scale(172 138)">
+                <stop stop-color="#003268"></stop>
+                <stop offset="1" stop-color="#80AFBE"></stop>
+                </radialGradient>
+                <radialGradient id="paint3_radial_2_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 349) rotate(90) scale(87.5 80)">
+                <stop stop-color="#80BEA6"></stop>
+                <stop offset="0.841346" stop-color="#003268"></stop>
+                </radialGradient>
+                <clipPath id="clip0_2_49">
+                <rect width="542" height="794" fill="white"></rect>
+                </clipPath>
+                </defs>
+                </svg><script type='text/javascript'>window.addEventListener('load', () => {document.querySelector('svg').style.height = 'auto';document.querySelector('svg').style.width = '60%';var body_tree = {"id":"2:49","name":"Frame3","type":"FRAME","deep_level":0,"locked":false,"children":[{"id":"2:55","name":"Polygon1","type":"POLYGON","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Polygon1","svg_node":{}},{"id":"2:56","name":"Ellipse134","type":"ELLIPSE","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Ellipse134","svg_node":{}},{"id":"2:57","name":"Ellipse132","type":"VECTOR","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Ellipse132","svg_node":{}},{"id":"2:58","name":"Ellipse133","type":"ELLIPSE","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Ellipse133","svg_node":{}}],"visible":true,"svg_node_id":"Frame3","svg_node":{}};document.addEventListener('mousemove', function (e) { MoveBackground(e); });function parseDigit(str) { var result = str.match(/(-?\d+(\.\d+)?)/g).map(v => +v); return { tdeg: result[0], tox: result[1], toy: result[2] }};function MoveBackground(e) {body_tree.children.forEach((elemennt, index) => {var el = document.getElementById(elemennt.svg_node_id);if (elemennt.locked || !el) return;var ind = index + 1;var i = ind;var offsetX = (event.clientX / window.innerWidth * 30 * i * 2.07) - 15 * i * 2.07;var offsetY = (event.clientY / window.innerHeight * 30 * i * 2.07) - 15 * i * 2.07;var transform = el?.getAttribute('transform')?.match(/rotate\(.*\)/);if (true) {const xOrigin = document.querySelector('body').getBoundingClientRect().width / 2;const yOrigin = document.querySelector('body').getBoundingClientRect().height / 2;const yRot = (event.clientX - xOrigin) / xOrigin * -25;const xRot = (event.clientY - yOrigin) / yOrigin * 25;let {tdeg, tox, toy} = transform ? parseDigit(transform[0]) : {tdeg: null, tox: null, toy: null};el.style.transformOrigin = (transform && (tox || toy)) ? `${tox}px, ${toy}px` : 'center';el.style.transform = 'translate(' + offsetX + 'px,' + offsetY + 'px) ' + (transform ? ` rotate(${tdeg}deg)` : '') + ` rotateX(${xRot}deg) rotateY(${yRot}deg)`;} else {let {tdeg, tox, toy} = transform ? parseDigit(transform[0]) : {tdeg: null, tox: null, toy: null};el.style.transformOrigin = (transform && (tox || toy)) ? `${tox}px, ${toy}px` : 'none';el.style.transform = 'translate(' + offsetX + 'px,' + offsetY + 'px)' + (transform ? ` rotate(${tdeg}deg)` : '' );}});}})</script>
+            <!--끝-->
             <div class="bubble">
                 <span id="typing"></span>
             </div>
