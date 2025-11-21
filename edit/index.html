@@ -26,36 +26,88 @@
         <section id="home">
             <div id="anim"></div>
             <!---시작-->
-            <svg preserveAspectRatio="none" width="100%" height="auto" viewBox="0 0 542 794" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="Frame3" clip-path="url(#clip0_2_49)">
-                <rect width="542" height="794" ></rect>
-                <path id="Polygon1" d="M246.244 440.075C257.548 421.548 284.452 421.548 295.756 440.075L453.669 698.896C465.459 718.22 451.551 743 428.913 743H113.087C90.4494 743 76.5405 718.22 88.331 698.896L246.244 440.075Z" fill="url(#paint0_linear_2_49)" style="transform-origin: center center; transform: translate(3.0015px, 8.03647px) rotateX(6.47059deg) rotateY(-2.41667deg);"></path>
-                <ellipse id="Ellipse134" cx="271" cy="499.5" rx="80" ry="172" fill="url(#paint1_radial_2_49)" style="transform-origin: center center; transform: translate(6.003px, 16.0729px) rotateX(6.47059deg) rotateY(-2.41667deg);"></ellipse>
-                <path id="Ellipse132" d="M409 366.5C409 461.493 347.215 538.5 271 538.5C194.785 538.5 133 461.493 133 366.5C133 271.507 133 160 271 160C409 160 409 271.507 409 366.5Z" fill="url(#paint2_radial_2_49)" style="transform-origin: center center; transform: translate(9.0045px, 24.1094px) rotateX(6.47059deg) rotateY(-2.41667deg);"></path>
-                <ellipse id="Ellipse133" opacity="0.85" cx="240" cy="349" rx="80" ry="87.5" fill="url(#paint3_radial_2_49)" fill-opacity="0.85" style="transform-origin: center center; transform: translate(12.006px, 32.1459px) rotateX(6.47059deg) rotateY(-2.41667deg);"></ellipse>
-                </g>
-                <defs>
-                <linearGradient id="paint0_linear_2_49" x1="271" y1="399.5" x2="242.239" y2="728.292" gradientUnits="userSpaceOnUse">
-                <stop offset="0.134615" stop-color="#003268"></stop>
-                <stop offset="1" stop-color="white"></stop>
-                </linearGradient>
-                <radialGradient id="paint1_radial_2_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(271 499.5) rotate(90) scale(172 80)">
-                <stop stop-color="#003268"></stop>
-                <stop offset="1" stop-color="#8098BE"></stop>
-                </radialGradient>
-                <radialGradient id="paint2_radial_2_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(271 366.5) rotate(90) scale(172 138)">
-                <stop stop-color="#003268"></stop>
-                <stop offset="1" stop-color="#80AFBE"></stop>
-                </radialGradient>
-                <radialGradient id="paint3_radial_2_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 349) rotate(90) scale(87.5 80)">
-                <stop stop-color="#80BEA6"></stop>
-                <stop offset="0.841346" stop-color="#003268"></stop>
-                </radialGradient>
-                <clipPath id="clip0_2_49">
-                <rect width="542" height="794" fill="white"></rect>
-                </clipPath>
-                </defs>
-                </svg><script type='text/javascript'>window.addEventListener('load', () => {document.querySelector('svg').style.height = 'auto';document.querySelector('svg').style.width = '60%';var body_tree = {"id":"2:49","name":"Frame3","type":"FRAME","deep_level":0,"locked":false,"children":[{"id":"2:55","name":"Polygon1","type":"POLYGON","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Polygon1","svg_node":{}},{"id":"2:56","name":"Ellipse134","type":"ELLIPSE","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Ellipse134","svg_node":{}},{"id":"2:57","name":"Ellipse132","type":"VECTOR","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Ellipse132","svg_node":{}},{"id":"2:58","name":"Ellipse133","type":"ELLIPSE","deep_level":1,"locked":false,"children":[],"visible":true,"p_id":"2:49","svg_node_id":"Ellipse133","svg_node":{}}],"visible":true,"svg_node_id":"Frame3","svg_node":{}};document.addEventListener('mousemove', function (e) { MoveBackground(e); });function parseDigit(str) { var result = str.match(/(-?\d+(\.\d+)?)/g).map(v => +v); return { tdeg: result[0], tox: result[1], toy: result[2] }};function MoveBackground(e) {body_tree.children.forEach((elemennt, index) => {var el = document.getElementById(elemennt.svg_node_id);if (elemennt.locked || !el) return;var ind = index + 1;var i = ind;var offsetX = (event.clientX / window.innerWidth * 30 * i * 2.07) - 15 * i * 2.07;var offsetY = (event.clientY / window.innerHeight * 30 * i * 2.07) - 15 * i * 2.07;var transform = el?.getAttribute('transform')?.match(/rotate\(.*\)/);if (true) {const xOrigin = document.querySelector('body').getBoundingClientRect().width / 2;const yOrigin = document.querySelector('body').getBoundingClientRect().height / 2;const yRot = (event.clientX - xOrigin) / xOrigin * -25;const xRot = (event.clientY - yOrigin) / yOrigin * 25;let {tdeg, tox, toy} = transform ? parseDigit(transform[0]) : {tdeg: null, tox: null, toy: null};el.style.transformOrigin = (transform && (tox || toy)) ? `${tox}px, ${toy}px` : 'center';el.style.transform = 'translate(' + offsetX + 'px,' + offsetY + 'px) ' + (transform ? ` rotate(${tdeg}deg)` : '') + ` rotateX(${xRot}deg) rotateY(${yRot}deg)`;} else {let {tdeg, tox, toy} = transform ? parseDigit(transform[0]) : {tdeg: null, tox: null, toy: null};el.style.transformOrigin = (transform && (tox || toy)) ? `${tox}px, ${toy}px` : 'none';el.style.transform = 'translate(' + offsetX + 'px,' + offsetY + 'px)' + (transform ? ` rotate(${tdeg}deg)` : '' );}});}})</script>
+            <script type='text/javascript'>
+              window.addEventListener('load', () => {
+                  document.querySelector('svg').style.height = 'auto';
+                  document.querySelector('svg').style.width = '60%';
+                  
+                  // 이 부분은 기존 SVG 내부 구조를 정의하는 코드이므로 그대로 유지
+                  var body_tree = {"id":"2:49", ... }; 
+                  
+                  // ⬇️ 기존 mousemove 이벤트를 제거하고 모션 센서 권한 요청 함수를 호출합니다.
+                  requestMotionSensorPermission(); 
+              
+                  function parseDigit(str) { 
+                      var result = str.match(/(-?\d+(\.\d+)?)/g).map(v => +v); 
+                      return { tdeg: result[0], tox: result[1], toy: result[2] }
+                  };
+                  
+                  // ⬇️ 모션 센서 데이터를 처리하여 SVG를 움직이는 함수
+                  function MoveBackgroundByMotion(event) {
+                      // 베타(beta: X축 회전), 감마(gamma: Y축 회전) 값을 사용합니다.
+                      const beta = event.beta;    // 기기의 앞뒤 기울임 (주로 X축 회전에 사용)
+                      const gamma = event.gamma;  // 기기의 좌우 기울임 (주로 Y축 회전에 사용)
+                      
+                      // 민감도 및 변환 범위 설정 (원하는 만큼 조정 가능)
+                      const sensitivity = 0.5; // 민감도 (숫자가 클수록 더 많이 움직임)
+                      const maxOffset = 30;    // 최대 이동 픽셀
+                      
+                      // 기울기 값을 기반으로 SVG 이동 및 회전 값 계산
+                      // iOS 디바이스에서 gamma와 beta 값의 범위는 보통 -90에서 90 또는 -180에서 180 사이입니다.
+                      const offsetX = gamma * sensitivity; 
+                      const offsetY = beta * sensitivity;
+                      
+                      // SVG 요소들을 순회하며 스타일 적용
+                      body_tree.children.forEach((elemennt, index) => {
+                          var el = document.getElementById(elemennt.svg_node_id);
+                          if (elemennt.locked || !el) return;
+                          
+                          var i = index + 1; // 딜레이/깊이 효과를 위한 인덱스
+                          
+                          // 깊이에 따라 이동 값에 인덱스를 곱하여 시차 효과를 줍니다 (기존 코드의 offsetX/Y 계산 방식 유지).
+                          const finalOffsetX = offsetX * i * 0.5; 
+                          const finalOffsetY = offsetY * i * 0.5;
+                          
+                          // 회전 값 (시차 효과를 위해 인덱스를 곱합니다)
+                          const yRot = gamma * -0.5 * i; // 좌우 기울기에 따른 Y축 회전
+                          const xRot = beta * 0.5 * i;  // 앞뒤 기울기에 따른 X축 회전
+              
+                          let {tdeg, tox, toy} = el?.getAttribute('transform')?.match(/rotate\(.*\)/) 
+                                                 ? parseDigit(el.getAttribute('transform').match(/rotate\(.*\)/)[0]) 
+                                                 : {tdeg: null, tox: null, toy: null};
+              
+                          el.style.transformOrigin = (tdeg || tox || toy) ? `${tox}px, ${toy}px` : 'center';
+                          el.style.transform = `translate(${finalOffsetX}px, ${finalOffsetY}px) ${tdeg ? ` rotate(${tdeg}deg)` : ''} rotateX(${xRot}deg) rotateY(${yRot}deg)`;
+                      });
+                  }
+              
+                  // ⬇️ iOS Safari 모션 센서 권한을 요청하는 함수 (iOS 13+ 필수)
+                  function requestMotionSensorPermission() {
+                      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                          // iOS 13+ 환경
+                          DeviceOrientationEvent.requestPermission()
+                              .then(permissionState => {
+                                  if (permissionState === 'granted') {
+                                      // 권한 허용 시 이벤트 리스너 등록
+                                      window.addEventListener('deviceorientation', MoveBackgroundByMotion);
+                                      console.log('모션 센서 권한 허용됨');
+                                  } else {
+                                      // 권한 거부 또는 차단 시 처리
+                                      console.log('모션 센서 권한이 거부되었습니다.');
+                                      alert('모션 센서 기능을 사용하려면 권한이 필요합니다.');
+                                  }
+                              })
+                              .catch(console.error);
+                      } else {
+                          // 구형 iOS 또는 다른 브라우저 환경 (권한 요청이 필요 없음)
+                          window.addEventListener('deviceorientation', MoveBackgroundByMotion);
+                          console.log('권한 요청이 필요 없는 환경입니다.');
+                      }
+                  }
+              
+              });
+              </script>
+              
             <!--끝-->
             <div class="bubble">
                 <span id="typing"></span>
