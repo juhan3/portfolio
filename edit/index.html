@@ -4,25 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dld 잉 잌게</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<script>
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
 
+function beep() {
+  const osc = ctx.createOscillator();
+  osc.type = "sine"; // sine, square, triangle, sawtooth
+  osc.frequency.value = 440; // A4 음
+  osc.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.15); // 0.15초
+}
+
+beep();
+</script>
+<body>
+    <div class="bg">
     <header>
-        <h1>title area</h1>
+        <h1>Local</h1>
         <nav>
-            <ul>hello?
-                <li><a href="#home">홈</a></li>
-                <li><a href="#about">소개</a></li>
-                <li><a href="#services">서비스</a></li>
-                <li><a href="#contact">연락</a></li>
+            <ul>List Title Area
+                <li><a href="#home">li Menu</a></li>
+                <li><a href="#about">한글 출력</a></li>
             </ul>
         </nav>
     </header>
@@ -30,8 +38,30 @@
     <main>
         
         <section id="home">
-         
-          
+            <!-- <div id="anim"></div>
+            <script>
+              lottie.loadAnimation({
+                container: document.getElementById('anim'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'assets/voice.json'
+              });
+            </script> -->
+            <div class="bubble">
+                <span id="typing"></span>
+            </div>
+            
+            <script>
+            new Typed("#typing", {
+              strings: ["안녕하세요!", "여기서 다음 문구가 자동으로 나옵니다.", "이런 식으로 계속 보여줄 수 있어요."],
+              typeSpeed: 45,
+              backSpeed: 0,
+              smartBackspace: false,
+              fadeOut: true,
+              loop: false
+            });
+            </script>
         </section>
 
     </main>
@@ -39,6 +69,6 @@
     <footer>
         <p>&copy; 2025 . All rights reserved.</p>
     </footer>
-
+</div>
 </body>
 </html>
