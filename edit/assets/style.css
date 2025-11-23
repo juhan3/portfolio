@@ -5,6 +5,7 @@ html, body {
   padding: 0;
   overscroll-behavior: contain; /* iOS 바운스 시 배경 깨짐 방지 */
   background-color: black;
+  min-width: 320px; 
 
 }
 ul, li{
@@ -196,8 +197,8 @@ footer{
 .overlay-content a {
   padding: 8px;
   text-decoration: none;
-  font-size: 36px;
-  color: #2f2f2f;
+  font-size: 16px;
+  color: #2f2f2fb8;
   display: block; /* 각 항목을 독립적인 블록으로 만듦 */
   transition: 0.3s; /* 호버 효과에 애니메이션 적용 */
   font-family: 'Noto Sans KR', sans-serif;
