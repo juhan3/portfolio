@@ -18,6 +18,8 @@ h1 {
   font-weight: bold;
   margin-top: 5px;
 }
+
+
 body{
   font-family: 'Noto Sans KR';
 }
@@ -29,29 +31,87 @@ body{
     
     animation: breathing-gradient 4s ease-in-out infinite alternate;
   border-radius: 42px;
-  padding: 16px;
+  padding: 16px 16px 0 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
+  overflow: hidden;
 }
 #anim{width: 60%; max-width: 200px; margin: 0 auto;text-align: center;
 span{background: #ffffff56; font-size: 10px; border-radius: 16px; padding: 8px 10px; font-weight: bold; color: #00000071;}
 }
 header li{font-size: 10px;font-weight: bold;color: #16467c69;}
 .menu-icon-btn{
-  position: fixed; right: 16px; top: 16px; padding: 9px 10px;border-radius: 50%; background: none; color: #748ca883; border: none; font-size: 16px;
+  position: fixed; right: 16px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #748ca883; border: none; font-size: 16px;
 }
+/* style.css 파일에서 다음 부분을 찾아서 수정하세요. */
+
+/* 1. #filterButtons 수정: 스크롤, 패딩, 마스크 */
+#filterButtons {
+  display: flex;
+  flex-wrap: nowrap; 
+  /* 💡 스크롤 핵심 */
+  overflow-x: auto; 
+  overflow-y: hidden;
+  
+  /* 💡 초기 왼쪽/오른쪽 여백 추가 및 스크롤바 공간 확보 */
+  padding: 8px 16px; /* 상하 8px, 좌우 16px 여백 (좌우 여백을 늘려 짤림 방지) */
+  
+  /* 스크롤바 숨김 설정 유지 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  /* 💡 양쪽 페이드 아웃 효과 유지 */
+  mask-image: linear-gradient(to right, 
+              rgba(0,0,0,0) 0%,   
+              rgba(0,0,0,1) 5%,  /* 5%부터 불투명 시작 */
+              rgba(0,0,0,1) 95%, /* 95%까지 불투명 유지 */
+              rgba(0,0,0,0) 100%); 
+  
+  /* Webkit 접두사 유지 */
+  -webkit-mask-image: linear-gradient(to right, 
+              rgba(0,0,0,0) 0%,   
+              rgba(0,0,0,1) 5%,  
+              rgba(0,0,0,1) 95%,  
+              rgba(0,0,0,0) 100%); 
+}
+
+/* WebKit 스크롤바 숨김 설정 유지 */
+#filterButtons::-webkit-scrollbar {
+  display: none; 
+  width: 0; 
+  height: 0; 
+}
+
+
+/* 2. .filter-btn 수정: 태그 사이 간격 복구 */
+.filter-btn {
+  /* 버튼이 수축하지 않도록 함 */
+  flex-shrink: 0; 
+  
+  /* 💡 간격 복구: 버튼 사이에 오른쪽 여백을 줍니다. */
+  margin-right: 8px; 
+  
+  /* 💡 하단 마진 제거 또는 조정 */
+  margin-bottom: 0; 
+  
+  /* ... (나머지 스타일 유지) ... */
+}
+
 .nextBtn{
   text-align: left;
   display: flex;
   justify-content: flex-start; 
   flex-direction: column;
   opacity:0; transition: opacity 0.5s; padding: 16px;width: 80%; font-size: 12px;
-  background: white; box-shadow: 1px 8px 8px #eee; border-radius: 16px; border: 1px solid #ddd; font-weight: bold;
+  background: white; box-shadow: 1px 8px 8px #eee; border-radius: 24px; border: 1px solid #ddd; font-weight: bold;
   span{display: block; font-weight: normal; color: #666;}
-  .row i{background: #dde5f0; padding: 8px; margin-right: 4px;border-radius: 50%; margin-bottom: 8px;}
+  .row i{
+    /* background: #dde5f0; 
+    padding: 10px 8px;  */
+    margin-right: 6px;border-radius: 50%; margin-bottom: 8px;}
 }
 #home svg{display: block;margin: 0 auto;filter: blur(12px);}
 .someclass { color: red; }
@@ -80,7 +140,116 @@ footer{
 
 .flex{display: flex;}
 .row{flex-direction: row;gap: 8px;}
-.bottom_gap{margin-bottom: 16px; max-width: 420px;margin: 0 auto;}
+.bottom_gap{margin-bottom: 16px; max-width: 420px;margin: 0 auto;
+
+}
+
+#list {
+  margin-top: 8px;
+  flex-grow: 1; /* main 컨테이너 내에서 남은 공간을 모두 차지 */
+  overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤 허용 */
+  padding-bottom: 16px;
+  /* height: 100%; 는 flex-grow: 1; 이 대신하므로 불필요합니다. */
+}
+/* assets/style.css 파일 내부에 이 코드가 있는지 확인하세요 */
+.item {
+  /* 애니메이션을 위한 기본 설정 */
+  transition: opacity 0.3s, max-height 0.3s, padding 0.3s;
+  overflow: hidden;
+
+}
+.hidden {
+  /* 💡 숨김 처리의 핵심! */
+  opacity: 0;
+  max-height: 0; 
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.filter-btn {
+  /* 버튼이 눌렸을 때 시각적 피드백 */
+  font-weight: bold;
+  background-color: #ffffff54; min-width: 40px; border: none;
+  color: #66666677; border-radius: 16px; padding: 8px; margin-bottom: 4px;
+}
+.filter-btn.active {
+  /* 버튼이 눌렸을 때 시각적 피드백 */
+  background-color: #ffffff; 
+  color: rgb(53, 53, 53);
+}
+.main-list{
+
+  flex-grow: 1; 
+  
+  /* 💡 Flex 컨테이너 내에서 콘텐츠 넘침 문제를 해결하는 핵심 */
+  min-height: 0; 
+  /* 💡 main에 display: flex;를 추가하여 #list의 높이를 더 정확하게 제어할 수도 있습니다.*/
+     display: flex; flex-direction: column; 
+
+
+}
+#itemList {
+  display: flex;
+  /* 💡 1. 아이템이 넘칠 경우 다음 줄로 넘어가도록 설정 */
+  flex-wrap: wrap; 
+  /* 💡 2. 아이템 사이의 간격(행/열)을 설정 (선택 사항) */
+  gap: 10px; 
+  padding: 0; /* ul의 기본 패딩 제거 */
+  justify-content: center;
+  max-width: 450px;
+  margin: 8px auto;
+}
+
+#itemList .item {
+  /* 💡 3. 각 아이템의 너비를 50%로 설정하여 2열 배치 */
+  width: calc(48% - 5px); /* 50%에서 gap 10px의 절반을 빼서 정확히 2열을 만듭니다. */
+  list-style: none; /* li의 기본 스타일 제거 */
+  display: block;
+  /* 기존 스타일 */
+  background: #fff;
+  min-height: 200px;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 1px 4px 8px rgba(114, 101, 172, 0.37);
+}
+.card-image {
+  height: 60%;
+   width: 100%; /* li의 가로폭을 꽉 채우도록 설정 */
+  overflow: hidden;
+}
+
+.card-image img {
+  /* 💡 이미지 자체가 부모 컨테이너(card-image)의 가로세로 100%를 꽉 채우도록 설정 */
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; /* 이미지가 잘리더라도 영역을 꽉 채우게 함 */
+  display: block; /* 가끔 이미지 아래 생기는 미세한 여백 제거 */
+}
+.list-container .endtxt{
+  font-size: 12px; color: #666666a2; padding: 24px; display: block;
+}
+
+#itemList .item span {
+font-weight: normal; font-size: 8px; padding: 0 2px; color: rgb(105, 118, 194);
+}
+.card-title small{display: block; font-size: 8px; color: #ccc; width: 100%; text-align: right;}
+
+#itemList .item p {
+  font-size: 12px;
+}
+
+.card-content {
+  /* 💡 텍스트 영역: 나머지 20%를 차지 */
+  flex-grow: 1; /* 남은 공간 모두 차지 (80%를 제외한 20%) */
+  flex-basis: 20%;
+  
+  /* 💡 패딩을 여기에 추가하여 텍스트에 여백을 줍니다. */
+  padding: 10px; 
+  box-sizing: border-box; 
+  
+  text-align: left; /* 텍스트는 좌측 정렬 */
+}
+
 
 
 

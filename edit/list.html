@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juhan Kim</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/icon/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg">
+    <header  data-aos="fade-down">
+        <!-- <h1>Local</h1> -->
+        <button class="menu-icon-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        
+        <ul>Juhan Kim
+            <li>#8년차 #UX/UI #디자인 #구로구</li>
+            <!-- <li>두 번째 항목</li> -->
+        </ul>
+    </header>
+
+    <main class="main-list" data-aos="fade-up">
+        
+        <section id="list"> 
+          <div class="list-container">
+            <div id="filterButtons">
+              <button data-filter="all" class="filter-btn active">All</button>
+              <button data-filter="mobile" class="filter-btn">#mobile</button>
+              <button data-filter="tablet" class="filter-btn">#tablet</button>
+              <button data-filter="pc" class="filter-btn">#pc</button>
+              <button data-filter="graphic" class="filter-btn">#graphic</button>
+              <button data-filter="animation" class="filter-btn">#animation</button>
+              <button data-filter="video" class="filter-btn">#video</button>
+              <button data-filter="admin" class="filter-btn">#admin</button>
+              <button data-filter="3d" class="filter-btn">#3d</button>
+            </div>
+
+            <ul id="itemList">
+              <li class="item mobile tablet">
+                  <div class="card-image">
+                      <img src="assets/imgs/1.png" alt="앱테크 서비스 카드 이미지">
+                  </div>
+                  
+                  <div class="card-content">
+                      <div class="card-tags">
+                          <span>#mobile</span>
+                          <span>#tablet</span>
+                      </div>
+                      <p class="card-title">앱테크 서비스</p>
+                  </div>
+              </li>
+              
+              <li class="item tablet">
+                  <div class="card-image">
+                      <img src="assets/imgs/1.png" alt="태블릿 서비스 카드 이미지">
+                  </div>
+                  <div class="card-content">
+                      <div class="card-tags"><span>#tablet</span></div>
+                      <p class="card-title">태블릿 서비스</p>
+                  </div>
+              </li>
+              <li class="item tablet">
+                <div class="card-image">
+                    <img src="assets/imgs/1.png" alt="태블릿 서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#tablet</span></div>
+                    <p class="card-title">태블릿 서비스</p>
+                </div>
+              </li>
+              <li class="item tablet">
+                <div class="card-image">
+                    <img src="assets/imgs/1.png" alt="태블릿 서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#tablet</span></div>
+                    <p class="card-title">태블릿 서비스</p>
+                </div>
+              </li>
+              <li class="item tablet">
+                <div class="card-image">
+                    <img src="assets/imgs/1.png" alt="태블릿 서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#tablet</span></div>
+                    <p class="card-title">태블릿 서비스<small>2025</small></p>
+                </div>
+              </li>
+              </ul>
+              <span class="endtxt">*더 이상 항목이 없습니다.</span>
+        </div>
+        
+
+        </section>
+
+    </main>
+
+
+</div>
+<footer>
+    <p>&copy; 2025 Juhankim. All rights reserved.</p>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.getElementById('filterButtons');
+    const items = document.querySelectorAll('#itemList .item');
+    
+    // 현재 활성화된(선택된) 태그들을 저장할 Set
+    let activeFilters = new Set(); 
+
+    // 필터링 함수
+    const applyFilters = () => {
+        // 활성화된 태그 Set을 배열로 변환
+        const filtersArray = Array.from(activeFilters);
+
+        items.forEach(item => {
+            // 1. 초기 상태: 모두 숨김 클래스 제거
+            item.classList.remove('hidden');
+
+            // 2. 'All'이 선택되었거나, 필터가 전혀 선택되지 않았다면 모두 보여줍니다.
+            if (activeFilters.has('all') || activeFilters.size === 0) {
+                // 'all'이 활성화되면 나머지 필터는 무시하고 모두 보여줌
+                return; 
+            }
+
+            // 3. AND 조건 필터링: 모든 선택된 태그를 아이템이 포함하고 있는지 확인
+            const matchesAllFilters = filtersArray.every(filterTag => {
+                // item.classList.contains()는 해당 클래스가 있는지 확인
+                return item.classList.contains(filterTag);
+            });
+
+            // 4. 모든 필터에 맞지 않으면 숨김 처리
+            if (!matchesAllFilters) {
+                item.classList.add('hidden');
+            }
+        });
+    };
+
+    // 버튼 클릭 이벤트 리스너
+    filterButtons.addEventListener('click', (e) => {
+        const button = e.target.closest('.filter-btn');
+        if (!button) return;
+
+        const filterTag = button.dataset.filter;
+
+        if (filterTag === 'all') {
+            // 'All' 버튼 로직: 다른 모든 필터를 해제하고 'All'만 활성화
+            activeFilters.clear();
+            activeFilters.add('all');
+            
+            // CSS 클래스 토글 (모든 버튼 비활성화 후 'All'만 활성화)
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+        } else {
+            // 다른 태그 버튼 로직
+            
+            // 'All'이 선택되어 있으면 'All'을 해제합니다.
+            if (activeFilters.has('all')) {
+                activeFilters.delete('all');
+                document.querySelector('[data-filter="all"]').classList.remove('active');
+            }
+            
+            // 해당 태그 토글 처리
+            if (activeFilters.has(filterTag)) {
+                activeFilters.delete(filterTag);
+                button.classList.remove('active');
+            } else {
+                activeFilters.add(filterTag);
+                button.classList.add('active');
+            }
+        }
+        
+        // 아무것도 선택되지 않았으면 'All'을 기본으로 선택
+        if (activeFilters.size === 0) {
+            activeFilters.add('all');
+            document.querySelector('[data-filter="all"]').classList.add('active');
+        }
+
+        // 필터 적용
+        applyFilters();
+    });
+
+    // 페이지 로드 시 초기 'All' 상태 적용
+    activeFilters.add('all');
+    applyFilters();
+});
+
+</script>
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init(); // 라이브러리 초기화
+</script>
+</body>
+</html>
