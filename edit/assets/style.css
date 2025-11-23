@@ -28,7 +28,7 @@ body{
   width: 100%;
   height: 96%;
     
-  background: linear-gradient(#cecccc , #ffffff 80%);
+  background: linear-gradient(#e2e1e1 , #ffffff 80%);
     
     animation: breathing-gradient 4s ease-in-out infinite alternate;
   border-radius: 42px;
