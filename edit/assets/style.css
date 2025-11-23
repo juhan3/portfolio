@@ -80,7 +80,7 @@ body{
 #anim{width: 60%; max-width: 200px; margin: 0 auto;text-align: center;
 span{background: #ffffff56; font-size: 10px; border-radius: 16px; padding: 8px 10px; font-weight: bold; color: #00000071;}
 }
-header li{font-size: 10px;font-weight: bold;color: #16467c69;}
+header li{font-size: 10px;font-weight: bold;color: #36363669;}
 .menu-icon-btn{
   position: fixed; right: 16px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #3e414583; border: none; font-size: 16px;
 }
@@ -383,7 +383,7 @@ footer{
 }
 
 #itemList .item span {
-font-weight: normal; font-size: 8px; padding: 0 2px; color: rgb(105, 118, 194);
+font-weight: normal; font-size: 8px; padding: 0 2px; color: rgba(97, 97, 97, 0.381);
 }
 .card-title small{display: block; font-size: 8px; color: #ccc; width: 100%; text-align: right;}
 
