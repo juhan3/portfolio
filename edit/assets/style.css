@@ -25,9 +25,25 @@ body{
 }
 .bg {
   width: 100%;
-  height: 98%;
+  height: 96%;
     
   background: linear-gradient(#bbd0e4 , #ffffff 80%);
+    
+    animation: breathing-gradient 4s ease-in-out infinite alternate;
+  border-radius: 42px;
+  padding: 16px 16px 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  overflow: hidden;
+}
+.bg-list {
+  width: 100%;
+  height: 96%;
+    
+  background: linear-gradient(#ffffff , #bbd0e4 80%);
     
     animation: breathing-gradient 4s ease-in-out infinite alternate;
   border-radius: 42px;
@@ -44,7 +60,7 @@ span{background: #ffffff56; font-size: 10px; border-radius: 16px; padding: 8px 1
 }
 header li{font-size: 10px;font-weight: bold;color: #16467c69;}
 .menu-icon-btn{
-  position: fixed; right: 16px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #748ca883; border: none; font-size: 16px;
+  position: fixed; right: 16px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #3e414583; border: none; font-size: 16px;
 }
 /* style.css 파일에서 다음 부분을 찾아서 수정하세요. */
 
@@ -139,9 +155,83 @@ footer{
 }
 
 .flex{display: flex;}
-.row{flex-direction: row;gap: 8px;}
-.bottom_gap{margin-bottom: 16px; max-width: 420px;margin: 0 auto;
+.row{flex-direction: row;gap: 8px;display: flex;}
+.bottom_gap{margin-bottom: 16px; max-width: 420px;margin: 0 auto;}
+.bottom_margin{margin-bottom: 24px;}
 
+/* 오버레이 (최상위 메뉴 레이어) 스타일 */
+.overlay {
+  height: 0; /* 초기 높이는 0으로 설정하여 숨김 */
+  width: 100%;
+  position: fixed; /* 화면에 고정 */
+  z-index: 100; /* 다른 요소들 위에 표시되도록 높은 z-index 설정 */
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255); /* 어두운 배경 */
+  background-color: rgba(255, 255, 255, 0.95); /* 반투명 검은색 */
+  overflow-y: hidden; /* 스크롤바 숨김 */
+  transition: 0.5s; /* 높이 변화에 0.5초 애니메이션 적용 */
+}
+
+/* 닫기 버튼 (X) 스타일 */
+.overlay .closebtn {
+  position: absolute;
+  top: 18px;
+  right: 40px;
+  font-size: 24px;
+  color: #757575;
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+/* 메뉴 항목들을 중앙에 배치 */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 화면 중앙에서 조금 아래로 배치 */
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* 메뉴 항목 링크 스타일 */
+.overlay-content a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #2f2f2f;
+  display: block; /* 각 항목을 독립적인 블록으로 만듦 */
+  transition: 0.3s; /* 호버 효과에 애니메이션 적용 */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: normal;
+}
+
+/* 메뉴 항목 호버 시 스타일 */
+.overlay-content a:hover, .overlay-content a:focus {
+  color: #b2b2b2;
+}
+
+/* 작은 화면일 경우 폰트 크기 조정 */
+@media screen and (max-height: 450px) {
+  .overlay-content {margin-top: 15%;}
+  .overlay-content a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+/* 메뉴 버튼 (햄버거 아이콘)의 색상을 오버레이 대비 잘 보이도록 변경 */
+.menu-icon-btn {
+  /* ... 기존 스타일 유지하고 필요한 경우 아래를 추가/수정 ... */
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 메뉴가 열렸을 때 닫기 버튼과 구별되도록 헤더의 햄버거 아이콘 숨기기 (선택 사항) */
+.menu-icon-btn.hide {
+  display: none;
 }
 
 #list {
@@ -151,31 +241,54 @@ footer{
   padding-bottom: 16px;
   /* height: 100%; 는 flex-grow: 1; 이 대신하므로 불필요합니다. */
 }
-/* assets/style.css 파일 내부에 이 코드가 있는지 확인하세요 */
+
 .item {
   /* 애니메이션을 위한 기본 설정 */
-  transition: opacity 0.3s, max-height 0.3s, padding 0.3s;
+  /* transition 시간을 0.5초로 살짝 늘리고 cubic-bezier를 적용 */
+  transition: opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease, padding 0.5s ease;
+  
+  /* 또는 더 부드러운 시작/끝을 위해 cubic-bezier 사용 (선택 사항) */
+  /* transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1); */ 
+  
   overflow: hidden;
-
+  max-height: 500px; /* 충분히 큰 값 유지 */
 }
+
+/* JavaScript에서 사용되는 transitionDuration도 500ms로 변경해야 합니다. */
+
 .hidden {
   /* 💡 숨김 처리의 핵심! */
-  opacity: 0;
-  max-height: 0; 
-  padding-top: 0;
-  padding-bottom: 0;
+  opacity: 0 !important;
+  
+  /* 👇 수정: max-height를 0으로 줄여 영역을 제거합니다. */
+  max-height: 0 !important; 
+  
+  /* 아이템 사이에 간격이 있다면 margin도 0으로 만들어야 부드럽게 붙습니다. */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   border-bottom: none;
 }
 .filter-btn {
   /* 버튼이 눌렸을 때 시각적 피드백 */
-  font-weight: bold;
-  background-color: #ffffff54; min-width: 40px; border: none;
-  color: #66666677; border-radius: 16px; padding: 8px; margin-bottom: 4px;
+  background: #ffffff54;
+            color: #66666677;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+            flex-shrink: 0;
+            font-weight: bold;
 }
 .filter-btn.active {
-  /* 버튼이 눌렸을 때 시각적 피드백 */
-  background-color: #ffffff; 
-  color: rgb(53, 53, 53);
+  background: #4a86f7; /* 선택 시 강조 색상 */
+            color: white;
+            border-color: #4a86f7;
+            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
 }
 .main-list{
 
@@ -251,7 +364,90 @@ font-weight: normal; font-size: 8px; padding: 0 2px; color: rgb(105, 118, 194);
 }
 
 
+.hidden-fade {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.4s, max-height 0.4s;
+        }
+        .visible-fade {
+            opacity: 1;
+            max-height: 500px; /* 충분히 큰 값 */
+        }
+        
+        /* 1. 스르륵 슬라이드 업 애니메이션 정의 */
+        .custom-filter-section.visible-fade {
+            opacity: 1;
+            max-height: 500px;
+            animation: slideUpFadeIn 0.5s ease-out forwards; 
+        }
 
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* 아래에서 20px 위로 올라오는 효과 */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .custom-filter-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 0 16px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .tag-container {
+            /* 태그 수평 스크롤 CSS 제거, 다중 줄 래핑으로 변경 */
+            display: flex;
+            flex-wrap: wrap; /* 래핑 허용 */
+            gap: 8px;
+            justify-content: center; /* 중앙 정렬 */
+            /* 수평 스크롤 및 스크롤바 관련 CSS 제거 */
+        }
+        .tag-btn {
+            background: #ffffff54;
+            color: #66666677;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+            flex-shrink: 0; 
+            font-weight: bold;
+        }
+        .tag-btn.selected {
+            background: #4a86f7; /* 선택 시 강조 색상 */
+            color: white;
+            border-color: #4a86f7;
+            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
+        }
+        .explore-btn, .back-btn {
+            opacity: 0; /* JS로 제어 */
+            width: 100%; /* 버튼 너비 100% 적용 */
+        }
+        .explore-btn{
+            margin-bottom: 16px;
+            background: #4a86f7;
+            color: white;
+            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
+            span{color: white;}
+            .oneline{
+              display: flex;
+                      justify-content: space-around;
+                      .row{width: 100%;}
+            }
+        }
+        .back-btn {
+           box-shadow: none;
+           background: #00000009;
+           border: none;
+        }
 
 
 /* @keyframes를 사용하여 애니메이션을 정의합니다. */

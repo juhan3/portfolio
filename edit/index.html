@@ -1,106 +1,275 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juhan Kim</title>
     <link rel="stylesheet" href="assets/style.css">
+    <!-- script.js는 HTML 내부에 통합하여 관리합니다. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/icon/all.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
     <div class="bg">
-    <header  data-aos="fade-down">
-        <!-- <h1>Local</h1> -->
-        <button class="menu-icon-btn">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        
-        <ul>Juhan Kim
-            <li>#8년차 #UX/UI #디자인 #구로구</li>
-            <!-- <li>두 번째 항목</li> -->
-        </ul>
-    </header>
+        <header data-aos="fade-down">
+            <button class="menu-icon-btn" onclick="openNav()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-    <main>
-        
-        <section id="home">
-            <div id="anim" data-aos="fade"  data-aos-duration="2000"><span>1988년생 남성 | UX/UI 디자인</span></div>
-            <!---시작-->
-          
-            <script>
-                const container = document.getElementById('anim');
-                const animation = lottie.loadAnimation({
-                    container: container,
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    path: 'assets/voice.json'
-                });
-            </script>
+            <ul>Juhan Kim
+                <li>#8년차 #UX/UI #디자인 #구로구</li>
+            </ul>
+        </header>
 
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-             <!--끝-->
-            <div class="bubble"  data-aos="fade-up" >
-                <span id="typing"></span>
+            <div class="overlay-content">
+                <a href="index.html">Intro</a>
+                <a href="mailto:your_email@example.com">Contact</a> <a href="list.html">Archive</a>
             </div>
-            
-            <script>
-            new Typed("#typing", {
-              strings: ["안녕하세요.","UX/UI 디자이너 김주한입니다.", "이곳은 2014년도 부터의","포트폴리오 아카이브입니다.","선호하시는 탐색방법을 선택해주세요."],
-              typeSpeed: 45,
-              backSpeed: 0,
-              smartBackspace: false,
-              fadeOut: true,
-            loop: false,
-            onComplete: function(self) {
-              // 1. 클래스 이름이 'nextBtn'인 모든 요소를 NodeList 형태로 가져옵니다.
-              const buttons = document.querySelectorAll('.nextBtn');
-              const delayInterval = 500; // 버튼 간 나타날 시간 간격(밀리초, 0.5초)
-
-              // 2. 각 버튼에 순서대로 접근하며 딜레이를 적용합니다.
-              buttons.forEach((btn, index) => {
-                // index가 0인 첫 번째 버튼은 0ms, index가 1인 두 번째 버튼은 500ms 후에 실행
-                const delay = index * delayInterval; 
-                
-                setTimeout(() => {
-                  // opacity를 1로 설정하여 페이드 인 효과를 줍니다.
-                  btn.style.opacity = 1;
-                }, delay);
-              });
-            }
-          });
-          </script>
-          <span id="typed"></span>
-          <div class="flex row bottom_gap">
-            <button class="nextBtn" onclick="location.href='list.html'">
-                <div class="row"><i class="fa-solid fa-wand-magic-sparkles"></i>맞춤 탐색</div>
-                <span>필요한 키워드만 선택하여 탐색합니다.</span>
-            </button>
-            
-            <button class="nextBtn" onclick="location.href='list.html'">
-                <div class="row"><i class="fa-solid fa-search"></i>직접 탐색</div>
-                <span>최신순 작업된 프로젝트로 탐색합니다.</span>
-            </button>
         </div>
-        
 
-        </section>
+        <main>
 
-    </main>
+            <section id="home">
+                <!-- Lottie 애니메이션 요소에 visible-fade 클래스 추가 -->
+                <div id="anim" data-aos="fade" data-aos-duration="2000" class="visible-fade"><span>1988년생 남성 | UX/UI
+                        디자인</span></div>
+                <!---시작-->
+
+                <script>
+                    // Lottie Animation Logic
+                    const container = document.getElementById('anim');
+                    const animation = lottie.loadAnimation({
+                        container: container,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: 'assets/voice.json'
+                    });
+                </script>
 
 
-</div>
-<footer>
-    <p>&copy; 2025 Juhankim. All rights reserved.</p>
-</footer>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init(); // 라이브러리 초기화
-</script>
+                <!--끝-->
+                <div class="bubble" data-aos="fade-up">
+                    <span id="typing"></span>
+                </div>
+
+                <script>
+                    // Typed.js & Initial Button Logic
+                    let selectedTags = new Set(); // 선택된 태그를 저장할 Set
+
+                    function openNav() {
+                        document.getElementById("myNav").style.height = "100%";
+                        document.querySelector(".menu-icon-btn").classList.add('hide');
+                    }
+
+                    function closeNav() {
+                        document.getElementById("myNav").style.height = "0%";
+                        document.querySelector(".menu-icon-btn").classList.remove('hide');
+                    }
+
+                    // A. 맞춤 탐색 시작: 초기 버튼 숨기고 태그 선택 UI 표시
+                    function startCustomSelection() {
+                        const initialButtons = document.getElementById('initialButtons');
+                        const customSection = document.getElementById('customFilterSelection');
+                        const typingSpan = document.getElementById('typing'); // 타이핑 문구 요소를 가져옵니다.
+                        const animElement = document.getElementById('anim'); // Lottie 애니메이션 요소
+                        const transitionDuration = 500; // CSS transition 시간과 맞춤
+
+                        // 1. 기존 버튼 및 Lottie 애니메이션 숨기기
+                        initialButtons.classList.remove('visible-fade');
+                        initialButtons.classList.add('hidden-fade');
+                        animElement.classList.remove('visible-fade');
+                        animElement.classList.add('hidden-fade');
+
+                        // 2. 0.5초 후 태그 선택 섹션 표시
+                        setTimeout(() => {
+                            initialButtons.style.display = 'none'; // 영역 제거
+                            customSection.style.display = 'flex'; // 영역 표시
+
+                            // 3. 태그 선택 섹션 스르륵 나타나게 하기
+                            setTimeout(() => {
+                                customSection.classList.remove('hidden-fade');
+                                customSection.classList.add('visible-fade');
+
+                                // 탐색하기 버튼과 복귀 버튼 나타내기
+                                document.querySelector('.explore-btn').style.opacity = 1;
+                                document.querySelector('.back-btn').style.opacity = 1;
+
+                                // 4. 타이핑 문구 태그 선택 문구로 변경
+                                typingSpan.textContent = "해당되는 항목을 선택해주세요.";
+
+                            }, 50); // 짧은 딜레이 후 애니메이션 시작
+                        }, transitionDuration); // 초기 버튼 사라지는 시간 (0.5s)
+                    }
+
+                    // D. 이전 화면으로 복귀
+                    function returnToInitialState() {
+                        const initialButtons = document.getElementById('initialButtons');
+                        const customSection = document.getElementById('customFilterSelection');
+                        const typingSpan = document.getElementById('typing'); // 타이핑 문구 요소를 가져옵니다.
+                        const animElement = document.getElementById('anim'); // Lottie 애니메이션 요소
+                        const transitionDuration = 500;
+
+                        // 1. 태그 선택 섹션 숨기기
+                        customSection.classList.remove('visible-fade');
+                        customSection.classList.add('hidden-fade');
+
+                        // 2. 0.5초 후 초기 버튼 섹션 및 Lottie 애니메이션 표시
+                        setTimeout(() => {
+                            customSection.style.display = 'none'; // 영역 제거
+                            initialButtons.style.display = 'flex'; // 영역 표시
+
+                            // 3. 초기 버튼 섹션 스르륵 나타나게 하기
+                            setTimeout(() => {
+                                initialButtons.classList.remove('hidden-fade');
+                                initialButtons.classList.add('visible-fade');
+
+                                // Lottie 애니메이션 다시 나타내기
+                                animElement.classList.remove('hidden-fade');
+                                animElement.classList.add('visible-fade');
+
+                                // 개별 버튼 다시 페이드 인
+                                document.querySelectorAll('#initialButtons .nextBtn').forEach(btn => {
+                                    btn.style.opacity = 1;
+                                });
+
+                                // 태그 선택 상태 초기화
+                                selectedTags.clear();
+                                document.querySelectorAll('.tag-btn.selected').forEach(btn => {
+                                    btn.classList.remove('selected');
+                                });
+
+                                // 4. 타이핑 문구 초기 문구로 변경
+                                typingSpan.textContent = "선호하시는 탐색방법을 선택해주세요.";
+
+                            }, 50);
+                        }, transitionDuration);
+                    }
+
+
+                    // B. 태그 버튼 클릭 처리 (토글 기능)
+                    function handleTagClick(button) {
+                        const tag = button.dataset.tag;
+
+                        if (selectedTags.has(tag)) {
+                            selectedTags.delete(tag);
+                            button.classList.remove('selected');
+                        } else {
+                            selectedTags.add(tag);
+                            button.classList.add('selected');
+                        }
+                    }
+
+                    // C. '탐색하기' 클릭 시 리스트 페이지로 이동
+                    function navigateWithFilters() {
+                        const filtersArray = Array.from(selectedTags);
+
+                        if (filtersArray.length === 0) {
+                            // 선택된 태그가 없으면 전체보기('all')로 이동
+                            localStorage.setItem('initialFilters', JSON.stringify(['all']));
+                        } else {
+                            // 복수 선택된 태그를 저장
+                            localStorage.setItem('initialFilters', JSON.stringify(filtersArray));
+                        }
+
+                        // 리스트 페이지로 이동
+                        location.href = 'list.html';
+                    }
+
+
+                    new Typed("#typing", {
+                        // ❗ 최종 문구를 초기 화면에 맞는 문구로 변경했습니다.
+                        strings: ["안녕하세요.", "UX/UI 디자이너 김주한입니다.", "이곳은 2014년도 부터의", "포트폴리오 아카이브입니다.", "선호하시는 탐색방법을 선택해주세요."],
+                        typeSpeed: 45,
+                        backSpeed: 0,
+                        smartBackspace: false,
+                        fadeOut: true,
+                        loop: false,
+                        onComplete: function (self) {
+                            const buttons = document.querySelectorAll('#initialButtons .nextBtn');
+                            const delayInterval = 500;
+
+                            buttons.forEach((btn, index) => {
+                                const delay = index * delayInterval;
+                                setTimeout(() => {
+                                    // 개별 버튼의 opacity를 1로 설정하여 나타나게 합니다.
+                                    btn.style.opacity = 1;
+                                }, delay);
+                            });
+                        }
+                    });
+                </script>
+                <span id="typed"></span>
+
+                <!-- 초기 탐색 버튼 -->
+                <div class="flex row bottom_gap bottom_margin" id="initialButtons">
+                    <button class="nextBtn" onclick="startCustomSelection()">
+                        <div class="row"><i class="fa-solid fa-wand-magic-sparkles"></i>맞춤 탐색</div>
+                        <span>필요한 키워드만 선택하여 탐색합니다.</span>
+                    </button>
+
+                    <button class="nextBtn" onclick="navigateWithFilters()">
+                        <div class="row"><i class="fa-solid fa-search"></i>직접 탐색</div>
+                        <span>최신순 전체보기로 탐색합니다.</span>
+                    </button>
+                </div>
+
+                <!-- 맞춤 태그 선택 섹션 (초기 숨김) -->
+                <div id="customFilterSelection" class="custom-filter-section hidden-fade" style="display: none;">
+                    <div class="tag-container" id="tagButtons">
+                        <!-- 태그 버튼: data-tag 속성이 list.html의 item 클래스와 일치해야 합니다. -->
+                        <button class="tag-btn" data-tag="mobile" onclick="handleTagClick(this)"># Mobile App</button>
+                        <button class="tag-btn" data-tag="web" onclick="handleTagClick(this)"># Web/Service</button>
+                        <button class="tag-btn" data-tag="strategy" onclick="handleTagClick(this)"># Strategy</button>
+                        <button class="tag-btn" data-tag="tablet" onclick="handleTagClick(this)"># Tablet</button>
+                        <button class="tag-btn" data-tag="animation" onclick="handleTagClick(this)"># Animation(lottie)</button>
+                        <button class="tag-btn" data-tag="unity" onclick="handleTagClick(this)"># Unity</button>
+                        <button class="tag-btn" data-tag="video" onclick="handleTagClick(this)"># Video Works</button>
+                        <button class="tag-btn" data-tag="graphic" onclick="handleTagClick(this)"># Graphic</button>
+                        <button class="tag-btn" data-tag="admin" onclick="handleTagClick(this)"># Admin</button>
+                        <button class="tag-btn" data-tag="released" onclick="handleTagClick(this)"># Released</button>
+                        <button class="tag-btn" data-tag="3d" onclick="handleTagClick(this)"># 3D Modeling</button>
+                        
+                    </div>
+
+                    <!-- 2. 이전 화면 복귀 버튼 -->
+                    <button class="nextBtn back-btn" onclick="returnToInitialState()" style="opacity: 0;">
+                        <div class="row"><i class="fa-solid fa-arrow-left"></i>이전 화면으로 돌아가기</div>
+                        <span>처음 탐색 방법 선택 화면으로 돌아갑니다.</span>
+                    </button>
+
+                    <button class="nextBtn explore-btn" onclick="navigateWithFilters()" style="opacity: 0;">
+                        <div class="oneline">
+                            <div class="row"><i class="fa-solid fa-compass"></i>탐색하기</div><i
+                                class="fa-solid fa-arrow-right"></i>
+                        </div><span>선택된 태그로 아카이브를 탐색합니다.</span>
+                    </button>
+                </div>
+
+
+            </section>
+
+        </main>
+
+
+    </div>
+    <footer>
+        <p>&copy; 2025 Juhankim. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init(); // 라이브러리 초기화
+    </script>
 </body>
+
 </html>
