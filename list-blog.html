@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juhan Kim</title>
+    <link rel="stylesheet" href="asset/style.css">
+    <script src="asset/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="asset/icon/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-list">
+    <header  data-aos="fade-down">
+        <!-- <h1>Local</h1> -->
+        <button class="menu-icon-btn" onclick="openNav()">
+        <i class="fa-solid fa-bars"></i>
+        </button> 
+        
+        <ul>Juhan Kim
+            <li>#8년차 #UX/UI #디자인</li>
+            <!-- <li>두 번째 항목</li> -->
+        </ul>
+    </header>
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+        <div class="overlay-content">
+            <a href="index.html">Intro</a>
+            <a href="mailto:sixths_misuse8p@icloud.com">Contact</a> <a href="list.html">Archive</a>
+        </div>
+    </div>
+
+    <main class="main-list" data-aos="fade-up">
+        
+        <section id="list"> 
+          <div class="list-container">
+            <div id="filterButtons">
+              <button data-filter="all" class="filter-btn active">All</button>
+              <button data-filter="mobile" class="filter-btn"># Mobile</button>
+              <button data-filter="tablet" class="filter-btn"># Tablet</button>
+              <button data-filter="web" class="filter-btn"># Web</button>
+              <button data-filter="unity" class="filter-btn"># Unity</button>
+              <button data-filter="graphic" class="filter-btn"># Graphic</button>
+              <button data-filter="animation" class="filter-btn"># Animation</button>
+              <button data-filter="video" class="filter-btn"># Video</button>
+              <button data-filter="admin" class="filter-btn"># Admin</button>
+              <button data-filter="3d" class="filter-btn"># 3d</button>
+              <button data-filter="released" class="filter-btn"># Released</button>
+              <button data-filter="strategy" class="filter-btn"># Strategy</button>
+            </div>
+
+            <ul id="itemList">
+
+
+                <li class="item 3d" onclick="location.href='pages/22.html'">
+                  <div class="card-image">
+                      <img src="asset/imgs/24.png" alt="앱테크 서비스 카드 이미지">
+                  </div>
+                  
+                  <div class="card-content">
+                      <div class="card-tags">
+                          <span>#3d...</span>
+                      </div>
+                      <p class="card-title">제품 디자인<small>2025</small></p>
+                  </div>
+              </li>
+
+
+              <li class="item mobile released web strategy" onclick="location.href='pages/1.html'">
+                  <div class="card-image">
+                      <img src="asset/imgs/1.png" alt="앱테크 서비스 카드 이미지">
+                  </div>
+                  
+                  <div class="card-content">
+                      <div class="card-tags">
+                          <span>#mobile #tablet #released...</span>
+                      </div>
+                      <p class="card-title">앱테크 서비스<small>2025</small></p>
+                  </div>
+              </li>
+
+              <li class="item mobile released" onclick="location.href='pages/2.html'">
+                  <div class="card-image">
+                      <img src="asset/imgs/2.png" alt="서비스 카드 이미지">
+                  </div>
+                  <div class="card-content">
+                      <div class="card-tags"><span>#mobile #released...</span></div>
+                      <p class="card-title">패션SNS<small>2024</small></p>
+                  </div>
+              </li>
+
+              
+              <li class="item mobile released strategy video" onclick="location.href='pages/3.html'">
+                  <div class="card-image">
+                      <img src="asset/imgs/3.png" alt="서비스 카드 이미지">
+                  </div>
+                  <div class="card-content">
+                      <div class="card-tags"><span>#mobile #released...</span></div>
+                      <p class="card-title">플랫폼 앨범<small>2023</small></p>
+                  </div>
+              </li>
+
+
+              <li class="item video released strategy" onclick="location.href='pages/23.html'">
+                  <div class="card-image">
+                      <img src="asset/imgs/27.png" alt="서비스 카드 이미지">
+                  </div>
+                  <div class="card-content">
+                      <div class="card-tags"><span>#video #released...</span></div>
+                      <p class="card-title">플랫폼 앨범 홍보영상<small>2023</small></p>
+                  </div>
+              </li>
+
+
+              <li class="item unity released strategy video" onclick="location.href='pages/5.html'">
+                  <div class="card-image">
+                      <img src="asset/imgs/5.png" alt="서비스 카드 이미지">
+                  </div>
+                  <div class="card-content">
+                      <div class="card-tags"><span>#unity #released...</span></div>
+                      <p class="card-title">페이스 트래킹<small>2023</small></p>
+                  </div>
+              </li>
+
+              <li class="item mobile tablet admin strategy video" onclick="location.href='pages/4.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/4.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #tablet...</span></div>
+                    <p class="card-title">테이블 오더<small>2022</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy" onclick="location.href='pages/6.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/7.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">튜터 매칭 서비스<small>2022</small></p>
+                </div>
+              </li>
+
+
+              <li class="item web strategy" onclick="location.href='pages/7.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/8.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#web #strategy...</span></div>
+                    <p class="card-title">음성음식 강의 서비스<small>2023</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy" onclick="location.href='pages/8.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/9.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
+                </div>
+              </li>
+
+
+
+              <li class="item tablet strategy" onclick="location.href='pages/9.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/10.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#tablet #strategy...</span></div>
+                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
+                </div>
+              </li>
+
+
+
+              <li class="item mobile strategy" onclick="location.href='pages/10.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/11.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy" onclick="location.href='pages/11.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/12.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">원격 강의 서비스<small>2021</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy" onclick="location.href='pages/12.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/13.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">원격 강의 서비스<small>2021</small></p>
+                </div>
+              </li>
+
+
+              <li class="item web strategy" onclick="location.href='pages/13.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/14.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#web #strategy...</span></div>
+                    <p class="card-title">한국어 자격증 취득 서비스<small>2021</small></p>
+                </div>
+              </li>
+
+              <li class="item mobile unity strategy" onclick="location.href='pages/14.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/15.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #unity...</span></div>
+                    <p class="card-title">영어 게임 서비스<small>2020</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy" onclick="location.href='pages/15.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/16.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
+                </div>
+              </li>
+              
+
+
+              <li class="item web strategy" onclick="location.href='pages/16.html'">
+                <div class="card-image">
+                    <img src="asset/imgs/17.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#web #strategy...</span></div>
+                    <p class="card-title">마케팅 솔루션<small>2020</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy">
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/18.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
+                </div>
+              </li>
+
+
+              <li class="item web strategy" >
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/19.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#web #strategy...</span></div>
+                    <p class="card-title">온라인 시험 서비스<small>2020</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy" >
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/20.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile strategy" >
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/21.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile #strategy...</span></div>
+                    <p class="card-title">영어 단어장<small>2020</small></p>
+                </div>
+              </li>
+
+
+              <li class="item mobile" >
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/22.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile...</span></div>
+                    <p class="card-title">영어 단어장<small>2020</small></p>
+                </div>
+              </li>
+              
+
+
+              <li class="item mobile" >
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/23.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#mobile...</span></div>
+                    <p class="card-title">학습 서비스<small>2020</small></p>
+                </div>
+              </li>
+
+              <li class="item 3d" >
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/25.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#3d...</span></div>
+                    <p class="card-title">제품 디자인<small>2023</small></p>
+                </div>
+              </li>
+
+
+              <li class="item 3d" >
+                <div class="card-image">
+                    <span class="wait">작성예정</span>
+                    <img src="asset/imgs/26.png" alt="서비스 카드 이미지">
+                </div>
+                <div class="card-content">
+                    <div class="card-tags"><span>#3d...</span></div>
+                    <p class="card-title">제품 디자인<small>2021</small></p>
+                </div>
+              </li>
+              
+              
+              
+              </ul>
+              <span class="endtxt">*더 이상 항목이 없습니다.</span>
+        </div>
+        
+
+        </section>
+
+    </main>
+
+
+</div>
+<footer>
+    <p>&copy; 2025 Juhankim. All rights reserved.</p>
+</footer>
+
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init(); // 라이브러리 초기화
+</script>
+</body>
+</html>
