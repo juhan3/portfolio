@@ -47,6 +47,9 @@ body{
   text-align: center;
   overflow: hidden;
 }
+.anim img{
+  width: 40%;
+  }
 .gifimg{width: 50%; border-radius: 16px; overflow: hidden; box-shadow: 1px 4px 14px #96a1d57c;}
 .bg-list {
   width: 100%;
