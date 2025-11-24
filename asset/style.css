@@ -1,0 +1,527 @@
+
+html, body {
+  height: 100%;
+  margin: 0; /* 혹시 25px margin 있으면 제거 */
+  padding: 0;
+  overscroll-behavior: contain; /* iOS 바운스 시 배경 깨짐 방지 */
+  background-color: black;
+  min-width: 320px; 
+
+}
+ul, li{
+  list-style: none; padding: 0; margin: 0;
+}
+ul{
+  font-weight: bold;
+}
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.notibox{
+  max-width: 320px; margin: 8px auto; color: #444;
+  background: #fff; border-radius: 8px; overflow: hidden; font-size: 12px; padding: 8px;
+  display: none; justify-content: space-between; min-height: 20px; align-content: center;
+  i{padding: 3px; color: #aaa;}
+  b{color: #aaa;} small{font-weight: bold; color: #aaa;padding: 1px 4px;}
+}
+
+body{
+  font-family: 'Noto Sans KR';
+}
+.bg {
+  width: 100%;
+  height: 96%;
+    
+  background: linear-gradient(#e6e8ea , #ffffff 80%);
+    
+    animation: breathing-gradient 4s ease-in-out infinite alternate;
+  border-radius: 42px;
+  padding: 16px 16px 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  overflow: hidden;
+}
+.anim img{
+  width: 40%;
+  }
+.gifimg{width: 50%; border-radius: 16px; overflow: hidden; box-shadow: 1px 4px 14px #96a1d57c;}
+.bg-list {
+  width: 100%;
+  height: 96%;
+    
+  background: linear-gradient(#ffffff , #e8e6e6 80%);
+    
+    animation: breathing-gradient 4s ease-in-out infinite alternate;
+  border-radius: 42px;
+  padding: 16px 16px 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  overflow: hidden;
+}
+.txtinfo{font-size: 12px;}
+.blue{
+  background: #e3eaf1 !important;
+}
+.bg-page {
+  width: 100%;
+  height: 96%;
+    
+  background: #ffffff;
+    
+    animation: breathing-gradient 4s ease-in-out infinite alternate;
+  border-radius: 42px;
+  padding: 16px 16px 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  overflow: hidden;
+}
+#anim{width: 50%; max-width: 200px; margin: 0 auto;text-align: center;
+span{background: #ffffff56; font-size: 10px; border-radius: 16px; padding: 8px 10px; font-weight: bold; color: #00000071;}
+img{width: 100%; display: block; margin: 0 auto;animation: float 3s ease-in-out infinite;}
+}
+/* 떠다니는 + 회전 애니메이션 */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+header li{font-size: 10px;font-weight: bold;color: #36363669;}
+.menu-icon-btn{
+  position: fixed; right: 16px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #3e414583; border: none; font-size: 16px;
+}
+.back-icon-btn{
+  position: fixed; left: 0px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #3e414583; border: none; font-size: 16px;
+}
+/* style.css 파일에서 다음 부분을 찾아서 수정하세요. */
+.pages-list ul,.pages-list li{height: 100%;}
+.pages-list .list-top .card-image img{
+border-radius: 8px; overflow: hidden;
+}
+.row .callout{flex: 1; b{display: block;}}
+.pages-list .list-top .card-content .card-tags span{
+font-size: 12px; color: #0000006a; font-weight: normal;
+}
+.pages-list .list-top .card-content .txt{
+font-size: 14px; font-weight: normal;
+}
+/* 1. #filterButtons 수정: 스크롤, 패딩, 마스크 */
+#filterButtons {
+  display: flex;
+  flex-wrap: nowrap; 
+  /* 💡 스크롤 핵심 */
+  overflow-x: auto; 
+  overflow-y: hidden;
+  
+  /* 💡 초기 왼쪽/오른쪽 여백 추가 및 스크롤바 공간 확보 */
+  padding: 8px 16px; /* 상하 8px, 좌우 16px 여백 (좌우 여백을 늘려 짤림 방지) */
+  
+  /* 스크롤바 숨김 설정 유지 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  /* 💡 양쪽 페이드 아웃 효과 유지 */
+  mask-image: linear-gradient(to right, 
+              rgba(0,0,0,0) 0%,   
+              rgba(0,0,0,1) 5%,  /* 5%부터 불투명 시작 */
+              rgba(0,0,0,1) 95%, /* 95%까지 불투명 유지 */
+              rgba(0,0,0,0) 100%); 
+  
+  /* Webkit 접두사 유지 */
+  -webkit-mask-image: linear-gradient(to right, 
+              rgba(0,0,0,0) 0%,   
+              rgba(0,0,0,1) 5%,  
+              rgba(0,0,0,1) 95%,  
+              rgba(0,0,0,0) 100%); 
+}
+
+/* WebKit 스크롤바 숨김 설정 유지 */
+#filterButtons::-webkit-scrollbar {
+  display: none; 
+  width: 0; 
+  height: 0; 
+}
+hr {
+  border: 1px solid rgba(13, 13, 13, 0.047);
+  /* border-top, border-bottom 선택 가능 */
+}
+.txt-title{text-align: left;}
+
+/* 2. .filter-btn 수정: 태그 사이 간격 복구 */
+.filter-btn {
+  /* 버튼이 수축하지 않도록 함 */
+  flex-shrink: 0; 
+  
+  /* 💡 간격 복구: 버튼 사이에 오른쪽 여백을 줍니다. */
+  margin-right: 8px; 
+  
+  /* 💡 하단 마진 제거 또는 조정 */
+  margin-bottom: 0; 
+  
+  /* ... (나머지 스타일 유지) ... */
+}
+
+.nextBtn{
+  text-align: left;
+  display: flex;
+  justify-content: flex-start; 
+  flex-direction: column;
+  opacity:0; transition: opacity 0.5s; padding: 16px;width: 80%; font-size: 14px;
+  background: white; box-shadow: 1px 8px 8px #eee; border-radius: 24px; border: 1px solid #ddd; font-weight: bold;
+  span{display: block; font-weight: normal; color: #666;}
+  .row i{
+    /* background: #dde5f0; 
+    padding: 10px 8px;  */
+    margin-right: 6px;border-radius: 50%; margin-bottom: 8px;}
+}
+#home svg{display: block;margin: 0 auto;filter: blur(12px);}
+.someclass { color: red; }
+#someid { color: green; }
+.bubble {
+  max-width: 70%;
+  display: inline-block;
+  padding: 12px 18px;
+  margin: 10px auto;
+  background: white;
+  border-radius: 40px;
+  border: solid 1px #ececec;
+  font-size: 12px; font-weight: normal;
+  color: #333;
+  line-height: 1.4;
+}
+.callout{
+  background: #f3f4fa; border-radius: 8px; padding: 12px; font-size: 12px;
+  color: #333;
+    font-weight: normal;
+    b{}
+  }
+
+footer{
+  p{font-size: 12px; color: rgba(255, 255, 255, 0.479); text-align: center; display: block; margin: 8px auto;}
+}
+
+.flex{display: flex;}
+.row{flex-direction: row;gap: 8px;display: flex;}
+.bottom_gap{margin-bottom: 16px; max-width: 420px;margin: 0 auto;}
+.bottom_margin{margin-bottom: 24px;}
+
+/* 오버레이 (최상위 메뉴 레이어) 스타일 */
+.overlay {
+  height: 0; /* 초기 높이는 0으로 설정하여 숨김 */
+  width: 100%;
+  position: fixed; /* 화면에 고정 */
+  z-index: 100; /* 다른 요소들 위에 표시되도록 높은 z-index 설정 */
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0); /* 어두운 배경 */
+  background-color: rgba(0, 0, 0, 0.95); /* 반투명 검은색 */
+  overflow-y: hidden; /* 스크롤바 숨김 */
+  transition: 0.5s; /* 높이 변화에 0.5초 애니메이션 적용 */
+}
+
+/* 닫기 버튼 (X) 스타일 */
+.overlay .closebtn {
+  position: absolute;
+  top: 18px;
+  right: 40px;
+  font-size: 24px;
+  color: #757575;
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+/* 메뉴 항목들을 중앙에 배치 */
+.overlay-content {
+  position: relative;
+  top: 35%; /* 화면 중앙에서 조금 아래로 배치 */
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* 메뉴 항목 링크 스타일 */
+.overlay-content a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #ffffffb8;
+  display: block; /* 각 항목을 독립적인 블록으로 만듦 */
+  transition: 0.3s; /* 호버 효과에 애니메이션 적용 */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: normal;
+}
+
+/* 메뉴 항목 호버 시 스타일 */
+.overlay-content a:hover, .overlay-content a:focus {
+  color: #b2b2b2;
+}
+
+/* 작은 화면일 경우 폰트 크기 조정 */
+@media screen and (max-height: 450px) {
+  .overlay-content {margin-top: 15%;}
+  .overlay-content a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+/* 메뉴 버튼 (햄버거 아이콘)의 색상을 오버레이 대비 잘 보이도록 변경 */
+.menu-icon-btn {
+  /* ... 기존 스타일 유지하고 필요한 경우 아래를 추가/수정 ... */
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 메뉴가 열렸을 때 닫기 버튼과 구별되도록 헤더의 햄버거 아이콘 숨기기 (선택 사항) */
+.menu-icon-btn.hide {
+  display: none;
+}
+
+#list {
+  margin-top: 8px;
+  flex-grow: 1; /* main 컨테이너 내에서 남은 공간을 모두 차지 */
+  overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤 허용 */
+  padding-bottom: 16px;
+  /* height: 100%; 는 flex-grow: 1; 이 대신하므로 불필요합니다. */
+}
+
+.item {
+  /* 애니메이션을 위한 기본 설정 */
+  /* transition 시간을 0.5초로 살짝 늘리고 cubic-bezier를 적용 */
+  transition: opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease, padding 0.5s ease;
+  
+  /* 또는 더 부드러운 시작/끝을 위해 cubic-bezier 사용 (선택 사항) */
+  /* transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1); */ 
+  
+  overflow: hidden;
+  max-height: 500px; /* 충분히 큰 값 유지 */
+}
+
+/* JavaScript에서 사용되는 transitionDuration도 500ms로 변경해야 합니다. */
+
+.hidden {
+  /* 💡 숨김 처리의 핵심! */
+  opacity: 0 !important;
+  
+  /* 👇 수정: max-height를 0으로 줄여 영역을 제거합니다. */
+  max-height: 0 !important; 
+  
+  /* 아이템 사이에 간격이 있다면 margin도 0으로 만들어야 부드럽게 붙습니다. */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: none;
+}
+.filter-btn {
+  /* 버튼이 눌렸을 때 시각적 피드백 */
+  background: #ffffff54;
+            color: #66666677;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+            flex-shrink: 0;
+            font-weight: bold;
+}
+.filter-btn.active {
+  background: #4a86f7; /* 선택 시 강조 색상 */
+            color: white;
+            border-color: #4a86f7;
+            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
+}
+.main-list{
+
+  flex-grow: 1; 
+  
+  /* 💡 Flex 컨테이너 내에서 콘텐츠 넘침 문제를 해결하는 핵심 */
+  min-height: 0; 
+  /* 💡 main에 display: flex;를 추가하여 #list의 높이를 더 정확하게 제어할 수도 있습니다.*/
+     display: flex; flex-direction: column; 
+
+
+}
+#itemList {
+  display: flex;
+  /* 💡 1. 아이템이 넘칠 경우 다음 줄로 넘어가도록 설정 */
+  flex-wrap: wrap; 
+  /* 💡 2. 아이템 사이의 간격(행/열)을 설정 (선택 사항) */
+  gap: 10px; 
+  padding: 0; /* ul의 기본 패딩 제거 */
+  justify-content: center;
+  max-width: 650px;
+  margin: 8px auto;
+}
+
+#itemList .item {
+  /* 💡 3. 각 아이템의 너비를 50%로 설정하여 2열 배치 */
+  width: calc(48% - 5px); /* 50%에서 gap 10px의 절반을 빼서 정확히 2열을 만듭니다. */
+  list-style: none; /* li의 기본 스타일 제거 */
+  display: block;
+  /* 기존 스타일 */
+  background: #fff;
+  min-height: 200px;
+  height: 100%;
+  border-radius: 12px;
+
+}
+.card-image {
+  height: 60%;
+   width: 100%; /* li의 가로폭을 꽉 채우도록 설정 */
+  overflow: hidden;
+}
+
+.card-image img {
+  /* 💡 이미지 자체가 부모 컨테이너(card-image)의 가로세로 100%를 꽉 채우도록 설정 */
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; /* 이미지가 잘리더라도 영역을 꽉 채우게 함 */
+  display: block; /* 가끔 이미지 아래 생기는 미세한 여백 제거 */
+}
+.list-container .endtxt{
+  font-size: 12px; color: #666666a2; padding: 24px; display: block;
+}
+
+#itemList .item span {
+font-weight: normal; font-size: 8px; padding: 0 2px; color: rgba(97, 97, 97, 0.381);
+}
+.card-title small{display: block; font-size: 8px; color: #ccc; width: 100%; text-align: right;}
+
+#itemList .item p {
+  font-size: 12px;
+}
+
+.card-content {
+  /* 💡 텍스트 영역: 나머지 20%를 차지 */
+  flex-grow: 1; /* 남은 공간 모두 차지 (80%를 제외한 20%) */
+  flex-basis: 20%;
+  
+  /* 💡 패딩을 여기에 추가하여 텍스트에 여백을 줍니다. */
+  padding: 10px; 
+  box-sizing: border-box; 
+  
+  text-align: left; /* 텍스트는 좌측 정렬 */
+}
+
+
+.hidden-fade {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.4s, max-height 0.4s;
+        }
+        .visible-fade {
+            opacity: 1;
+            max-height: 500px; /* 충분히 큰 값 */
+        }
+        
+        /* 1. 스르륵 슬라이드 업 애니메이션 정의 */
+        .custom-filter-section.visible-fade {
+            opacity: 1;
+            max-height: 500px;
+            animation: slideUpFadeIn 0.5s ease-out forwards; 
+        }
+
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* 아래에서 20px 위로 올라오는 효과 */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .custom-filter-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 0 16px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .tag-container {
+            /* 태그 수평 스크롤 CSS 제거, 다중 줄 래핑으로 변경 */
+            display: flex;
+            flex-wrap: wrap; /* 래핑 허용 */
+            gap: 8px;
+            justify-content: center; /* 중앙 정렬 */
+            /* 수평 스크롤 및 스크롤바 관련 CSS 제거 */
+        }
+        .tag-btn {
+            background: #ffffff54;
+            color: #66666677;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+            flex-shrink: 0; 
+            font-weight: bold;
+        }
+        .tag-btn.selected {
+            background: #4a86f7; /* 선택 시 강조 색상 */
+            color: white;
+            border-color: #4a86f7;
+            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
+        }
+        .explore-btn, .back-btn {
+            opacity: 0; /* JS로 제어 */
+            width: 100%; /* 버튼 너비 100% 적용 */
+        }
+        .explore-btn{
+            margin-bottom: 16px;
+            background: #4a86f7;
+            color: white;
+            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
+            span{color: white;}
+            .oneline{
+              display: flex;
+                      justify-content: space-around;
+                      .row{width: 100%;}
+            }
+        }
+        .back-btn {
+           box-shadow: none;
+           background: #00000009;
+           border: none;
+        }
+
+
+/* @keyframes를 사용하여 애니메이션을 정의합니다. */
+@keyframes breathing-gradient {
+  0% {
+      /* 시작 시 그라데이션 위치: 맨 위 (밝은 색만 거의 보임) */
+      background-position: 0% 0%;
+  }
+  100% {
+      /* 끝 지점 위치: 아래로 살짝 이동하여 어두운 색이 은은하게 채워짐 */
+      background-position: 0% 25%;
+  }
+}
+
