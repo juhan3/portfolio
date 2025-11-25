@@ -439,7 +439,7 @@ footer{
 }
 
 #itemListBlog .item .card-content .card-tags span {
-    display: block;
+    display: block; font-weight: bold;
 }
 
 #itemListBlog .item .card-content .card-tags .card-title {
