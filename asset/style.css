@@ -420,15 +420,12 @@ footer{
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
-    margin-left: 8px;
-    margin-top: 8px;
-    margin-right: 8px; /* 이미지와 콘텐츠 사이에 여백 추가 */
+    margin: 8px;
     /* ★ 핵심 수정: 이 요소만 세로축 정렬을 상단으로 변경 */
     align-self: flex-start;
 }
 
 #itemListBlog .item .card-content {
-    display: flex; /* 내부 요소(태그/제목, 날짜)를 정렬하기 위해 Flex 컨테이너로 설정 */
     flex-direction: column; /* 태그와 제목을 세로로 쌓기 */
     flex-grow: 1; /* ★가장 중요: 남은 공간을 모두 차지하여 텍스트를 위한 공간 확보 */
     min-width: 0; /* Flexbox 아이템의 기본 동작으로 인해 내용이 넘칠 때 줄어들지 않는 문제를 해결 (IE/Edge 호환성) */
@@ -461,6 +458,7 @@ footer{
     font-size: 10px;
     font-weight: normal;
     text-align: right;
+    display: block;
     color: #bbb;
     min-width: fit-content; /* 날짜 텍스트가 잘리지 않도록 최소 너비 설정 */
     margin-left: auto; /* 남은 공간을 밀고 오른쪽 끝에 붙도록 설정 */
