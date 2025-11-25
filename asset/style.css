@@ -390,55 +390,91 @@ footer{
   border-radius: 12px;
 
 }
-#itemListBlog{
-  flex-direction: row;
+#itemListBlog {
+  /* ul 컨테이너는 기존대로 유지 */
+  flex-direction: column; /* ul은 세로로 쌓여야 하므로, item을 가로 정렬하기 위해선 flex-direction: row를 제거하거나, flex-direction: column으로 설정해야 item이 세로로 쌓입니다. (현재 HTML 구조에서는 row가 의미가 없어서 제거하거나 column으로 설정하는 것을 추천합니다.) */
 }
 
-#itemListBlog .item{
-		display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+#itemListBlog .item {
+    display: flex; /* li.item을 Flex 컨테이너로 설정 */
+    flex-direction: row; /* 자식 요소들을 가로로 나열 */
+    align-items: center; /* 요소들을 세로 중앙에 정렬 */
+    justify-content: space-between; /* 기본 정렬은 유지 */
     width: 100%;
-    list-style: none; /* li의 기본 스타일 제거 */
+    list-style: none;
     margin-bottom: 16px;
     margin-top: 16px;
-    /* 기존 스타일 */
     background: #fff;
-    padding: 0px 8px;
+    padding: 8px; /* 패딩을 위아래 포함하여 8px로 통일 */
     box-sizing: border-box;
     height: fit-content;
     border-radius: 12px;
-    .card-image {
-      border: 1px solid #ddd;
-       width: 32px; height: 32px;object-fit: cover; /* 세로 비율 맞추고 crop */
-       object-position: center;
-       border-radius: 8px;
+}
 
-    }
-    .card-content .card-tags{
-      display: inline-block; width: fit-content;
-      span{display: inline-block;}
-    }
-    .card-content .card-tags .card-title {
-      display: flex;
-      flex-direction: column; /* 태그 + 내용 세로 정렬 */
-      margin: 8px;
-      font-size: 12px;
-      font-weight: normal;
-    
+#itemListBlog .item .card-image {
+    border: 1px solid #ddd;
+    /* 이미지 크기 고정 */
+    width: 52px; 
+    min-width: 32px; /* 내용이 길어져도 줄어들지 않도록 최소 너비 설정 */
+    height: 52px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    margin-left: 8px;
+    margin-top: 8px;
+    margin-right: 8px; /* 이미지와 콘텐츠 사이에 여백 추가 */
+    /* ★ 핵심 수정: 이 요소만 세로축 정렬을 상단으로 변경 */
+    align-self: flex-start;
+}
 
-    }
-    
-    .card-content small{
-      font-size: 10px; font-weight: normal;
-       text-align: right; padding: 8px; color: #bbb;
-    }
-    .card-content{
-      width: 100%; justify-content: space-between; display: flex;}
-    .card-content, .card-tags, .card-title{
-      padding: 0;}
-    
+#itemListBlog .item .card-content {
+    display: flex; /* 내부 요소(태그/제목, 날짜)를 정렬하기 위해 Flex 컨테이너로 설정 */
+    flex-direction: column; /* 태그와 제목을 세로로 쌓기 */
+    flex-grow: 1; /* ★가장 중요: 남은 공간을 모두 차지하여 텍스트를 위한 공간 확보 */
+    min-width: 0; /* Flexbox 아이템의 기본 동작으로 인해 내용이 넘칠 때 줄어들지 않는 문제를 해결 (IE/Edge 호환성) */
+    padding: 0 8px;
+}
+
+#itemListBlog .item .card-content .card-tags {
+    /* 이 부분은 HTML 구조상 태그를 감싸는 div인 것 같습니다. */
+    display: inline-block; 
+    width: fit-content;
+}
+
+#itemListBlog .item .card-content .card-tags span {
+    display: block;
+}
+
+#itemListBlog .item .card-content .card-tags .card-title {
+    display: block; /* 텍스트가 들어가는 <p> 태그 */
+    margin: 0; /* 기본 마진 제거 */
+    font-size: 12px;
+    font-weight: normal;
+    white-space: normal; /* ★가장 중요: 텍스트가 길어지면 줄 바꿈되도록 설정 */
+    overflow-wrap: break-word; /* 긴 단어가 줄 바꿈되도록 설정 */
+    word-break: break-word; /* 줄 바꿈 최적화 */
+    line-height: 1.4; /* 가독성을 위한 줄 간격 */
+    padding: 4px 0; /* 제목 위아래 패딩 */
+}
+
+#itemListBlog .item .card-content small {
+    font-size: 10px;
+    font-weight: normal;
+    text-align: right;
+    color: #bbb;
+    min-width: fit-content; /* 날짜 텍스트가 잘리지 않도록 최소 너비 설정 */
+    margin-left: auto; /* 남은 공간을 밀고 오른쪽 끝에 붙도록 설정 */
+    padding: 0; /* 기존 패딩 제거 */
+}
+
+/* 추가: 날짜를 .card-content 밖으로 빼내어 .item에 직접 포함시키는 것이 더 명확한 구조일 수 있습니다. */
+/* HTML: <li class="item"> ... <div class="card-content">...</div> <small class="date">...</small></li> */
+/* 현재 HTML 구조는 <small>이 <p.card-title> 안에 있어 날짜가 이미지와 본문 사이에 위치하지 못하고 본문 아래에 위치합니다. */
+
+/* 현재 HTML 구조 (날짜가 p.card-title 안에 있는 경우)를 기반으로: */
+#itemListBlog .item .card-content .card-tags .card-title small {
+    display: block; /* 날짜를 별도의 줄로 표시 */
+    text-align: right;
 }
 .card-image {
   height: 60%;
