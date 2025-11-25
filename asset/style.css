@@ -407,7 +407,6 @@ footer{
     background: #fff;
     padding: 8px; /* 패딩을 위아래 포함하여 8px로 통일 */
     box-sizing: border-box;
-    height: fit-content;
     border-radius: 12px;
 }
 
@@ -436,6 +435,7 @@ footer{
 #itemListBlog .item .card-content .card-tags {
     /* 이 부분은 HTML 구조상 태그를 감싸는 div인 것 같습니다. */
     display: inline-block; 
+    min-height: 44px;
     width: fit-content;
 }
 
@@ -499,9 +499,15 @@ footer{
 }
 
 #itemList .item span {
-font-weight: normal; font-size: 8px; padding: 0 2px; color: rgba(97, 97, 97, 0.381);
+font-weight: normal;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 2px;
+    color: rgba(97, 97, 97, 0.381);
 }
-.card-title small{display: block; font-size: 8px; color: #ccc; width: 100%; text-align: right;}
+.card-title small{display: block; font-size: 10px; color: #ccc; width: 100%; text-align: right;}
 
 #itemList .item p {
   font-size: 12px;
