@@ -107,7 +107,7 @@ img{width: 100%; display: block; margin: 0 auto;animation: float 3s ease-in-out 
 }
 header li{font-size: 10px;font-weight: bold;color: #36363669;}
 .menu-icon-btn{
-  position: fixed; right: 16px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #3e414583; border: none; font-size: 16px;
+  position: fixed; right: 8px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #3e414583; border: none; font-size: 16px;
 }
 .back-icon-btn{
   position: fixed; left: 0px; top: 0px; padding: 9px 10px;border-radius: 50%; background: none; color: #3e414583; border: none; font-size: 16px;
