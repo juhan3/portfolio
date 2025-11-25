@@ -402,6 +402,12 @@ footer{
     min-height: 200px;
     height: 100%;
     border-radius: 12px;
+    .card-image {
+      
+       width: 42px; height: 42px;object-fit: cover; /* 세로 비율 맞추고 crop */
+       object-position: center;
+
+    }
 }
 .card-image {
   height: 60%;
