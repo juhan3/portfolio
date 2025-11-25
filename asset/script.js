@@ -1,3 +1,12 @@
+// script.js (전체 페이지 공통)
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function(OneSignal) {
+  await OneSignal.init({
+    appId: "b6867d37-a324-4ad0-844e-4597ecfcaa31",
+  });
+});
+
+
 // 메뉴 열기 함수
 function openNav() {
   document.getElementById("myNav").style.height = "100%";
