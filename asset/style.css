@@ -401,9 +401,9 @@ footer{
     align-items: center; /* 요소들을 세로 중앙에 정렬 */
     justify-content: space-between; /* 기본 정렬은 유지 */
     width: 100%;
+    max-width: 420px;
     list-style: none;
-    margin-bottom: 16px;
-    margin-top: 16px;
+    margin: 16px auto;
     background: #fff;
     padding: 8px; /* 패딩을 위아래 포함하여 8px로 통일 */
     box-sizing: border-box;
