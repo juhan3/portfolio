@@ -445,7 +445,7 @@ footer{
 #itemListBlog .item .card-content .card-tags .card-title {
     display: block; /* 텍스트가 들어가는 <p> 태그 */
     margin: 0; /* 기본 마진 제거 */
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
     white-space: normal; /* ★가장 중요: 텍스트가 길어지면 줄 바꿈되도록 설정 */
     overflow-wrap: break-word; /* 긴 단어가 줄 바꿈되도록 설정 */
@@ -455,7 +455,7 @@ footer{
 }
 
 #itemListBlog .item .card-content small {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: normal;
     text-align: right;
     display: block;
