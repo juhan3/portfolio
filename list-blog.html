@@ -12,17 +12,26 @@
     <link rel="stylesheet" href="asset/icon/all.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
+<!-- 알림 리스트 페이지에서만 -->
+<script>
+window.OneSignalDeferred.push(async function(OneSignal) {
+  await OneSignal.Notifications.requestPermission();
+});
+</script>
 
 <body>
     <div class="bg-list">
     <header  data-aos="fade-down">
-        <!-- <h1>Local</h1> -->
+        <!-- 뒤로가기 버튼 -->
+        <button class="back-icon-btn" onclick="history.back()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
         <button class="menu-icon-btn" onclick="openNav()">
         <i class="fa-solid fa-bars"></i>
         </button> 
         
-        <ul>Juhan Kim
-            <li>#8년차 #UX/UI #디자인</li>
+        <ul>포스트
+            <li>Post</li>
             <!-- <li>두 번째 항목</li> -->
         </ul>
     </header>
@@ -42,320 +51,46 @@
           <div class="list-container">
             <div id="filterButtons">
               <button data-filter="all" class="filter-btn active">All</button>
-              <button data-filter="mobile" class="filter-btn"># Mobile</button>
-              <button data-filter="tablet" class="filter-btn"># Tablet</button>
-              <button data-filter="web" class="filter-btn"># Web</button>
-              <button data-filter="unity" class="filter-btn"># Unity</button>
-              <button data-filter="graphic" class="filter-btn"># Graphic</button>
-              <button data-filter="animation" class="filter-btn"># Animation</button>
-              <button data-filter="video" class="filter-btn"># Video</button>
-              <button data-filter="admin" class="filter-btn"># Admin</button>
-              <button data-filter="3d" class="filter-btn"># 3d</button>
-              <button data-filter="released" class="filter-btn"># Released</button>
-              <button data-filter="strategy" class="filter-btn"># Strategy</button>
+              <button data-filter="design" class="filter-btn"># Design</button>
+              <button data-filter="tool" class="filter-btn"># Tools</button>
             </div>
 
             <ul id="itemListBlog">
 
 
-                <li class="item 3d" onclick="location.href='pages/22.html'">
+               
+
+
+              <li class="item mobile released web strategy" onclick="location.href='pages/1.html'">
                   <div class="card-image">
-                      <img src="asset/imgs/24.png" alt="앱테크 서비스 카드 이미지">
+                      <img src="https://2.img-dpreview.com/files/p/E~TS590x0~articles/5081755051/0652566517.jpeg" alt="앱테크 서비스 카드 이미지">
                   </div>
                   
                   <div class="card-content">
                       <div class="card-tags">
-                          <span>#3d...</span>
-                      </div>
-                      <p class="card-title">제품 디자인<small>2025</small></p>
+                          
+                      
+                      <p class="card-title"><span>sample</span>sampletxt sampletxtsampletxtsampletxtsampletxtsampletxtsampletxtsampletxtsampletxtsampletxt</div><small class="date">11월 25일 2025년</small></p>
                   </div>
               </li>
 
 
               <li class="item mobile released web strategy" onclick="location.href='pages/1.html'">
-                  <div class="card-image">
-                      <img src="asset/imgs/1.png" alt="앱테크 서비스 카드 이미지">
-                  </div>
-                  
-                  <div class="card-content">
-                      <div class="card-tags">
-                          <span>#mobile #tablet #released...</span>
-                      </div>
-                      <p class="card-title">앱테크 서비스<small>2025</small></p>
-                  </div>
-              </li>
-
-              <li class="item mobile released" onclick="location.href='pages/2.html'">
-                  <div class="card-image">
-                      <img src="asset/imgs/2.png" alt="서비스 카드 이미지">
-                  </div>
-                  <div class="card-content">
-                      <div class="card-tags"><span>#mobile #released...</span></div>
-                      <p class="card-title">패션SNS<small>2024</small></p>
-                  </div>
-              </li>
-
-              
-              <li class="item mobile released strategy video" onclick="location.href='pages/3.html'">
-                  <div class="card-image">
-                      <img src="asset/imgs/3.png" alt="서비스 카드 이미지">
-                  </div>
-                  <div class="card-content">
-                      <div class="card-tags"><span>#mobile #released...</span></div>
-                      <p class="card-title">플랫폼 앨범<small>2023</small></p>
-                  </div>
-              </li>
-
-
-              <li class="item video released strategy" onclick="location.href='pages/23.html'">
-                  <div class="card-image">
-                      <img src="asset/imgs/27.png" alt="서비스 카드 이미지">
-                  </div>
-                  <div class="card-content">
-                      <div class="card-tags"><span>#video #released...</span></div>
-                      <p class="card-title">플랫폼 앨범 홍보영상<small>2023</small></p>
-                  </div>
-              </li>
-
-
-              <li class="item unity released strategy video" onclick="location.href='pages/5.html'">
-                  <div class="card-image">
-                      <img src="asset/imgs/5.png" alt="서비스 카드 이미지">
-                  </div>
-                  <div class="card-content">
-                      <div class="card-tags"><span>#unity #released...</span></div>
-                      <p class="card-title">페이스 트래킹<small>2023</small></p>
-                  </div>
-              </li>
-
-              <li class="item mobile tablet admin strategy video" onclick="location.href='pages/4.html'">
                 <div class="card-image">
-                    <img src="asset/imgs/4.png" alt="서비스 카드 이미지">
+                    <img src="https://2.img-dpreview.com/files/p/E~TS590x0~articles/5081755051/0652566517.jpeg" alt="앱테크 서비스 카드 이미지">
                 </div>
+                
                 <div class="card-content">
-                    <div class="card-tags"><span>#mobile #tablet...</span></div>
-                    <p class="card-title">테이블 오더<small>2022</small></p>
+                    <div class="card-tags">
+                        
+                    
+                    <p class="card-title"><span>sample</span> sampletxt</div><small>11월 25일 2025년</small></p>
                 </div>
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/6.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/7.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">튜터 매칭 서비스<small>2022</small></p>
-                </div>
-              </li>
-
-
-              <li class="item web strategy" onclick="location.href='pages/7.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/8.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web #strategy...</span></div>
-                    <p class="card-title">음성음식 강의 서비스<small>2023</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/8.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/9.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
-                </div>
-              </li>
+            </li>
 
 
 
-              <li class="item tablet strategy" onclick="location.href='pages/9.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/10.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#tablet #strategy...</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
-                </div>
-              </li>
 
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/10.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/11.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/11.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/12.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2021</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/12.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/13.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2021</small></p>
-                </div>
-              </li>
-
-
-              <li class="item web strategy" onclick="location.href='pages/13.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/14.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web #strategy...</span></div>
-                    <p class="card-title">한국어 자격증 취득 서비스<small>2021</small></p>
-                </div>
-              </li>
-
-              <li class="item mobile unity strategy" onclick="location.href='pages/14.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/15.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #unity...</span></div>
-                    <p class="card-title">영어 게임 서비스<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/15.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/16.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
-                </div>
-              </li>
-              
-
-
-              <li class="item web strategy" onclick="location.href='pages/16.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/17.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web #strategy...</span></div>
-                    <p class="card-title">마케팅 솔루션<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy">
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/18.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item web strategy" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/19.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web #strategy...</span></div>
-                    <p class="card-title">온라인 시험 서비스<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/20.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/21.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy...</span></div>
-                    <p class="card-title">영어 단어장<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/22.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile...</span></div>
-                    <p class="card-title">영어 단어장<small>2020</small></p>
-                </div>
-              </li>
-              
-
-
-              <li class="item mobile" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/23.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile...</span></div>
-                    <p class="card-title">학습 서비스<small>2020</small></p>
-                </div>
-              </li>
-
-              <li class="item 3d" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/25.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#3d...</span></div>
-                    <p class="card-title">제품 디자인<small>2023</small></p>
-                </div>
-              </li>
-
-
-              <li class="item 3d" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/26.png" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#3d...</span></div>
-                    <p class="card-title">제품 디자인<small>2021</small></p>
-                </div>
-              </li>
               
               
               
