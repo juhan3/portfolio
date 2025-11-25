@@ -427,10 +427,7 @@ footer{
       font-size: 12px;
       font-weight: normal;
     
-      /* 긴 텍스트 처리 */
-      white-space: nowrap;       /* 한 줄로 유지 */
-      overflow: hidden;          /* 넘치는 부분 숨기기 */
-      text-overflow: ellipsis;   /* ...으로 표시 */
+
     }
     
     .card-content small{
