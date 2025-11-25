@@ -22,13 +22,16 @@ window.OneSignalDeferred.push(async function(OneSignal) {
 <body>
     <div class="bg-list">
     <header  data-aos="fade-down">
-        <!-- <h1>Local</h1> -->
+        <!-- 뒤로가기 버튼 -->
+        <button class="back-icon-btn" onclick="history.back()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
         <button class="menu-icon-btn" onclick="openNav()">
         <i class="fa-solid fa-bars"></i>
         </button> 
         
-        <ul>Juhan Kim
-            <li>#8년차 #UX/UI #디자인</li>
+        <ul>알림
+            <li>update</li>
             <!-- <li>두 번째 항목</li> -->
         </ul>
     </header>
@@ -48,17 +51,12 @@ window.OneSignalDeferred.push(async function(OneSignal) {
           <div class="list-container">
             <div id="filterButtons">
               <button data-filter="all" class="filter-btn active">All</button>
-              <button data-filter="mobile" class="filter-btn"># Mobile</button>
-              <button data-filter="tablet" class="filter-btn"># Tablet</button>
-              <button data-filter="web" class="filter-btn"># Web</button>
-              <button data-filter="unity" class="filter-btn"># Unity</button>
+              <button data-filter="design" class="filter-btn"># Design</button>
+              <button data-filter="trend" class="filter-btn"># Trend</button>
+              <button data-filter="tool" class="filter-btn"># Tools</button>
+              <button data-filter="works" class="filter-btn"># Works</button>
               <button data-filter="graphic" class="filter-btn"># Graphic</button>
-              <button data-filter="animation" class="filter-btn"># Animation</button>
-              <button data-filter="video" class="filter-btn"># Video</button>
-              <button data-filter="admin" class="filter-btn"># Admin</button>
-              <button data-filter="3d" class="filter-btn"># 3d</button>
-              <button data-filter="released" class="filter-btn"># Released</button>
-              <button data-filter="strategy" class="filter-btn"># Strategy</button>
+              <button data-filter="inspired" class="filter-btn"># Inspired</button>
             </div>
 
             <ul id="itemList">
