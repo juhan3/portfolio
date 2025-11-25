@@ -122,7 +122,7 @@ border-radius: 8px; overflow: hidden;
 font-size: 12px; color: #0000006a; font-weight: normal;
 }
 .pages-list .list-top .card-content .txt{
-font-size: 14px; font-weight: normal;
+font-size: 15px; font-weight: normal; line-height: 1.6;
 }
 /* 1. #filterButtons 수정: 스크롤, 패딩, 마스크 */
 #filterButtons {
@@ -209,7 +209,7 @@ hr {
   line-height: 1.4;
 }
 .callout{
-  background: #f3f4fa; border-radius: 8px; padding: 12px; font-size: 12px;
+  background: #f3f4fa; border-radius: 8px; padding: 12px; font-size: 14px;
   color: #333;
     font-weight: normal;
     b{}
