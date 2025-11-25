@@ -390,16 +390,19 @@ footer{
   border-radius: 12px;
 
 }
-
+#itemListBlog{
+  flex-direction: row;
+}
 
 #itemListBlog .item{
-
+		display: flex;
+    flex-direction: row;
     width: 100%;
     list-style: none; /* li의 기본 스타일 제거 */
-    display: block;
+    margin-bottom: 8px;
     /* 기존 스타일 */
     background: #fff;
-    min-height: 200px;
+    
     height: 100%;
     border-radius: 12px;
     .card-image {
