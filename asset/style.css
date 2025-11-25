@@ -397,20 +397,51 @@ footer{
 #itemListBlog .item{
 		display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     list-style: none; /* li의 기본 스타일 제거 */
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    margin-top: 16px;
     /* 기존 스타일 */
     background: #fff;
-    
-    height: 100%;
+    padding: 0px 8px;
+    box-sizing: border-box;
+    height: fit-content;
     border-radius: 12px;
     .card-image {
-      
-       width: 42px; height: 42px;object-fit: cover; /* 세로 비율 맞추고 crop */
+      border: 1px solid #ddd;
+       width: 32px; height: 32px;object-fit: cover; /* 세로 비율 맞추고 crop */
        object-position: center;
+       border-radius: 8px;
 
     }
+    .card-content .card-tags{
+      display: inline-block; width: fit-content;
+      span{display: inline-block;}
+    }
+    .card-content .card-tags .card-title {
+      display: flex;
+      flex-direction: column; /* 태그 + 내용 세로 정렬 */
+      margin: 8px;
+      font-size: 12px;
+      font-weight: normal;
+    
+      /* 긴 텍스트 처리 */
+      white-space: nowrap;       /* 한 줄로 유지 */
+      overflow: hidden;          /* 넘치는 부분 숨기기 */
+      text-overflow: ellipsis;   /* ...으로 표시 */
+    }
+    
+    .card-content small{
+      font-size: 10px; font-weight: normal;
+       text-align: right; padding: 8px; color: #bbb;
+    }
+    .card-content{
+      width: 100%; justify-content: space-between; display: flex;}
+    .card-content, .card-tags, .card-title{
+      padding: 0;}
+    
 }
 .card-image {
   height: 60%;
