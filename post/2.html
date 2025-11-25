@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="../asset/style.css">
+    <script src="../asset/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../asset/icon/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-page">
+        <header data-aos="fade-down">
+            <!-- 뒤로가기 버튼 -->
+            <button class="back-icon-btn" onclick="history.back()">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- 메뉴 버튼 -->
+            <button class="menu-icon-btn" onclick="openNav()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul>글 본문
+                <li>Content</li>
+            </ul>
+        </header>
+
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+            <div class="overlay-content">
+                <a href="../index.html">Intro</a>
+                <a href="mailto:sixths_misuse8p@icloud.com">Contact</a>
+                <a href="../list.html">Archive</a>
+                <a href="../list-blog.html">Blog</a>
+            </div>
+        </div>
+
+        <main class="main-list" data-aos="fade-up">
+
+            <section id="list">
+                <div class="list-container">
+
+
+                    <ul id="itemList" class="pages-list">
+                        <li class="list-top">
+                           
+                             <div class="card-image">
+                                <img src="https://res.cloudinary.com/duqilhoqe/image/upload/v1764055200/yhhvecgo7hacccylvrpw.png" alt="서비스 카드 이미지" style="background: #FC6120;">
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card-tags">
+                                    <span>11월 25일 2025년</span>
+                                </div>
+                                <p>
+                                     <p class="txt-title">구글 시트, 플러그인을 사용한 피그마 시안 반자동화</p>
+                                <p class="txt">
+                                 디자인 작업을 하다보면 특정 서비스들은 템플릿화되어 안에 들어가는 데이터만 다른 화면이 시안으로 요구될때가 있다. 그럴때는 보통 컴포넌트화하여 사용하고 피그마를 유료로 사용할 경우 근래들어 프레이머처럼 간단한 데이터를 시트처럼 적용이 가능한것으로 알고 있다. 하지만 대부분의 작은 사업장에서는 무료 버전을 쓰고 있고,
+                                 여기 또한 그러하여...구글 시트 싱크 플러그인을 적용해보려고 했다. 이미 예전에도 마케터에게 템플릿화 해서 사용한적이 있었는데
+                                 꽤나 만족스러운 퍼모먼스를 보여줬었다. 그때 당시에는 주간 업무로 소셜마케팅 이미지가 필요했고 문구와 이미지를 마케터가 수집하여 엑셀에 삽입하면 디자인이 바로 전체적용되어 이미지 결과물이 나오는 방식이였다.
+                                 <br>
+                                 그래서 이번에도...써보려고 했는데... 외형은 대부분 같고 특정 테마들을 가지고 있는 화면이라 테마는 컴포넌트화 되어 있었고, 이전처럼 엑셀을 통해 동기화를 하려고 했다.
+                                 다만 변수가 있었는데 해당 문구 구조는 굉장히 복잡하고 수정이 잦은점과 프로젝트 상태관리를 노션으로 하고 있어 노션 데이터베이스와 연결하고 싶었다. 노션 데이터 베이스와 피그마를 연결하는 플러그인은 찾질 못했고 구글 스크립트를 사용해서 노션 데이터베이스를 일괄적으로 자동으로 구글 시트에 옮겨지게 하고 다시 그 시트를 피그마에 동기화되도록 하였다.
+                                </p>
+
+                                <div class="card-image">
+                                    <img src="https://res.cloudinary.com/duqilhoqe/image/upload/v1764055697/osotj2ebrdv3mufufkev.png" alt="서비스 카드 이미지" >
+                                </div>
+                                <p></p>
+                                <div class="row">
+                                   <div class="callout">
+                                       <b>노션 싱크</b>노션에서 구글시트로 동기화
+                                   </div>
+                                   <div class="callout">
+                                       <b>구글시트 싱크</b> 
+                                       구글에서 피그마로 디자인 자동 싱크
+                                   </div>
+                                  
+                               </div>
+                               <p></p>
+                                <p class="txt-title">자동화 진행</p>
+                                <p class="txt">
+                             초반에는 꽤나 괜찮은 퍼포먼스가 나왔다. 구글 스크립트를 사용해서 자동화를 하고 피그마까지의 과정이 매끄럽게 진행됐다. 스크립트에서 일정 타임에 자동으로 노션이 동기화되도록도 설정할 수 있었으나
+                             해당 부분은 수동으로 진행하는것이 좋다고 판단되었다. 노션이 작성중일 경우에 싱크가 일어나면 번호가 밀리는 상황이 발생할수도 있었기 때문이다. 이런 자동화를 할때의 단점은 한개라도 숫자가 어긋나면 모든 데이터가 밀려나간다는 것인데, 물론 이런부분을 해결하기 위해
+                           후에는 개선사항으로 노션에 있는 고유 아이디값을 사용하면 중복이 발생하지 않음으로 해당값을 사용하는것이 좋다고 판단되었다.
+                                <p></p>
+                                    <p class="txt-title">마무리</p>
+                                   <p class="txt">
+         ㅇㅇㅇ내용
+                                <div class="row">
+                                    <div class="callout">
+                                        <b>장점</b> 쾌적한 편집
+                                    </div>
+                                    <div class="callout">
+                                        <b>단점</b> 
+                                        협업 미지원(일부 지원)
+                                    </div>
+                                    <div class="callout">
+                                        <b>그 외</b> 모바일,아이패드,맥지원
+                                    </div>
+                                </div>
+
+
+                                   </div>
+                             
+
+                            <hr><p>
+                           
+                 
+
+
+                            
+                        </li>
+
+
+
+
+
+
+
+
+
+                    </ul>
+                    <span class="endtxt">*더 이상 항목이 없습니다.</span>
+                </div>
+
+
+            </section>
+
+        </main>
+
+
+    </div>
+    <footer>
+        <p>&copy; 2025 Juhankim. All rights reserved.</p>
+    </footer>
+
+
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init(); // 라이브러리 초기화
+    </script>
+</body>
+
+</html>
