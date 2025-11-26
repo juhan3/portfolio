@@ -1,205 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Code Generator</title>
-    <link rel="stylesheet" href="../asset/style.css">
-    <script src="../asset/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../asset/icon/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-    <style>
-        .generator-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            background-color: #fff;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
-            font-size: 14px;
-        }
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        .repeat-section {
-            border: 1px dashed #007bff;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 4px;
-            position: relative;
-        }
-        .repeat-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-        }
-        .add-btn, .copy-btn {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        .add-btn:hover, .copy-btn:hover {
-            background-color: #218838;
-        }
-        .remove-btn {
-            background-color: #dc3545;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            position: absolute;
-            top: 5px;
-            right: 5px;
-        }
-        .remove-btn:hover {
-            background-color: #c82333;
-        }
-        .copy-btn {
-            background-color: #007bff;
-            margin-left: auto;
-        }
-        .copy-btn:hover {
-            background-color: #0056b3;
-        }
-        #outputCode {
-            width: 100%;
-            height: 300px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-top: 10px;
-            font-family: monospace;
-            white-space: pre-wrap;
-            background-color: #f8f9fa;
-        }
-        .input-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #007bff;
-        }
-    </style>
-</head>
-<body>
-
-<div class="generator-container">
-    <h1 style="text-align: center; color: #007bff;">HTML 포스트 코드 생성기</h1>
-    <p style="text-align: center; color: #6c757d;">입력 후 **HTML 코드 생성 및 복사** 버튼을 눌러주세요.</p>
-    
-    <hr>
-
-    <div class="input-title">📍 필수 입력 필드 (상단 고정 영역)</div>
-    <div class="form-group">
-        <label for="headerTxt">헤더 텍스트 (ex: 글 본문)</label>
-        <input type="text" id="headerTxt" value="글 본문">
-    </div>
-
-    <div class="form-group">
-        <label for="cardDate">카드 태그 날짜 (ex: 11월 26일 2025년)</label>
-        <input type="text" id="cardDate" value="11월 26일 2025년">
-    </div>
-
-    <div class="form-group">
-        <label for="coverImgUrl">커버 이미지 URL (list-top 내부)</label>
-        <input type="text" id="coverImgUrl" value="https://res.cloudinary.com/duqilhoqe/image/upload/v1764055200/yhhvecgo7hacccylvrpw.png">
-    </div>
-
-    <div class="form-group">
-        <label for="postTitle">포스트 타이틀 (첫 번째 .txt-title)</label>
-        <input type="text" id="postTitle" value="Comfty">
-    </div>
-
-    <div class="form-group">
-        <label for="mainContent">메인 내용 (첫 번째 .txt)</label>
-        <textarea id="mainContent">디자인 작업을 하다보면 특정 서비스들은 템플릿화되어 안에 들어가는 데이터만 다른 화면이 시안으로 요구될때가 있다. 그럴때는 보통 컴포넌트화하여 사용하고 피그마를 유료로 사용할 경우 근래들어 프레이머처럼 간단한 데이터를 시트처럼 적용이 가능한것으로 알고 있다. 하지만 대부분의 작은 사업장에서는 무료 버전을 쓰고 있고, 여기 또한 그러하여...구글 시트 싱크 플러그인을 적용해보려고 했다. 이미 예전에도 마케터에게 템플릿화 해서 사용한적이 있었는데 꽤나 만족스러운 퍼모먼스를 보여줬었다. 그때 당시에는 주간 업무로 소셜마케팅 이미지가 필요했고 문구와 이미지를 마케터가 수집하여 엑셀에 삽입하면 디자인이 바로 전체적용되어 이미지 결과물이 나오는 방식이였다. 그래서 이번에도...써보려고 했는데... 외형은 대부분 같고 특정 테마들을 가지고 있는 화면이라 테마는 컴포넌트화 되어 있었고, 이전처럼 엑셀을 통해 동기화를 하려고 했다. 다만 변수가 있었는데 해당 문구 구조는 굉장히 복잡하고 수정이 잦은점과 프로젝트 상태관리를 노션으로 하고 있어 노션 데이터베이스와 연결하고 싶었다. 노션 데이터 베이스와 피그마를 연결하는 플러그인은 찾질 못했고 구글 스크립트를 사용해서 노션 데이터베이스를 일괄적으로 자동으로 구글 시트에 옮겨지게 하고 다시 그 시트를 피그마에 동기화되도록 하였다.</textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="mainImageUrl">메인 이미지 URL (첫 번째 내용 후)</label>
-        <input type="text" id="mainImageUrl" value="https://res.cloudinary.com/duqilhoqe/image/upload/v1764055697/osotj2ebrdv3mufufkev.png">
-    </div>
-
-    <div class="form-group">
-        <label for="calloutHtml">콜아웃 HTML (row div 내부 전체 코드)</label>
-        <textarea id="calloutHtml" rows="5">
-<div class="callout">
-    <b>노션 싱크</b>노션에서 구글시트로 동기화
-</div>
-<div class="callout">
-    <b>구글시트 싱크</b> 
-    구글에서 피그마로 디자인 자동 싱크
-</div></textarea>
-    </div>
-    
-    <hr>
-    
-    <div class="input-title">➕ 반복 섹션 (.txt-title + .txt + 콜아웃/이미지 등)</div>
-    <div id="repeatSections">
-        </div>
-    
-    <div class="repeat-actions">
-        <button type="button" class="add-btn" onclick="addRepeatSection()">➕ 반복 섹션 추가 (소제목 + 내용 + 이미지/콜아웃)</button>
-        <button type="button" class="copy-btn" onclick="generateAndCopyCode()">💾 HTML 코드 생성 및 복사</button>
-    </div>
-
-    <hr>
-
-    <div class="input-title">✅ 최종 생성된 HTML 코드</div>
-    <textarea id="outputCode" readonly></textarea>
-</div>
-
-
-<script>
-    // 템플릿의 <header>부터 <footer>까지의 HTML 구조를 문자열로 정의합니다.
-    const HTML_TEMPLATE_START = (headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml) => `
-<!DOCTYPE html>
-<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="../asset/style.css">
-    <script src="../asset/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../asset/icon/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.js" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -213,7 +22,7 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
 
-            <ul>${headerTxt}
+            <ul>글 본문
                 <li>Content</li>
             </ul>
         </header>
@@ -239,33 +48,55 @@
                         <li class="list-top">
                            
                              <div class="card-image">
-                                <img src="${coverImgUrl}" loading="lazy" alt="서비스 카드 이미지" >
+                                <img src="https://res.cloudinary.com/duqilhoqe/image/upload/v1764055200/yhhvecgo7hacccylvrpw.png" loading="lazy" alt="서비스 카드 이미지" >
                             </div>
 
                             <div class="card-content">
                                 <div class="card-tags">
-                                    <span>${cardDate}</span>
+                                    <span>11월 26일 2025년</span>
                                 </div>
                                 <p>
-                                     <p class="txt-title">${postTitle}</p>
+                                     <p class="txt-title">Comfty</p>
                                 <p class="txt">
-                                 ${mainContent.replace(/\n/g, '<br>')}
+                                 디자인 작업을 하다보면 특정 서비스들은 템플릿화되어 안에 들어가는 데이터만 다른 화면이 시안으로 요구될때가 있다. 그럴때는 보통 컴포넌트화하여 사용하고 피그마를 유료로 사용할 경우 근래들어 프레이머처럼 간단한 데이터를 시트처럼 적용이 가능한것으로 알고 있다. 하지만 대부분의 작은 사업장에서는 무료 버전을 쓰고 있고, 여기 또한 그러하여...구글 시트 싱크 플러그인을 적용해보려고 했다. 이미 예전에도 마케터에게 템플릿화 해서 사용한적이 있었는데 꽤나 만족스러운 퍼모먼스를 보여줬었다. 그때 당시에는 주간 업무로 소셜마케팅 이미지가 필요했고 문구와 이미지를 마케터가 수집하여 엑셀에 삽입하면 디자인이 바로 전체적용되어 이미지 결과물이 나오는 방식이였다. 그래서 이번에도...써보려고 했는데... 외형은 대부분 같고 특정 테마들을 가지고 있는 화면이라 테마는 컴포넌트화 되어 있었고, 이전처럼 엑셀을 통해 동기화를 하려고 했다. 다만 변수가 있었는데 해당 문구 구조는 굉장히 복잡하고 수정이 잦은점과 프로젝트 상태관리를 노션으로 하고 있어 노션 데이터베이스와 연결하고 싶었다. 노션 데이터 베이스와 피그마를 연결하는 플러그인은 찾질 못했고 구글 스크립트를 사용해서 노션 데이터베이스를 일괄적으로 자동으로 구글 시트에 옮겨지게 하고 다시 그 시트를 피그마에 동기화되도록 하였다.
                                 </p>
 
                                 <div class="card-image">
-                                    <img src="${mainImageUrl}" loading="lazy" alt="서비스 카드 이미지" >
+                                    <img src="https://res.cloudinary.com/duqilhoqe/image/upload/v1764055697/osotj2ebrdv3mufufkev.png" loading="lazy" alt="서비스 카드 이미지" >
                                 </div>
                                 <p></p>
                                 <div class="row">
-                                 ${calloutHtml}
+                                 <div class="callout">
+    <b>노션 싱크</b>노션에서 구글시트로 동기화
+</div>
+<div class="callout">
+    <b>구글시트 싱크</b> 
+    구글에서 피그마로 디자인 자동 싱크
+</div>
                                </div>
                                <p></p>
                                 
-                                ${'${dynamicContent}'}
+                                <p class="txt-title">자동화 진행</p>
+<p class="txt">
+ 초반에는 꽤나 괜찮은 퍼포먼스가 나왔다. 구글 스크립트를 사용해서 자동화를 하고 피그마까지의 과정이 매끄럽게 진행됐다. 스크립트에서 일정 타임에 자동으로 노션이 동기화되도록도 설정할 수 있었으나 해당 부분은 수동으로 진행하는것이 좋다고 판단되었다. 노션이 작성중일 경우에 싱크가 일어나면 번호가 밀리는 상황이 발생할수도 있었기 때문이다. 이런 자동화를 할때의 단점은 한개라도 숫자가 어긋나면 모든 데이터가 밀려나간다는 것인데, 물론 이런부분을 해결하기 위해 후에는 개선사항으로 노션에 있는 고유 아이디값을 사용하면 중복이 발생하지 않음으로 해당값을 사용하는것이 좋다고 판단되었다.<br><br>진행중에도 아이디값으로 변경하면 가능하긴 했다. 하지만 이렇게 자동화로 업무를 계속 진행하다가 다음과 같은 문제가 발생했다.
+</p>
+
+<hr><p></p>
+
+<p class="txt-title">진행 일시정지</p>
+<p class="txt">
+ 물론 현재도 부분적으로는 사용하고 있으나 우선 첫번째로 구글시트 자동화 스크립트가 100개까지만 진행이 가능했다. 이것은 스크립트를 수정해서 다시 1회 이어서 진행하도록 설정하여서 해결은 하였으나...<br>100개의 목록을 넘어가는 시점부터 싱크시 딜레이가 계속 추가되었다. 오히려 하나씩 작업할때는 자동화하는게 느리다고 느낄정도였다. 초반에 자동화를 했던 이유는 한번에 40~50개의 시안요청이 들어와서 였는데..<br>후에 1개씩 추가될때는 오히려 자동화가 답답하게 느껴졌다. 이제는 동기화를 자주하진 않지만 계속해서 해당 플로우에 데이터는 넣고 있다.<br>이유는 기존처럼 한번에 50여개의 일괄변경 요청건이 들어올 확률이 높은 프로젝트이기 때문이다. 당장에는 하나씩 진행하더라도 한번 자동화를 해두면 후에 여러개의 작업물을 수정하는데 용이할것으로 판단된다.<br>참고로 컴포넌트를 쓰면 되는거 아닌가 싶겠지만 50개가 모두...다... 하나하나....다른 데이터이다(두둥)
+</p>
+
+<hr><p></p>
+
+
+                                
                                 <p class="txt-title">마무리</p>
                                 <p class="txt">
          처음에 각 다른 50개정도의 작업을 할때는 유용했으나 적은 개수의 작업을 할때는 오히려 답답했다. 하지만 이상태를 유지해놔야 이전과 같은 상황이 발생했을때 이용할수 있어 유지할려고 한다. 다만 관리를 구글시트로 단일관리하는것이 향후적으로는 올바를듯하다. 
          자동화는 작업시간을 단축시키는것에도 효과가 있지만 다른 정보를 넣는것이기 때문에 오차를 줄일수 있어 QA또한 단축시킬 수 있다.
+                                </p>
                                 <div class="row">
                                     <div class="callout">
                                         <b>장점</b> 여러개의 데이터를 일괄 싱크하는것에는 만족
@@ -283,7 +114,7 @@
                                    </div>
                              
 
-                            <hr><p>
+                            <hr><p></p>
                            
                  
 
@@ -316,166 +147,13 @@
 
 
 
+    <script src="../asset/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init(); // 라이브러리 초기화
+        AOS.init();
     </script>
 </body>
 
-</html>
-`;
-
-    // 반복 섹션의 HTML 구조
-    const REPEAT_SECTION_TEMPLATE = (title, content, imageUrl, calloutHtml) => `
-<p class="txt-title">${title}</p>
-<p class="txt">
- ${content.replace(/\n/g, '<br>')}
-</p>
-
-${imageUrl ? 
-`<div class="card-image">
-    <img src="${imageUrl}" loading="lazy" alt="서비스 카드 이미지" >
-</div>` : ''}
-
-${calloutHtml ? 
-`<p></p>
-<div class="row">
- ${calloutHtml}
-</div>
-<p></p>` : ''}
-<hr><p>
-`;
-
-
-    // 반복 섹션 생성 함수
-    function createRepeatSection(index, initialData = {}) {
-        const sectionDiv = document.createElement('div');
-        sectionDiv.className = 'repeat-section';
-        sectionDiv.dataset.index = index;
-
-        // 초기값 설정 (디버깅 편의를 위해 임의의 값 설정)
-        const titleValue = initialData.title || `자동화 진행`;
-        const contentValue = initialData.content || `초반에는 꽤나 괜찮은 퍼포먼스가 나왔다. 구글 스크립트를 사용해서 자동화를 하고 피그마까지의 과정이 매끄럽게 진행됐다. 스크립트에서 일정 타임에 자동으로 노션이 동기화되도록도 설정할 수 있었으나 해당 부분은 수동으로 진행하는것이 좋다고 판단되었다. 노션이 작성중일 경우에 싱크가 일어나면 번호가 밀리는 상황이 발생할수도 있었기 때문이다. 이런 자동화를 할때의 단점은 한개라도 숫자가 어긋나면 모든 데이터가 밀려나간다는 것인데, 물론 이런부분을 해결하기 위해 후에는 개선사항으로 노션에 있는 고유 아이디값을 사용하면 중복이 발생하지 않음으로 해당값을 사용하는것이 좋다고 판단되었다.\n\n진행중에도 아이디값으로 변경하면 가능하긴 했다. 하지만 이렇게 자동화로 업무를 계속 진행하다가 다음과 같은 문제가 발생했다.`;
-        const imageUrlValue = initialData.imageUrl || ``;
-        const calloutHtmlValue = initialData.calloutHtml || ``;
-
-        sectionDiv.innerHTML = `
-            <button class="remove-btn" type="button" onclick="removeRepeatSection(this)">❌ 삭제</button>
-            <h3 style="margin-top: 0; color: #007bff;">반복 섹션 #${index}</h3>
-            
-            <div class="form-group">
-                <label for="repeatTitle${index}">소제목 (.txt-title)</label>
-                <input type="text" id="repeatTitle${index}" value="${titleValue}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="repeatContent${index}">내용 (.txt)</label>
-                <textarea id="repeatContent${index}" rows="6" required>${contentValue}</textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="repeatImageUrl${index}">내부 이미지 URL (선택, 없으면 공백)</label>
-                <input type="text" id="repeatImageUrl${index}" value="${imageUrlValue}">
-            </div>
-            
-            <div class="form-group">
-                <label for="repeatCalloutHtml${index}">콜아웃 HTML (선택, row div 내부 전체 코드)</label>
-                <textarea id="repeatCalloutHtml${index}" rows="3">${calloutHtmlValue}</textarea>
-            </div>
-        `;
-        return sectionDiv;
-    }
-
-    let repeatIndex = 1;
-    const repeatSectionsContainer = document.getElementById('repeatSections');
-
-    // 초기 섹션 추가 (최소 1개)
-    function addInitialSection() {
-        const sectionData = {
-            title: '자동화 진행',
-            content: '초반에는 꽤나 괜찮은 퍼포먼스가 나왔다. 구글 스크립트를 사용해서 자동화를 하고 피그마까지의 과정이 매끄럽게 진행됐다. 스크립트에서 일정 타임에 자동으로 노션이 동기화되도록도 설정할 수 있었으나 해당 부분은 수동으로 진행하는것이 좋다고 판단되었다. 노션이 작성중일 경우에 싱크가 일어나면 번호가 밀리는 상황이 발생할수도 있었기 때문이다. 이런 자동화를 할때의 단점은 한개라도 숫자가 어긋나면 모든 데이터가 밀려나간다는 것인데, 물론 이런부분을 해결하기 위해 후에는 개선사항으로 노션에 있는 고유 아이디값을 사용하면 중복이 발생하지 않음으로 해당값을 사용하는것이 좋다고 판단되었다.\n\n진행중에도 아이디값으로 변경하면 가능하긴 했다. 하지만 이렇게 자동화로 업무를 계속 진행하다가 다음과 같은 문제가 발생했다.',
-            imageUrl: '',
-            calloutHtml: ''
-        };
-        repeatSectionsContainer.appendChild(createRepeatSection(repeatIndex++, sectionData));
-
-        const secondSectionData = {
-             title: '진행 일시정지',
-             content: '물론 현재도 부분적으로는 사용하고 있으나 우선 첫번째로 구글시트 자동화 스크립트가 100개까지만 진행이 가능했다. 이것은 스크립트를 수정해서 다시 1회 이어서 진행하도록 설정하여서 해결은 하였으나...\n100개의 목록을 넘어가는 시점부터 싱크시 딜레이가 계속 추가되었다. 오히려 하나씩 작업할때는 자동화하는게 느리다고 느낄정도였다. 초반에 자동화를 했던 이유는 한번에 40~50개의 시안요청이 들어와서 였는데..\n후에 1개씩 추가될때는 오히려 자동화가 답답하게 느껴졌다. 이제는 동기화를 자주하진 않지만 계속해서 해당 플로우에 데이터는 넣고 있다.\n이유는 기존처럼 한번에 50여개의 일괄변경 요청건이 들어올 확률이 높은 프로젝트이기 때문이다. 당장에는 하나씩 진행하더라도 한번 자동화를 해두면 후에 여러개의 작업물을 수정하는데 용이할것으로 판단된다.\n참고로 컴포넌트를 쓰면 되는거 아닌가 싶겠지만 50개가 모두...다... 하나하나....다른 데이터이다(두둥)',
-             imageUrl: '',
-             calloutHtml: ''
-        }
-        repeatSectionsContainer.appendChild(createRepeatSection(repeatIndex++, secondSectionData));
-    }
-    
-    // 버튼으로 섹션 추가
-    function addRepeatSection() {
-        repeatSectionsContainer.appendChild(createRepeatSection(repeatIndex++));
-    }
-
-    // 섹션 삭제
-    function removeRepeatSection(button) {
-        const sectionDiv = button.closest('.repeat-section');
-        if (repeatSectionsContainer.childElementCount > 1) {
-            sectionDiv.remove();
-        } else {
-            alert("최소한 하나의 반복 섹션은 유지해야 합니다.");
-        }
-    }
-
-    // HTML 코드 생성 및 복사
-    function generateAndCopyCode() {
-        // 1. 고정 입력 값 수집
-        const headerTxt = document.getElementById('headerTxt').value.trim();
-        const cardDate = document.getElementById('cardDate').value.trim();
-        const coverImgUrl = document.getElementById('coverImgUrl').value.trim();
-        // const coverBgColor는 제거됨
-        const postTitle = document.getElementById('postTitle').value.trim();
-        const mainContent = document.getElementById('mainContent').value.trim();
-        const mainImageUrl = document.getElementById('mainImageUrl').value.trim();
-        const calloutHtml = document.getElementById('calloutHtml').value.trim();
-
-        // 2. 반복 섹션 내용 수집 및 HTML 생성
-        let dynamicContent = '';
-        const sections = repeatSectionsContainer.querySelectorAll('.repeat-section');
-        
-        // 반복 섹션 데이터 추출 및 조합
-        sections.forEach((section) => {
-            const index = section.dataset.index;
-            const title = document.getElementById(`repeatTitle${index}`).value.trim();
-            const content = document.getElementById(`repeatContent${index}`).value.trim();
-            const imageUrl = document.getElementById(`repeatImageUrl${index}`).value.trim();
-            const callout = document.getElementById(`repeatCalloutHtml${index}`).value.trim();
-
-            if (title || content) { // 내용이 있을 때만 추가
-                dynamicContent += REPEAT_SECTION_TEMPLATE(title, content, imageUrl, callout);
-            }
-        });
-        
-        // 3. 전체 템플릿에 데이터 삽입
-        // HTML_TEMPLATE_START 인자에서 coverBgColor가 제거되었음
-        let finalCode = HTML_TEMPLATE_START(headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml);
-        
-        // 동적 콘텐츠 삽입 (Placeholder 치환)
-        finalCode = finalCode.replace('${dynamicContent}', dynamicContent);
-        
-        // 4. 결과 출력 및 복사
-        const outputCodeArea = document.getElementById('outputCode');
-        outputCodeArea.value = finalCode;
-
-        // 클립보드에 복사
-        outputCodeArea.select();
-        document.execCommand('copy');
-        
-        alert('✅ HTML 코드가 성공적으로 생성되었으며 클립보드에 복사되었습니다!');
-    }
-
-    // 페이지 로드 시 초기 섹션 추가
-    window.onload = function() {
-        addInitialSection();
-        // 초기 데이터가 입력 필드에 표시된 후, 복사 버튼을 눌러야 최종 코드가 생성됨
-    };
-</script>
-
-</body>
 </html>
