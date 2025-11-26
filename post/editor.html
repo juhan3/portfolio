@@ -187,6 +187,35 @@
     구글에서 피그마로 디자인 자동 싱크
 </div></textarea>
     </div>
+
+    <hr>
+
+    <div class="input-title">📝 마무리 섹션 (선택 사항 - 비우면 생성 안 됨)</div>
+    
+    <div class="form-group">
+        <label for="closingTitle">마무리 제목 (ex: 마무리)</label>
+        <input type="text" id="closingTitle" value="마무리">
+    </div>
+
+    <div class="form-group">
+        <label for="closingContent">마무리 내용</label>
+        <textarea id="closingContent" rows="4">처음에 각 다른 50개정도의 작업을 할때는 유용했으나 적은 개수의 작업을 할때는 오히려 답답했다. 하지만 이상태를 유지해놔야 이전과 같은 상황이 발생했을때 이용할수 있어 유지할려고 한다. 다만 관리를 구글시트로 단일관리하는것이 향후적으로는 올바를듯하다. 
+자동화는 작업시간을 단축시키는것에도 효과가 있지만 다른 정보를 넣는것이기 때문에 오차를 줄일수 있어 QA또한 단축시킬 수 있다.</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="closingCalloutHtml">마무리 콜아웃 HTML (선택)</label>
+        <textarea id="closingCalloutHtml" rows="5"><div class="callout">
+    <b>장점</b> 여러개의 데이터를 일괄 싱크하는것에는 만족
+</div>
+<div class="callout">
+    <b>단점</b> 
+    1개씩 진행은 오히려 딜레이로 답답함
+</div>
+<div class="callout">
+    <b>그 외</b> 그럼에도 밑작업을 해놔야 후에 일괄변경으로 사용할 수 있음
+</div></textarea>
+    </div>
     
     <hr>
     
@@ -206,7 +235,7 @@
 
 <script>
     // HTML 템플릿 시작 부분
-    function HTML_TEMPLATE_START(headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml) {
+    function HTML_TEMPLATE_START(headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml, closingTitle, closingContent, closingCalloutHtml) {
         // 콜아웃 HTML이 있을 때만 row div 생성
         const calloutSection = calloutHtml ? `
                                 <p></p>
@@ -214,6 +243,24 @@
                                  ${calloutHtml}
                                </div>
                                <p></p>` : '';
+        
+        // 마무리 섹션 생성 (제목이나 내용이 있을 때만)
+        let closingSection = '';
+        if (closingTitle || closingContent) {
+            closingSection = `
+                                ${closingTitle ? `<p class="txt-title">${closingTitle}</p>` : ''}
+                                ${closingContent ? `<p class="txt">
+         ${closingContent.replace(/\n/g, '<br>')}
+                                </p>` : ''}`;
+            
+            // 마무리 콜아웃이 있을 때만 추가
+            if (closingCalloutHtml) {
+                closingSection += `
+                                <div class="row">
+                                    ${closingCalloutHtml}
+                                </div>`;
+            }
+        }
         
         return `<!DOCTYPE html>
 <html lang="ko">
@@ -285,23 +332,7 @@
                                 
                                 ##DYNAMIC_CONTENT##
                                 
-                                <p class="txt-title">마무리</p>
-                                <p class="txt">
-         처음에 각 다른 50개정도의 작업을 할때는 유용했으나 적은 개수의 작업을 할때는 오히려 답답했다. 하지만 이상태를 유지해놔야 이전과 같은 상황이 발생했을때 이용할수 있어 유지할려고 한다. 다만 관리를 구글시트로 단일관리하는것이 향후적으로는 올바를듯하다. 
-         자동화는 작업시간을 단축시키는것에도 효과가 있지만 다른 정보를 넣는것이기 때문에 오차를 줄일수 있어 QA또한 단축시킬 수 있다.
-                                </p>
-                                <div class="row">
-                                    <div class="callout">
-                                        <b>장점</b> 여러개의 데이터를 일괄 싱크하는것에는 만족
-                                    </div>
-                                    <div class="callout">
-                                        <b>단점</b> 
-                                        1개씩 진행은 오히려 딜레이로 답답함
-                                    </div>
-                                    <div class="callout">
-                                        <b>그 외</b> 그럼에도 밑작업을 해놔야 후에 일괄변경으로 사용할 수 있음
-                                    </div>
-                                </div>
+                                ##CLOSING_SECTION##
 
 
                                    </div>
@@ -462,6 +493,11 @@
         const mainContent = document.getElementById('mainContent').value.trim();
         const mainImageUrl = document.getElementById('mainImageUrl').value.trim();
         const calloutHtml = document.getElementById('calloutHtml').value.trim();
+        
+        // 마무리 섹션 값 수집
+        const closingTitle = document.getElementById('closingTitle').value.trim();
+        const closingContent = document.getElementById('closingContent').value.trim();
+        const closingCalloutHtml = document.getElementById('closingCalloutHtml').value.trim();
 
         // 2. 반복 섹션 내용 수집 및 HTML 생성
         let dynamicContent = '';
@@ -480,10 +516,29 @@
         });
         
         // 3. 전체 템플릿에 데이터 삽입
-        let finalCode = HTML_TEMPLATE_START(headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml);
+        let finalCode = HTML_TEMPLATE_START(headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml, closingTitle, closingContent, closingCalloutHtml);
         
         // 동적 콘텐츠 삽입
         finalCode = finalCode.replace('##DYNAMIC_CONTENT##', dynamicContent);
+        
+        // 마무리 섹션 생성 및 삽입
+        let closingSection = '';
+        if (closingTitle || closingContent) {
+            if (closingTitle) {
+                closingSection += `<p class="txt-title">${closingTitle}</p>\n`;
+            }
+            if (closingContent) {
+                closingSection += `<p class="txt">
+         ${closingContent.replace(/\n/g, '<br>')}
+                                </p>\n`;
+            }
+            if (closingCalloutHtml) {
+                closingSection += `<div class="row">
+                                    ${closingCalloutHtml}
+                                </div>\n`;
+            }
+        }
+        finalCode = finalCode.replace('##CLOSING_SECTION##', closingSection);
         
         // 4. 결과 출력 및 복사
         const outputCodeArea = document.getElementById('outputCode');
