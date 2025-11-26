@@ -212,7 +212,7 @@
     </div>
 
     <div class="form-group">
-        <label for="mainImageUrl">메인 이미지 URL (첫 번째 내용 후)</label>
+        <label for="mainImageUrl">메인 이미지 URL (선택 - 비우면 생성 안 됨)</label>
         <input type="text" id="mainImageUrl" value="">
     </div>
 
@@ -275,6 +275,12 @@
 <script>
     // HTML 템플릿 시작 부분
     function HTML_TEMPLATE_START(headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml, closingTitle, closingContent, closingCalloutHtml) {
+        // 메인 이미지가 있을 때만 이미지 섹션 생성
+        const mainImageSection = mainImageUrl ? `
+                                <div class="card-image">
+                                    <img src="${mainImageUrl}" loading="lazy" alt="서비스 카드 이미지" >
+                                </div>` : '';
+        
         // 콜아웃 HTML이 있을 때만 row div 생성
         const calloutSection = calloutHtml ? `
                                 <p></p>
@@ -309,6 +315,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="../asset/style.css">
+    <script src="../asset/script.js"><\/script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"><\/script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"><\/script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../asset/icon/all.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -363,11 +372,10 @@
                                 <p class="txt">
                                  ${mainContent.replace(/\n/g, '<br>')}
                                 </p>
-
-                                <div class="card-image">
-                                    <img src="${mainImageUrl}" loading="lazy" alt="서비스 카드 이미지" >
-                                </div>
+${mainImageSection}
                                 ${calloutSection}
+                                
+                                <hr><p></p>
                                 
                                 ##DYNAMIC_CONTENT##
                                 
@@ -410,9 +418,6 @@
 
 
 
-    <script src="../asset/script.js"><\/script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"><\/script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"><\/script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"><\/script>
     <script>
         AOS.init();
