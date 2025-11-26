@@ -74,11 +74,50 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             transition: background-color 0.3s;
         }
         .add-btn:hover, .copy-btn:hover {
             background-color: #218838;
+        }
+        .save-btn {
+            background-color: #17a2b8;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .save-btn:hover {
+            background-color: #138496;
+        }
+        .load-btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .load-btn:hover {
+            background-color: #5a6268;
+        }
+        .reset-btn {
+            background-color: #ffc107;
+            color: #333;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .reset-btn:hover {
+            background-color: #e0a800;
         }
         .remove-btn {
             background-color: #dc3545;
@@ -224,7 +263,10 @@
     
     <div class="repeat-actions">
         <button type="button" class="add-btn" onclick="addRepeatSection()">➕ 반복 섹션 추가</button>
-        <button type="button" class="copy-btn" onclick="generateAndCopyCode()">💾 HTML 코드 생성 및 복사</button>
+        <button type="button" class="save-btn" onclick="saveToLocalStorage()">💾 임시 저장</button>
+        <button type="button" class="load-btn" onclick="loadFromLocalStorage()">📂 불러오기</button>
+        <button type="button" class="reset-btn" onclick="resetForm()">🗑️ 초기화</button>
+        <button type="button" class="copy-btn" onclick="generateAndCopyCode()">📋 HTML 생성 및 복사</button>
     </div>
 
     <hr>
@@ -558,8 +600,147 @@
 
     // 페이지 로드 시 초기 섹션 추가
     window.onload = function() {
-        addInitialSection();
+        // 저장된 데이터가 있는지 확인
+        const savedData = localStorage.getItem('postGeneratorData');
+        if (savedData) {
+            const confirmLoad = confirm('💾 저장된 데이터가 있습니다. 불러오시겠습니까?');
+            if (confirmLoad) {
+                loadFromLocalStorage();
+            } else {
+                addInitialSection();
+            }
+        } else {
+            addInitialSection();
+        }
+        
+        // 자동 저장 (5초마다)
+        setInterval(autoSave, 5000);
     };
+    
+    // 자동 저장 함수
+    function autoSave() {
+        const data = collectFormData();
+        localStorage.setItem('postGeneratorAutoSave', JSON.stringify(data));
+    }
+    
+    // 폼 데이터 수집
+    function collectFormData() {
+        const data = {
+            headerTxt: document.getElementById('headerTxt').value,
+            cardDate: document.getElementById('cardDate').value,
+            coverImgUrl: document.getElementById('coverImgUrl').value,
+            postTitle: document.getElementById('postTitle').value,
+            mainContent: document.getElementById('mainContent').value,
+            mainImageUrl: document.getElementById('mainImageUrl').value,
+            calloutHtml: document.getElementById('calloutHtml').value,
+            closingTitle: document.getElementById('closingTitle').value,
+            closingContent: document.getElementById('closingContent').value,
+            closingCalloutHtml: document.getElementById('closingCalloutHtml').value,
+            repeatSections: []
+        };
+        
+        // 반복 섹션 데이터 수집
+        const sections = repeatSectionsContainer.querySelectorAll('.repeat-section');
+        sections.forEach((section) => {
+            const index = section.dataset.index;
+            data.repeatSections.push({
+                index: index,
+                title: document.getElementById(`repeatTitle${index}`).value,
+                content: document.getElementById(`repeatContent${index}`).value,
+                imageUrl: document.getElementById(`repeatImageUrl${index}`).value,
+                calloutHtml: document.getElementById(`repeatCalloutHtml${index}`).value
+            });
+        });
+        
+        return data;
+    }
+    
+    // localStorage에 저장
+    function saveToLocalStorage() {
+        const data = collectFormData();
+        localStorage.setItem('postGeneratorData', JSON.stringify(data));
+        alert('✅ 데이터가 저장되었습니다!');
+    }
+    
+    // localStorage에서 불러오기
+    function loadFromLocalStorage() {
+        const savedData = localStorage.getItem('postGeneratorData');
+        if (!savedData) {
+            // 자동 저장된 데이터 확인
+            const autoSavedData = localStorage.getItem('postGeneratorAutoSave');
+            if (autoSavedData) {
+                const confirmAutoLoad = confirm('🔄 자동 저장된 데이터가 있습니다. 불러오시겠습니까?');
+                if (confirmAutoLoad) {
+                    restoreFormData(JSON.parse(autoSavedData));
+                    return;
+                }
+            }
+            alert('⚠️ 저장된 데이터가 없습니다.');
+            return;
+        }
+        
+        const data = JSON.parse(savedData);
+        restoreFormData(data);
+        alert('✅ 데이터를 불러왔습니다!');
+    }
+    
+    // 폼 데이터 복원
+    function restoreFormData(data) {
+        document.getElementById('headerTxt').value = data.headerTxt || '';
+        document.getElementById('cardDate').value = data.cardDate || '';
+        document.getElementById('coverImgUrl').value = data.coverImgUrl || '';
+        document.getElementById('postTitle').value = data.postTitle || '';
+        document.getElementById('mainContent').value = data.mainContent || '';
+        document.getElementById('mainImageUrl').value = data.mainImageUrl || '';
+        document.getElementById('calloutHtml').value = data.calloutHtml || '';
+        document.getElementById('closingTitle').value = data.closingTitle || '';
+        document.getElementById('closingContent').value = data.closingContent || '';
+        document.getElementById('closingCalloutHtml').value = data.closingCalloutHtml || '';
+        
+        // 기존 반복 섹션 제거
+        repeatSectionsContainer.innerHTML = '';
+        
+        // 반복 섹션 복원
+        if (data.repeatSections && data.repeatSections.length > 0) {
+            repeatIndex = 1;
+            data.repeatSections.forEach((sectionData) => {
+                const section = createRepeatSection(repeatIndex++, {
+                    title: sectionData.title,
+                    content: sectionData.content,
+                    imageUrl: sectionData.imageUrl,
+                    calloutHtml: sectionData.calloutHtml
+                });
+                repeatSectionsContainer.appendChild(section);
+            });
+        } else {
+            addInitialSection();
+        }
+    }
+    
+    // 폼 초기화
+    function resetForm() {
+        const confirmReset = confirm('⚠️ 모든 데이터를 초기화하시겠습니까? (저장된 데이터는 유지됩니다)');
+        if (!confirmReset) return;
+        
+        document.getElementById('headerTxt').value = '글 본문';
+        document.getElementById('cardDate').value = '11월 26일 2025년';
+        document.getElementById('coverImgUrl').value = 'https://res.cloudinary.com/duqilhoqe/image/upload/v1764055200/yhhvecgo7hacccylvrpw.png';
+        document.getElementById('postTitle').value = 'Comfty';
+        document.getElementById('mainContent').value = '';
+        document.getElementById('mainImageUrl').value = '';
+        document.getElementById('calloutHtml').value = '';
+        document.getElementById('closingTitle').value = '마무리';
+        document.getElementById('closingContent').value = '';
+        document.getElementById('closingCalloutHtml').value = '';
+        document.getElementById('outputCode').value = '';
+        
+        // 반복 섹션 초기화
+        repeatSectionsContainer.innerHTML = '';
+        repeatIndex = 1;
+        addInitialSection();
+        
+        alert('✅ 폼이 초기화되었습니다!');
+    }
 </script>
 
 </body>
