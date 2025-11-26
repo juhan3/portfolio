@@ -207,6 +207,14 @@
 <script>
     // HTML 템플릿 시작 부분
     function HTML_TEMPLATE_START(headerTxt, cardDate, coverImgUrl, postTitle, mainContent, mainImageUrl, calloutHtml) {
+        // 콜아웃 HTML이 있을 때만 row div 생성
+        const calloutSection = calloutHtml ? `
+                                <p></p>
+                                <div class="row">
+                                 ${calloutHtml}
+                               </div>
+                               <p></p>` : '';
+        
         return `<!DOCTYPE html>
 <html lang="ko">
 
@@ -273,11 +281,7 @@
                                 <div class="card-image">
                                     <img src="${mainImageUrl}" loading="lazy" alt="서비스 카드 이미지" >
                                 </div>
-                                <p></p>
-                                <div class="row">
-                                 ${calloutHtml}
-                               </div>
-                               <p></p>
+                                ${calloutSection}
                                 
                                 ##DYNAMIC_CONTENT##
                                 
