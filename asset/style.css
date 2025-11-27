@@ -92,6 +92,7 @@ max-width: 1280px;
 }
 .wait{ background: #f8e4e4; color: #e87a7a !important; border-radius: 16px; padding: 4px !important; position: absolute ;top:30px; left: 50%; transform: translate(-50%, -50%);}
 #anim span b{color: #00000009;}
+#anim h1 {display: block; width: 100%;}
 #anim{width: 50%; max-width: 200px; margin: 0 auto;text-align: center;
 span{background: #ffffff56; border: 1px solid #ddd; font-size: 10px; border-radius: 16px; padding: 8px 10px; font-weight: bold; color: #00000071;}
 img{width: 100%; display: block; margin: 0 auto;animation: float 3s ease-in-out infinite;}
@@ -342,6 +343,7 @@ footer{
 .filter-btn {
   /* 버튼이 눌렸을 때 시각적 피드백 */
   background: #eeeeee;
+  border: none;
             color: #66666677;
             font-weight: bold;
             border-radius: 20px;
