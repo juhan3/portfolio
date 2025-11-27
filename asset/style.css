@@ -175,7 +175,7 @@ hr {
   flex-shrink: 0; 
   
   /* 💡 간격 복구: 버튼 사이에 오른쪽 여백을 줍니다. */
-  margin-right: 8px; 
+  margin-right: 4px; 
   
   /* 💡 하단 마진 제거 또는 조정 */
   margin-bottom: 0; 
@@ -341,22 +341,22 @@ footer{
 }
 .filter-btn {
   /* 버튼이 눌렸을 때 시각적 피드백 */
-  background: #ffffff54;
+  background: #eeeeee;
             color: #66666677;
-            border: 1px solid #ddd;
+            font-weight: bold;
             border-radius: 20px;
             padding: 8px 12px;
-            font-size: 14px;
+            font-size: 10px;
             cursor: pointer;
             transition: background-color 0.2s, color 0.2s, transform 0.1s;
             flex-shrink: 0;
-            font-weight: bold;
+            
 }
 .filter-btn.active {
   background: #4a86f7; /* 선택 시 강조 색상 */
             color: white;
             border-color: #4a86f7;
-            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
+        /*    box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);*/
 }
 .main-list{
 
@@ -570,17 +570,17 @@ font-weight: normal;
             /* 태그 수평 스크롤 CSS 제거, 다중 줄 래핑으로 변경 */
             display: flex;
             flex-wrap: wrap; /* 래핑 허용 */
-            gap: 8px;
+            gap: 4px;
             justify-content: center; /* 중앙 정렬 */
             /* 수평 스크롤 및 스크롤바 관련 CSS 제거 */
         }
         .tag-btn {
-            background: #ffffff54;
+            background: #eeeeee;
             color: #66666677;
-            border: 1px solid #ddd;
+            border: none;
             border-radius: 20px;
             padding: 8px 12px;
-            font-size: 14px;
+            font-size: 10px;
             cursor: pointer;
             transition: background-color 0.2s, color 0.2s, transform 0.1s;
             flex-shrink: 0; 
@@ -590,7 +590,7 @@ font-weight: normal;
             background: #4a86f7; /* 선택 시 강조 색상 */
             color: white;
             border-color: #4a86f7;
-            box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
+       /*     box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);*/
         }
         .explore-btn, .back-btn {
             opacity: 0; /* JS로 제어 */
