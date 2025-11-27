@@ -57,7 +57,7 @@ max-width: 1280px;
   height: 96%;
     margin: 0 auto;
 max-width: 1280px;
-  background: linear-gradient(#ffffff , #e8e6e6 80%);
+  background: linear-gradient(#ffffff , #f7f7f7 80%);
     
     animation: breathing-gradient 4s ease-in-out infinite alternate;
   border-radius: 42px;
