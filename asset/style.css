@@ -570,7 +570,7 @@ font-weight: normal;
             /* 태그 수평 스크롤 CSS 제거, 다중 줄 래핑으로 변경 */
             display: flex;
             flex-wrap: wrap; /* 래핑 허용 */
-            gap: 4px;
+            gap: 8px;
             justify-content: center; /* 중앙 정렬 */
             /* 수평 스크롤 및 스크롤바 관련 CSS 제거 */
         }
