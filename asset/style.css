@@ -307,6 +307,9 @@ header li {
   color: #36363669;
 
 }
+header ul{
+  padding-bottom: 12px;
+}
 
 
 
