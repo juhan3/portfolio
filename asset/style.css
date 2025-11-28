@@ -1004,7 +1004,7 @@ header ul{
 
 
 #itemList .item span {
-
+  display: block;
   font-weight: normal;
 
   font-size: 12px;
@@ -1203,7 +1203,7 @@ header ul{
 
 #itemListAbout {
 
-  max-width: 640px;
+  max-width: 440px;
   margin: 0 auto;
   ;
 
