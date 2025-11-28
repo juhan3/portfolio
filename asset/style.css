@@ -607,7 +607,7 @@ header li {
 .tag-container {
 
   display: flex;
-
+  padding: 16px 0;
   flex-wrap: wrap;
 
   gap: 8px;
@@ -732,7 +732,7 @@ header li {
 
 .explore-btn {
 
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 
   background: #4a86f7;
 
