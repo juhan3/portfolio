@@ -341,7 +341,7 @@ footer{
 }
 .filter-btn {
   /* 버튼이 눌렸을 때 시각적 피드백 */
-  background: #eeeeee;
+  background: #f4f4f4;
             color: #66666677;
             font-weight: bold;
             border-radius: 20px;
