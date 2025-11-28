@@ -36,7 +36,7 @@ body{
   height: 96%;
   margin: 0 auto;
 max-width: 1280px;
-  background: linear-gradient(#e6e8ea , #ffffff 80%);
+  background: #ffffff;
     
     animation: breathing-gradient 4s ease-in-out infinite alternate;
   border-radius: 42px;
@@ -57,7 +57,7 @@ max-width: 1280px;
   height: 96%;
     margin: 0 auto;
 max-width: 1280px;
-  background: linear-gradient(#ffffff , #e8e6e6 80%);
+  background: #ffffff;
     
     animation: breathing-gradient 4s ease-in-out infinite alternate;
   border-radius: 42px;
@@ -387,7 +387,7 @@ footer{
   list-style: none; /* li의 기본 스타일 제거 */
   display: block;
   /* 기존 스타일 */
-  background: #fff;
+  background: #f1f1f1;
   min-height: 200px;
   height: 100%;
   border-radius: 12px;
@@ -407,7 +407,7 @@ footer{
     max-width: 420px;
     list-style: none;
     margin: 16px auto;
-    background: #fff;
+    background: #f1f1f1;
     padding: 8px; /* 패딩을 위아래 포함하여 8px로 통일 */
     box-sizing: border-box;
     border-radius: 12px;
