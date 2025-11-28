@@ -344,6 +344,7 @@ footer{
   background: #f4f4f4;
             color: #66666677;
             font-weight: bold;
+            border: none;
             border-radius: 20px;
             padding: 8px 12px;
             font-size: 12px;
