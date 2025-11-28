@@ -387,7 +387,7 @@ footer{
   list-style: none; /* li의 기본 스타일 제거 */
   display: block;
   /* 기존 스타일 */
-  background: #f1f1f1;
+  background: #f4f4f4;
   min-height: 200px;
   height: 100%;
   border-radius: 12px;
@@ -407,7 +407,7 @@ footer{
     max-width: 420px;
     list-style: none;
     margin: 16px auto;
-    background: #f1f1f1;
+    background: #f4f4f4;
     padding: 8px; /* 패딩을 위아래 포함하여 8px로 통일 */
     box-sizing: border-box;
     border-radius: 12px;
