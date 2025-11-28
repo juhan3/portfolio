@@ -7,16 +7,13 @@ OneSignalDeferred.push(async function(OneSignal) {
 });
 
 
-// 메뉴 열기 함수
 function openNav() {
-  document.getElementById("myNav").style.height = "100%";
-  document.querySelector(".menu-icon-btn").classList.add('hide');
+  // 100% 대신 원하는 너비(예: 250px)로 설정
+  document.getElementById("myNav").style.height = "100%"; 
 }
 
-// 메뉴 닫기 함수
 function closeNav() {
-  document.getElementById("myNav").style.height = "0%";
-  document.querySelector(".menu-icon-btn").classList.remove('hide');
+  document.getElementById("myNav").style.height = "0";
 }
 
 // index.html의 기존 <script> 태그 내에 추가
