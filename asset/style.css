@@ -527,38 +527,103 @@ font-weight: normal;
   
   text-align: left; /* 텍스트는 좌측 정렬 */
 }
-#itemListAbout li{
-  background: #666666; margin-bottom: 8px; border-radius: 16px;
+#itemListAbout li {
+  background: var(--img) center/cover no-repeat;
+  width: 100%;
+  
+  /* Flexbox를 사용하여 내용을 하단에 배치 */
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-end; /* 내용을 아래로 */
+  
+  /* 이미지 영역을 보여주기 위한 최소 높이 설정 (필수) */
+  min-height: 400px; 
+  
+  position: relative; /* 자식 요소의 absolute 기준 */
+  
+  /* 사용자 설정 유지 */
+  margin-bottom: 8px; 
+  border-radius: 16px; 
+  overflow: hidden; 
 }
-
+/* 사용하지 않는 CSS 제거: .item에 padding-top을 주어 경계가 명확해지는 것을 막습니다. */
+#itemListAbout .item{
+  /* padding-top: 200px; <--- 이 부분을 제거하세요 */
+}
 #itemListAbout .card-content {
   position: relative;
-  background: rgba(0,0,0,0.35); /* 전체 반투명 */
-  backdrop-filter: blur(12px);   /* 뒤 레이어 블러 */
+  z-index: 2; 
+
+  /* 💡 배경을 투명하게 하거나, 아주 살짝만 어둡게 */
+  background: rgba(0,0,0,0.35); /* 약간의 배경색을 유지하여 가독성 보조 */
+  
+  /* 💡 블러 효과 적용 (이 요소 뒤에 있는 li의 배경 이미지가 흐려짐) */
+  backdrop-filter: blur(12px); 
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 16px;
+  
+  /* 💡 글자 색상을 흰색으로 설정하여 사라지는 문제 해결 */
+  color: white; 
+  
+  /* 사용자 설정 유지 */
+  border-radius: 0;
   padding: 20px;
   overflow: hidden;
+  text-align: left; /* 텍스트 정렬 설정 추가 */
 }
-
-/* 위쪽을 자연스럽게 흐려지게 만드는 그라데이션 */
-#itemListAbout .card-content::before {
+/* 💡 핵심 수정: 이미지 하단에 어둡게 페이드 아웃되는 오버레이 추가 */
+#itemListAbout li::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50%;                   /* 그라데이션 범위 */
+  height: 100%;
+  z-index: 1; /* 텍스트 아래, 배경 이미지 위에 위치 */
+  pointer-events: none; /* 오버레이가 클릭을 방해하지 않도록 설정 */
+  
+  /* 투명에서 검은색으로 변하는 그라데이션 */
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.5),             /* 위쪽 더 어둡고 흐리게 */
-    rgba(0,0,0,0)                /* 아래로 자연스럽게 사라짐 */
+    rgba(0, 0, 0, 0) 0%,      /* 상단: 완벽하게 투명 (선명한 이미지 보임) */
+    rgba(0, 0, 0, 0.05) 50%,   /* 중간: 살짝 어두워지기 시작 */
+    rgba(0, 0, 0, 0.5) 75%,    /* 3/4 지점: 적당히 어두워짐 */
+    rgba(0, 0, 0, 0.8) 100%    /* 하단: 불투명에 가까운 검은색 (텍스트 가독성 확보) */
   );
-  pointer-events: none;          /* 클릭 방해 금지 */
 }
-#itemListAbout li {
-  background: var(--img) center/cover no-repeat;
-  }
+#itemListAbout .card-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+  /* 💡 z-index: 2보다 높은 3으로 설정하여 ::after (z-index: 1) 위에 텍스트 배치 */
+  z-index: 3; 
+
+  /* 💡 배경색 및 블러 효과 제거 (그라데이션 오버레이가 대신함) */
+  background: none; 
+  backdrop-filter: none; 
+  -webkit-backdrop-filter: none;
+  
+  /* 💡 글자 색상을 흰색으로 설정하여 어두운 배경과 대비 */
+  color: white; 
+  
+  border-radius: 0;
+  padding: 20px;
+  overflow: hidden;
+  text-align: left; 
+}
+
+/* 💡 card-content 내 텍스트 전체를 흰색으로 */
+#itemListAbout .card-content p, 
+#itemListAbout .card-content span,
+#itemListAbout .card-content small {
+    color: white; 
+}
+
+/* 🚫 기존 .card-content::before 코드는 삭제합니다. */
+/* (선명/흐림 전환을 위한 ::after 오버레이만 사용합니다.) */
+
+
 
 
 .hidden-fade {
