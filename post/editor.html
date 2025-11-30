@@ -29,7 +29,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             background-color: #fff;
         }
-				.generator-container h1{font-size:14px; color: #333333;}
+                .generator-container h1{font-size:14px; color: #333333;}
         .form-group {
             margin-bottom: 20px;
         }
@@ -326,7 +326,6 @@
     <link rel="stylesheet" href="../asset/style.css?v=3">
     <script src="../asset/script.js?v=2"><\/script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"><\/script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"><\/script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../asset/icon/all.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -335,6 +334,11 @@
 <body>
     <div class="bg-page">
         <header data-aos="fade-down">
+            <div class="mask-top">
+                <img src="../asset/imgs/mask-left-top.png">
+                <img src="../asset/imgs/mask-right-top.png">
+            </div>
+            
             <button class="back-icon-btn" onclick="history.back()">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
@@ -421,12 +425,19 @@ ${mainImageSection}
 
 
     </div>
-    <footer>
+    <footer >
+        <div class="mask-bottom">
+            <img src="../asset/imgs/mask-left-bottom.png">
+            <img src="../asset/imgs/mask-right-bottom.png">
+        </div>
+
         <p>&copy; 2025 Juhankim. All rights reserved.</p>
     </footer>
 
 
 
+    <script src="../asset/script.js?v=2"><\/script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"><\/script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"><\/script>
     <script>
         AOS.init();
@@ -735,16 +746,16 @@ ${mainImageSection}
         document.getElementById('closingTitle').value = '마무리';
         document.getElementById('closingContent').value = '내용 입력';
         document.getElementById('closingCalloutHtml').value = '<div class="callout">\n    <b>장점</b> 내용 입력\n</div>\n<div class="callout">\n    <b>단점</b> 내용 입력\n</div>\n<div class="callout">\n    <b>그 외</b> 내용 입력\n</div>';
-        document.getElementById('outputCode').value = '';
         
         // 반복 섹션 초기화
         repeatSectionsContainer.innerHTML = '';
         repeatIndex = 1;
         addInitialSection();
         
-        alert('✅ 폼이 초기화되었습니다!');
+        document.getElementById('outputCode').value = '';
+        alert('🗑️ 폼이 초기화되었습니다.');
     }
 </script>
-
 </body>
+
 </html>
