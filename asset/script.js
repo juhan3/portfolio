@@ -1,4 +1,5 @@
-// script.js (전체 페이지 공통)
+// script.js (전체 페이지 공통 - All 상태 로딩 시 토스트 미표시 버전)
+
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 OneSignalDeferred.push(async function(OneSignal) {
   await OneSignal.init({
@@ -9,17 +10,14 @@ OneSignalDeferred.push(async function(OneSignal) {
 
 function openNav() {
   const myNav = document.getElementById("myNav");
-  // myNav.style.height = "fit-content"; // 기존 코드 제거
-  myNav.classList.add("open"); // open 클래스 추가
+  myNav.classList.add("open"); 
 }
 
 function closeNav() {
   const myNav = document.getElementById("myNav");
-  // document.getElementById("myNav").style.height = "0"; // 기존 코드 제거
-  myNav.classList.remove("open"); // open 클래스 제거
+  myNav.classList.remove("open"); 
 }
 // index.html의 기존 <script> 태그 내에 추가
-// (현재 list.html 에서는 사용되지 않지만, index.html에서 호출하므로 유지)
 function saveFilterAndNavigate(filterTag) {
     // 단일 필터도 배열 형태로 저장
     localStorage.setItem('initialFilters', JSON.stringify([filterTag])); 
@@ -28,12 +26,14 @@ function saveFilterAndNavigate(filterTag) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.getElementById('filterButtons');
-    // list.html에서만 작동하도록 조건부 실행
+    // filterButtons이 없으면 실행하지 않음 (list/list-blog 페이지에서만 실행)
     if (!filterButtons) return; 
     
+    // 👇 수정: 두 리스트 ID를 모두 선택하여 재활용 가능하게 함
     const items = document.querySelectorAll('#itemList .item, #itemListBlog .item');
+    if (items.length === 0) return; // 아이템이 없으면 종료
     
-    // 👇 [새로 추가] 토스트 요소 가져오기
+    // 👇 토스트 요소 가져오기
     const reorderingToast = document.getElementById('reorderingToast'); 
 
     let activeFilters = new Set(); // 현재 활성화된 필터 태그 (Set)
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storedFiltersJson) {
         try {
             initialFilters = JSON.parse(storedFiltersJson);
-            // 저장된 필터 값을 사용했으므로 바로 삭제하여 다음 방문 시 영향을 주지 않도록 함
+            // 저장된 필터 값을 사용했으므로 바로 삭제
             localStorage.removeItem('initialFilters'); 
         } catch (e) {
             console.error("Failed to parse initial filters:", e);
@@ -57,8 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const filtersArray = Array.from(activeFilters);
         const transitionDuration = 300; // CSS의 transition: 0.3s와 동일하게 설정 (밀리초)
 
-        // 👇 [수정/추가] 1. 필터링 시작 시 토스트 표시
-        if (reorderingToast) {
+        // 👇 핵심 수정: 'all' 필터가 활성화되어 있지 않을 때만 토스트 표시/숨김을 처리합니다.
+        const shouldShowToast = !activeFilters.has('all');
+
+        // 1. 필터링 시작 시 토스트 표시 (All이 아닐 때만)
+        if (reorderingToast && shouldShowToast) { 
             reorderingToast.classList.add('visible');
         }
         
@@ -72,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // 'all' 필터가 활성화되어 있거나, 활성화된 필터가 없으면 모두 표시 (숨기지 않음)
             if (!activeFilters.has('all') && activeFilters.size !== 0) {
                 
-                // 👇 **핵심 수정: some (OR)을 사용하여, 선택된 태그 중 하나라도 아이템 클래스에 포함되어 있는지 확인합니다.**
+                // 선택된 태그 중 하나라도 아이템 클래스에 포함되어 있는지 확인합니다.
                 const matchesAnyFilter = filtersArray.some(filterTag => {
                     return item.classList.contains(filterTag);
                 });
                 
-                // matchesAnyFilter가 false이면 (즉, 선택된 태그 중 아무것도 포함하지 않으면) 숨깁니다.
+                // matchesAnyFilter가 false이면 (아무것도 포함하지 않으면) 숨깁니다.
                 if (!matchesAnyFilter) {
                     shouldHide = true;
                 }
@@ -98,8 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // 3. 보이기 처리 (Display Block/Flex + Fade In)
             else {
-                // 원래 아이템이 grid나 flex로 배치되어 있다면, 'block' 대신 해당 속성을 사용해야 합니다.
-                // 여기서는 리스트 아이템이므로 display: block으로 가정하고, 실제 배치에 따라 변경될 수 있습니다.
+                // 리스트 아이템에 적합한 display 속성으로 설정
                 item.style.display = 'block'; 
                 
                 // display를 설정한 후 잠시 기다렸다가 hidden을 제거해야 transition이 작동합니다.
@@ -111,12 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 👇 [새로 추가] 모든 아이템의 처리(애니메이션)가 완료되었는지 확인하고 토스트 숨김
+        // 모든 아이템의 처리(애니메이션)가 완료되었는지 확인하고 토스트 숨김
         const checkIfDone = () => {
             if (processedCount === totalItems) {
-                 // 모든 아이템의 애니메이션 처리가 완료된 후 토스트 숨김
+                 // 모든 아이템의 애니메이션 처리가 완료된 후 토스트 숨김 (All 상태가 아닐 때만)
                 setTimeout(() => {
-                    if (reorderingToast) {
+                    if (reorderingToast && shouldShowToast) {
                         reorderingToast.classList.remove('visible');
                     }
                 }, transitionDuration); // 가장 긴 transition 시간에 맞춰 기다립니다.
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
 
-    // **👇 2. 초기 필터 적용 로직 (index.html에서 넘어온 다중 태그 처리)**
+    // **👇 2. 초기 필터 적용 로직**
     const initializeFilters = () => {
         const allButton = document.querySelector('[data-filter="all"]');
         
@@ -139,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeFilters.clear();
         
         if (initialFilters.length > 0 && initialFilters[0] !== 'all') {
-            // index.html에서 넘어온 복수 개의 필터를 activeFilters Set에 추가
+            // 넘어온 필터가 있을 경우 활성화
             initialFilters.forEach(filterTag => {
                 activeFilters.add(filterTag);
                 const targetButton = document.querySelector(`[data-filter="${filterTag}"]`);
@@ -149,14 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
         } else {
-            // 저장된 값이 없거나 'all'이면 기본 'All' 상태 적용
+            // 기본 'All' 상태 적용
             activeFilters.add('all');
             if (allButton) {
                 allButton.classList.add('active');
             }
         }
         
-        // 필터링 적용
+        // 필터링 적용 (초기 로드 시)
         applyFilters();
     };
     
