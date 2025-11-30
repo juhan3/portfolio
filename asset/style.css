@@ -113,7 +113,7 @@ hr {
 
   text-align: center;
 
-      padding-top: 50px;
+      padding-top: 66px;
     padding-bottom: 50px;
 
 }
@@ -123,17 +123,6 @@ section#home {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
-.ios-statusbar-fake {
-/* iOS 상태 표시줄 영역을 덮도록 설정 */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* 🚨 아이폰 모델에 따라 높이가 달라지므로 45px 정도 설정하면 안전합니다. */
-    height: 1px; 
-    background-color: black;
-    z-index: 99; /* header (z-index: 1) 위에 위치하도록 충분히 높게 설정 */
 }
 
 .main-list {
@@ -321,21 +310,33 @@ section#home {
 
    ======================================== */
 header{
-  position: fixed;
+position: fixed;
   top: 0;
   left: 0;
-  padding-top: 8px;
+  /* ⚠️ 기존 padding-top: 8px; 대신, 안전 영역 높이 + 8px을 적용합니다. */
+  padding-top: calc(8px + env(safe-area-inset-top, 30px)); 
   width: 100%;
-  background: #ffffff;
-  z-index: 1;
+  /* header의 배경색을 검은색으로 변경하여 상단 노치 영역을 덮습니다. */
+  background: black; 
+  z-index: 10; /* 상태바 위에 올라오도록 z-index를 10 이상으로 설정 */
+}
+/* 🚨 기존 header의 흰색 배경을 다시 살리고 싶다면, 
+   header의 자식 요소(예: ul 또는 다른 div)에 흰색 배경을 적용해야 합니다. */
+header ul{
+  /* ul만 흰색 배경을 주어 header의 검은색 배경을 가립니다. */
+  background: #ffffff; 
+  padding-bottom: 12px;
+  margin-top: 8px;
+  padding-top: 8px;
+  /* (필요시) ul의 너비를 제한하여 좌우 검은색이 보이도록 조정 */
 }
 header .mask-top{
   display: flex;
   justify-content: space-between;
   position: absolute;
   width: 100%;
-  top: 0;
-  z-index: -1;
+  top: 16px;
+  z-index: 0;
 }
 
 
@@ -360,7 +361,7 @@ header ul{
 
   right: 8px;
 
-  top: 8px;
+  top: 26px;
 
   padding: 9px 10px;
 
@@ -394,7 +395,7 @@ header ul{
 
   left: 8px;
 
-  top: 8px;
+  top: 26px;
 
   padding: 9px 10px;
 
@@ -424,7 +425,7 @@ header ul{
 
 .overlay {
     position: fixed;
-    top: 0;
+    top: 18px;
     right: 4px;
     /* height: 0; */
     z-index: 100;
