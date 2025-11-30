@@ -1102,7 +1102,7 @@ header ul{
 
 #itemListBlog .item {
 
-  display: flex;
+  display: flex !important;
 
   flex-direction: row;
 
