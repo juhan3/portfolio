@@ -125,14 +125,15 @@ section#home {
     justify-content: flex-end;
 }
 .ios-statusbar-fake {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: env(safe-area-inset-top); /* 상태바 높이만큼 */
-  background: #000; /* 검정색으로 속임 */
-  z-index: 9999;
-  pointer-events: none;
+/* iOS 상태 표시줄 영역을 덮도록 설정 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* 🚨 아이폰 모델에 따라 높이가 달라지므로 45px 정도 설정하면 안전합니다. */
+    height: 1px; 
+    background-color: black;
+    z-index: 99; /* header (z-index: 1) 위에 위치하도록 충분히 높게 설정 */
 }
 
 .main-list {
