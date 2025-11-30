@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // list.html에서만 작동하도록 조건부 실행
     if (!filterButtons) return; 
     
-    const items = document.querySelectorAll('#itemList .item');
+    const items = document.querySelectorAll('#itemList .item, #itemListBlog .item');
     
     // 👇 [새로 추가] 토스트 요소 가져오기
     const reorderingToast = document.getElementById('reorderingToast'); 

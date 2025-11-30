@@ -62,16 +62,19 @@ window.OneSignalDeferred.push(async function(OneSignal) {
           <div class="list-container">
             <div id="filterButtons">
               <button data-filter="all" class="filter-btn active">All</button>
-              <!-- <button data-filter="design" class="filter-btn"># Design</button>-->
               <button data-filter="tool" class="filter-btn"># Tools</button> 
+              <button data-filter="animation" class="filter-btn"># Animation</button> 
             </div>
-
+             <div id="reorderingToast" class="reordering-toast">
+               <i class="fa-solid fa-circle-notch
+ fa-spin"></i> 재정렬 중...
+            </div>
             <ul id="itemListBlog">
 
               
                
 
-              <li class="item tool" onclick="location.href='post/3.html'">
+              <li class="item tool animation" onclick="location.href='post/3.html'">
                 <div class="card-image">
                     <img src="https://res.cloudinary.com/duqilhoqe/image/upload/v1764131488/jfhjkq2p2m480hmsfdit.png" loading="lazy" alt="서비스 카드 이미지">
                 </div>
