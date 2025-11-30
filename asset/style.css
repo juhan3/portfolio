@@ -960,8 +960,8 @@ header ul{
 
   display: block;
 
-  font-size: 10px;
-
+  font-size: 12px;
+  font-weight: normal;
   color: #ccc;
 
   width: 100%;
