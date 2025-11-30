@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const items = document.querySelectorAll('#itemList .item');
     
+    // 👇 [새로 추가] 토스트 요소 가져오기
+    const reorderingToast = document.getElementById('reorderingToast'); 
+
     let activeFilters = new Set(); // 현재 활성화된 필터 태그 (Set)
 
     // **👇 1. 초기 필터 값 가져오기**
@@ -48,11 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
+    
     // 필터링 함수 (선택된 태그 중 '하나라도' 포함하는 아이템을 표시하는 OR 조건)
     const applyFilters = () => {
         const filtersArray = Array.from(activeFilters);
         const transitionDuration = 300; // CSS의 transition: 0.3s와 동일하게 설정 (밀리초)
+
+        // 👇 [수정/추가] 1. 필터링 시작 시 토스트 표시
+        if (reorderingToast) {
+            reorderingToast.classList.add('visible');
+        }
+        
+        let totalItems = items.length;
+        let processedCount = 0;
 
         items.forEach(item => {
             let shouldHide = false;
@@ -79,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (item.classList.contains('hidden')) {
                          item.style.display = 'none'; // 영역 완전히 제거
                     }
+                    processedCount++;
+                    checkIfDone(); // 처리 완료 확인
                 }, transitionDuration); 
                 
             } 
@@ -92,9 +105,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 // display를 설정한 후 잠시 기다렸다가 hidden을 제거해야 transition이 작동합니다.
                 setTimeout(() => {
                     item.classList.remove('hidden'); 
+                    processedCount++;
+                    checkIfDone(); // 처리 완료 확인
                 }, 10); 
             }
         });
+
+        // 👇 [새로 추가] 모든 아이템의 처리(애니메이션)가 완료되었는지 확인하고 토스트 숨김
+        const checkIfDone = () => {
+            if (processedCount === totalItems) {
+                 // 모든 아이템의 애니메이션 처리가 완료된 후 토스트 숨김
+                setTimeout(() => {
+                    if (reorderingToast) {
+                        reorderingToast.classList.remove('visible');
+                    }
+                }, transitionDuration); // 가장 긴 transition 시간에 맞춰 기다립니다.
+            }
+        }
+        
+        // 아이템이 0개인 경우 대비
+        if (totalItems === 0) {
+            checkIfDone();
+        }
     };
     
 

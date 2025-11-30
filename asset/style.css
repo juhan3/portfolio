@@ -1748,3 +1748,29 @@ footer p {
 
 }
 
+.reordering-toast {
+    position: absolute; /* list-container 기준 */
+    top: 120px; /* filterButtons 아래에 위치하도록 조정 */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* 토스트 스타일 */
+       background-color: rgba(0, 0, 0, 0.484);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: rgba(255, 255, 255, 0.775);
+    padding: 10px 20px;
+    border-radius: 24px;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    opacity: 0; /* 기본적으로 숨김 */
+    visibility: hidden; /* 영역도 숨김 */
+    transition: opacity 0.3s, visibility 0.3s;
+    font-weight: 500;
+}
+
+/* 표시 상태 */
+.reordering-toast.visible {
+    opacity: 1;
+    visibility: visible;
+}
