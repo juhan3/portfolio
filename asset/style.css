@@ -120,10 +120,20 @@ hr {
 }
 
 section#home {
-    height: 85vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+.ios-statusbar-fake {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: env(safe-area-inset-top); /* 상태바 높이만큼 */
+  background: #000; /* 검정색으로 속임 */
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .main-list {
