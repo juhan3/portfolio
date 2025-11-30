@@ -8,14 +8,16 @@ OneSignalDeferred.push(async function(OneSignal) {
 
 
 function openNav() {
-  // 100% 대신 원하는 너비(예: 250px)로 설정
-  document.getElementById("myNav").style.height = "100%"; 
+  const myNav = document.getElementById("myNav");
+  // myNav.style.height = "fit-content"; // 기존 코드 제거
+  myNav.classList.add("open"); // open 클래스 추가
 }
 
 function closeNav() {
-  document.getElementById("myNav").style.height = "0";
+  const myNav = document.getElementById("myNav");
+  // document.getElementById("myNav").style.height = "0"; // 기존 코드 제거
+  myNav.classList.remove("open"); // open 클래스 제거
 }
-
 // index.html의 기존 <script> 태그 내에 추가
 // (현재 list.html 에서는 사용되지 않지만, index.html에서 호출하므로 유지)
 function saveFilterAndNavigate(filterTag) {

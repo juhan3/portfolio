@@ -413,42 +413,41 @@ header ul{
 
 
 .overlay {
-
-  position: fixed;
-
-  top: 0;
-
-  left: 0;
-
-  height: 0;
-
-  width: 100%;
-
-  z-index: 100;
-
-  background-color: rgba(0, 0, 0, 0.95);
-
-  overflow-y: hidden;
-
-  transition: height 0.5s;
-
+    position: fixed;
+    top: 0;
+    right: 4px;
+    /* height: 0; */
+    z-index: 100;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
 }
 
-
+/* 새로 추가: 메뉴가 열렸을 때 적용할 클래스 */
+.overlay.open {
+    /* 메뉴 컨텐츠의 최대 예상 높이보다 충분히 큰 값으로 설정 */
+    /* 예를 들어, 메뉴 아이템이 5개이고 각각 50px 정도라고 가정하면 300px 이상 설정 */
+    max-height: 600px; 
+}
 
 .overlay .closebtn {
 
   position: absolute;
 
-  top: 18px;
+  top: 9px;
 
-  right: 40px;
+  right: 8px;
 
-  font-size: 24px;
+  font-size: 20px;
 
-  color: #757575;
-
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 2px 6px;
   text-decoration: none;
+
+   background-color: rgba(0, 0, 0, 0.172);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
 }
 
@@ -464,30 +463,41 @@ header ul{
 
   text-align: center;
 
-  margin-top: 30px;
+  margin-top: 54px;
+  padding: 0 12px 38px 20px;
 
 }
 
 
-
 .overlay-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+    border-radius: 24px;
+    margin-top: 8px;
+    margin-right: 30px;
+    display: block;
+    transition: 0.3s;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
 
-  padding: 8px;
+    /* 배경 투명도 조절 → 더 유리 느낌 */
+    background: rgba(0, 0, 0, 0.15);
 
-  text-decoration: none;
+    /* 유리 질감 핵심 */
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
 
-  font-size: 20px;
+    /* 글래스모피즘 스타일 경계 */
+    border: 1px solid rgba(255, 255, 255, 0.25);
 
-  color: #ffffff;
+    /* 은은한 빛 반사 */
+    box-shadow: 
+       0 4px 12px rgb(111 119 132 / 32%), inset 0 1px 1px rgb(255 255 255 / 35%), inset 0 -1px 3px rgb(246 45 45 / 0%);
 
-  display: block;
-
-  transition: 0.3s;
-
-  font-family: 'Noto Sans KR', sans-serif;
-
-  font-weight: normal;
-
+    /* 라이트 하이라이트(유리의 두께 느낌) */
+    position: relative;
 }
 
 
@@ -496,7 +506,8 @@ header ul{
 
 .overlay-content a:focus {
 
-  color: #b2b2b2;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
 
 }
 
