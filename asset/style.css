@@ -1640,7 +1640,7 @@ header ul{
 
   margin: 0 auto;
 
-  /* filter: blur(12px); */
+  filter: blur(12px);
 
 }
 
@@ -1767,6 +1767,7 @@ footer p {
     visibility: hidden; /* 영역도 숨김 */
     transition: opacity 0.3s, visibility 0.3s;
     font-weight: 500;
+    font-size: 12px;
 }
 
 /* 표시 상태 */
