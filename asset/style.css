@@ -1775,3 +1775,20 @@ footer p {
     opacity: 1;
     visibility: visible;
 }
+
+
+@media (min-width: 617px) {
+  .main-list #itemList{
+    max-width: 1200px;
+   
+  }
+  .main-list #list .list-container #itemList .item{
+      width: calc(33% - 5px);
+    }
+}
+
+@media (min-width: 900px) {
+  .main-list #list .list-container #itemList .item{
+      width: calc(24% - 5px);
+    }
+}
