@@ -148,6 +148,43 @@ section#home {
   /* overflow-y: auto; */ 
 }
 
+.main-list #list .list-container .item .card-image{
+  display: flex;
+}
+.main-list #list .list-container .item {
+  padding: 1rem;
+}
+.main-list #list .list-container .item p{
+  margin: 0;
+}
+.main-list #list .list-container #itemList .item {
+border-radius: 24px ;
+}
+
+
+ .card-image .appicon{
+  width: 4rem; 
+
+}
+.card-image-sub {
+    display: flex;
+    gap: 8px;
+}
+
+.card-image-sub > * {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-image-sub img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    display: block;
+}
+
+
 
 
 #list {
@@ -1038,7 +1075,7 @@ header ul{
 
 #itemList .item {
 
-  width: calc(48% - 5px);
+  width: calc(80% - 5px);
 
   list-style: none;
 
