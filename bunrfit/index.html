@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김주한 - 버닛 지원서</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #281dda 0%, #1363b0 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* PDF Tab Background Override */
+        body.pdf-active {
+            background: #2a2a2a;
+        }
+
+        /* Floating Glass Tab Bar */
+        .tab-bar {
+            position: fixed;
+            top: 2rem;
+            left: 5%;
+           
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgb(0 0 0 / 25%);
+            border-radius: 1rem;
+            padding: 0.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+            background: transparent;
+            font-size: 1rem;
+        }
+
+        .tab-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Intro Tab - Scroll Snap Sections */
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Section Layout - Left Image, Right Content */
+        .section-layout {
+            display: grid;
+            grid-template-columns: 45% 1fr;
+            gap: 3rem;
+            max-width: 90rem;
+            width: 100%;
+            align-items: center;
+        }
+
+        .section-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            /* border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); */
+        }
+
+        .section-content {
+            padding: 6rem 2rem 2rem;
+        }
+
+        .section-content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content p {
+            font-size: 1rem;
+            word-break: keep-all;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .section-top {
+            text-align: center;
+        }
+        .section-top .section-layout{
+            grid-template-columns:none;
+            max-width: 900px;
+            
+        }
+        .section-top .section-layout .section-content .section-image{
+            width: 50%; margin: 1rem auto;
+        }
+
+        .callout-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .callout {
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .callout h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .callout p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* PDF Tab */
+        .pdf-container {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .pdf-images {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pdf-images img {
+            width: 100%;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        @media (max-width: 768px) {
+            /* 모바일에서 스크롤 스냅 제거 */
+            .scroll-container {
+                scroll-snap-type: none;
+                overflow-y: auto;
+            }
+
+            .section {
+                height: auto;
+                min-height: auto;
+                scroll-snap-align: none;
+                padding: 3rem 1.5rem;
+            }
+
+            /* 모바일에서 세로 레이아웃 */
+            .section-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-content {
+                padding: 0;
+            }
+
+            .section-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-content p {
+                font-size: 1rem;
+            }
+
+            .callout h4 {
+                font-size: 1.125rem;
+            }
+
+            .tab-bar {
+                top: 1rem;
+                width: calc(100% - 2rem);
+                max-width: 90%;
+            }
+
+            .tab-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <!-- Floating Glass Tab Bar -->
+    <div class="tab-bar">
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab(0)">Intro</button>
+            <button class="tab-btn" onclick="switchTab(1)">Basic PDF</button>
+            <button class="tab-btn" onclick="openExternalLink()">Archive →</button>
+        </div>
+    </div>
+
+    <!-- Tab 1: 소개 (Intro with Scroll Snap) -->
+    <div id="tab0" class="tab-content active">
+        <div class="scroll-container">
+            <!-- Section 0 -->
+            <section class="section section-top">
+                <div class="section-layout">
+                    
+                    <div class="section-content">
+                        <h2>개선 제안서</h2>
+                        <div class="section-image">
+                        <img src="img/1.svg" alt="Section 0">
+                    </div>
+                    <p></p>
+                        <p>
+                            안녕하세요. UX/UI 디자이너 김주한입니다. 웹, 유니티, 타블렛, 모바일 등의 프로젝트 경험이 있으며 비중을 가장 많이 차지하는건 모바일 프로덕트 위주의 프로젝트를 진행했었습니다. 자세한 경력이력은 포트폴리오 문서를 참조해주세요. 귀사에 입사지원을 위해 프로덕트를 살펴보고 판단에 도움이 되실수 있게 간단하게나마 개선 제안서를 첨부합니다. 
+                        </p>
+                        
+                    </div>
+                </div>
+            </section>
+            <!-- Section 1 -->
+            <section class="section">
+                <div class="section-layout">
+                    <div class="section-image">
+                        <img src="img/1.png" alt="Section 1" style="margin-top: 6rem;">
+                    </div>
+                    <div class="section-content">
+                        <h2>메인화면 개선</h2>
+                        <p>
+                            우선 전반적으로 시간관계상 디자인 리뉴얼보다는 개선사항과 서비스 제안사항 위주로 진행했습니다.
+                        </p>
+                        <div class="callout-group">
+                            <div class="callout">
+                                <h4>목적 및 문제정의</h4>
+                                <p>[1]알림 리스트의 부재 [2]진행바의 구체적인 행동문구 누락 [3]이미 추가된 추천리스트의 영역 차지 및 닫기 이후의 복원불가 [4] 목표가 없는 사용자의 동기부여 자극부재 [5]더미 데이터에 따른 오해소지</p>
+                            </div>
+                            <div class="callout">
+                                <h4>개선사항</h4>
+                                <p>[1]알림 리스트 및 푸시알림 전략을 세워 리텐션 전략을 서비스에 추가한다. [2]도달목표 전달 및 다음 행동으로의 유도 증가 [3] 추가된 리스트는 제거, 복권 버튼 추가 [4] 입력된 체중정보 기반 정보 제공 [5]운동후 i정보에서 시간기록이 정상적이지 않을경우 50분으로 표기된다는 안내는 보았습니다. 다만 i를 눌러 보아야하고 부정확한 정보보다는 "시간측정을 위해선 더 많은 운동시간이 필요합니다" 같은 데이터 완성을 위한 행동유도 문구가 들어가는게 좋을것 같습니다.</p>
+                            </div>
+                            <div class="callout">
+                                <h4>목표 지표 및 기대치</h4>
+                                <p>[1]현재 리텐션 기준치에서의 상승 [2] 메인에서 운동하기 패턴 행동의 증가 [3]루틴 생성률 증가 [4]DAU 증가 및 정보메시지를 사용하여 서비스 목적에 따라 사용유도[5]서비스 경험 개선(부정확한 정보 보다는 서비스 신뢰를 높입니다.)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="section">
+                <div class="section-layout">
+                    <div class="section-image">
+                        <img src="img/2.png" alt="Section 2">
+                    </div>
+                    <div class="section-content">
+                        <h2>초기 사용자 진입 플로우 개선</h2>
+                        <p>
+                           앱 설치 부터 서비스 시작까지의 과정이 길다고 판단되었습니다. 또한 시작 이후 페이지 진입시마다 튜토리얼이 나타나는데 해당 튜토리얼 내용이 필요여부 검토를 거쳐서 간소화를 하여 초기사용자 진입 피로도를 낮추고 후에는 튜토리얼보다는 최초 사용 및 루틴 저장을 빠르게 행동유도하여 락인할수 있도록 유도하는 전략을 추가해야할것 같습니다.
+                        </p>
+                        <div class="callout-group">
+                            <div class="callout">
+                                <h4>목적 및 문제정의</h4>
+                                <p>[1] 초기 진입 플로우 피로도(현재 진입플로우에서 이탈확률 측정 필요) [2]이미 kg으로 선택후 다시 kg선택해야하는 구조 [3]프로모션 코드 활성상태 대응</p>
+                            </div>
+                            <div class="callout">
+                                <h4>개선사항</h4>
+                                <p>[1] 숫자 입력이 현재 휠입력으로 되어있는데 입력을 한페이지에서 다이렉트 제스처로 한번에 받아도 될것같습니다. 스탭형의 장점을 바텀시트가 오히려 행동을 막는듯한 인상을 줄수 있습니다.[2] 사용자가 이미 Kg형식을 선택했음으로 후에 다시 kg 선택을 묻기보다는 자동으로 선택되거나 선택됨만 고지하고 설정에서 바꿀수 있음만 전달하면 될것같습니다.[3]프로모션을 하고있지 않다면 안보이게 하거나 설정페이지에 넣어놔도 이미 오랜기간 지난 프로모션 코드 소유자일경우 후에 입력하는쪽이 좋을것 같습니다. 대부분 코드가 없을텐데 초기 대부분의 사용자에게 처음부터 이득이 없는 경험을 전달하는것은 불필요한것 같습니다.</p></div>
+                            <div class="callout">
+                                <h4>목표 지표 및 기대치</h4>
+                                <p>[1,2,3]현 진입플로우 이탈지점 정의후 해당 확률 감소 측정</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="section">
+                <div class="section-layout">
+                    <div class="section-image">
+                        <img src="img/3.png" alt="Section 3">
+                    </div>
+                    <div class="section-content">
+                        <h2>유저 인터뷰 타겟 설정</h2>
+                        <p>
+                           현재 너무 많은 페이지에서 유저인터뷰 배너를 노출중인데 해당 배너가 오히려 스크롤 고정되어 화면 자체를 볼수 없게 배치하는것은 제거해야할것 같습니다. 또한 인터뷰 요청을 좀더 처음 설치한 사용자에게 과도하게 노출하기보다는 타겟을 좁히고 인터뷰를 통해 얻는 베네핏을 사전에 텍스트로 페이지이동전에 추가하면 클릭율이 오를것 같습니다.
+                        </p>
+                        <div class="callout-group">
+                            <div class="callout">
+                                <h4>목적 및 문제정의</h4>
+                                <p>사용할때 기존 UX 경험을 변경시키는 구조의 배너 노출</p>
+                            </div>
+                            <div class="callout">
+                                <h4>개선사항</h4>
+                                <p>바텀 시트처럼 UI 버튼이 있는 구조나 스크롤하여 화면을 보는곳에 고정되어 있는 배너는 제거, 예시: "번핏과 함께하신지 1달째이신 000님께 드리는 인터뷰요청" 타겟형 인터뷰 요청 추가</p>
+                                </div> 
+                                <div class="callout">
+                                <h4>목표 지표 및 기대치</h4>
+                                 <p>
+                                    사용패턴 일관화 및 타겟 설정으로 인터뷰 참여율 증가
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Tab 2: PDF Images -->
+    <div id="tab1" class="tab-content">
+        <div class="pdf-container">
+            <div class="pdf-images">
+                <img src="img/pdf01.png" alt="Portfolio Page 1">
+                <img src="img/pdf02.png" alt="Portfolio Page 2">
+                <img src="img/pdf03.png" alt="Portfolio Page 3">
+                <img src="img/pdf04.png" alt="Portfolio Page 4">
+                <img src="img/pdf05.png" alt="Portfolio Page 5">
+                <img src="img/pdf06.png" alt="Portfolio Page 6">
+                <img src="img/pdf07.png" alt="Portfolio Page 7">
+                <img src="img/pdf08.png" alt="Portfolio Page 8">
+                <img src="img/pdf09.png" alt="Portfolio Page 9">
+                <img src="img/pdf10.png" alt="Portfolio Page 10">
+                <img src="img/pdf11.png" alt="Portfolio Page 11">
+                <img src="img/pdf12.png" alt="Portfolio Page 12">
+                <img src="img/pdf13.png" alt="Portfolio Page 13">
+                <img src="img/pdf14.png" alt="Portfolio Page 14">
+                <img src="img/pdf15.png" alt="Portfolio Page 15">
+                <img src="img/pdf16.png" alt="Portfolio Page 16">
+                <img src="img/pdf17.png" alt="Portfolio Page 17">
+                <img src="img/pdf18.png" alt="Portfolio Page 18">
+                <img src="img/pdf19.png" alt="Portfolio Page 19">
+                <img src="img/pdf20.png" alt="Portfolio Page 20">
+                <img src="img/pdf21.png" alt="Portfolio Page 21">
+                <img src="img/pdf22.png" alt="Portfolio Page 22">
+                <img src="img/pdf23.png" alt="Portfolio Page 23">
+                <img src="img/pdf24.png" alt="Portfolio Page 24">
+                <img src="img/pdf25.png" alt="Portfolio Page 25">
+                <img src="img/pdf26.png" alt="Portfolio Page 26">
+                <img src="img/pdf27.png" alt="Portfolio Page 27">
+                <img src="img/pdf28.png" alt="Portfolio Page 28">
+                <img src="img/pdf29.png" alt="Portfolio Page 29">
+                <img src="img/pdf30.png" alt="Portfolio Page 30">
+                <img src="img/pdf31.png" alt="Portfolio Page 31">
+                <img src="img/pdf32.png" alt="Portfolio Page 32">
+                <img src="img/pdf33.png" alt="Portfolio Page 33">
+                <img src="img/pdf34.png" alt="Portfolio Page 34">
+                <img src="img/pdf35.png" alt="Portfolio Page 35">
+                <img src="img/pdf36.png" alt="Portfolio Page 36">
+                <img src="img/pdf37.png" alt="Portfolio Page 37">
+                <img src="img/pdf38.png" alt="Portfolio Page 38">
+                <img src="img/pdf39.png" alt="Portfolio Page 39">
+                <img src="img/pdf40.png" alt="Portfolio Page 40">
+                <img src="img/pdf41.png" alt="Portfolio Page 41">
+                <img src="img/pdf42.png" alt="Portfolio Page 42">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Switching
+        function switchTab(tabIndex) {
+            // Update buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach((btn, index) => {
+                if (index === tabIndex) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Update content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach((content, index) => {
+                if (index === tabIndex) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+
+            // Change body background for PDF tab
+            if (tabIndex === 1) {
+                document.body.classList.add('pdf-active');
+            } else {
+                document.body.classList.remove('pdf-active');
+            }
+        }
+
+        // External Link
+        function openExternalLink() {
+            window.open('https://juhan3.github.io/portfolio/', '_blank');
+        }
+    </script>
+</body>
+</html>
