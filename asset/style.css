@@ -136,11 +136,17 @@ hr {
   text-align: left;
 }
 
+/* The hero block is centred on the page, but its contents align left against a
+   shared edge — so the heading, bubble and buttons all share one baseline. */
 section#home {
   min-height: 62vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
   padding: var(--space-8) 0 var(--space-12);
 }
 
@@ -333,7 +339,7 @@ footer .mask-bottom {
   max-width: var(--content-width);
   width: fit-content;
   display: inline-block;
-  align-self: center;
+  align-self: flex-start;
   padding: var(--space-3) var(--space-4);
   margin: var(--space-4) 0;
   background: var(--color-bg-subtle);
@@ -1040,7 +1046,7 @@ footer .mask-bottom {
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 #anim h1 {
@@ -1068,13 +1074,13 @@ footer .mask-bottom {
 #anim img {
   width: 120px;
   display: block;
-  margin: 0 auto;
+  margin: 0;
   animation: float 3s ease-in-out infinite;
 }
 
 #home svg {
   display: block;
-  margin: 0 auto;
+  margin: 0;
   max-width: 120px;
 }
 
