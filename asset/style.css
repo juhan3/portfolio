@@ -1,1843 +1,1195 @@
 /* ========================================
-
-   BASE STYLES
-
+   DESIGN TOKENS
    ======================================== */
 
+:root {
+  /* Typography */
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', system-ui, sans-serif;
 
+  /* Color */
+  --color-text: #030712;
+  --color-text-muted: #6b7280;
+  --color-text-subtle: #9ca3af;
+  --color-text-faint: #d1d5db;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f9fafb;
+  --color-bg-muted: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-accent: #4a86f7;
+  --color-accent-soft: rgba(74, 134, 247, 0.12);
 
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
 
+  /* Layout */
+  --content-width: 672px;
+  --page-width: 1200px;
+  --header-height: 60px;
 
+  /* Radius */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+}
 
+/* ========================================
+   BASE STYLES
+   ======================================== */
 
 html,
 body {
-
   height: 100%;
-
   margin: 0;
-
   padding: 0;
-
   overscroll-behavior: contain;
-
-  background-color: black;
-
+  background-color: var(--color-bg);
   min-width: 320px;
-
-  font-family: 'Noto Sans KR';
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
   overflow: auto;
   scrollbar-width: none;
-
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
 
 ul,
 li {
-
   list-style: none;
-
   padding: 0;
-
   margin: 0;
-
 }
-
-
 
 ul {
-
-  font-weight: bold;
-
+  font-weight: 600;
 }
 
-
+h1,
+h2,
+h3 {
+  color: var(--color-text);
+  text-wrap: balance;
+}
 
 h1 {
-
-  font-size: 35px;
-
-  font-weight: bold;
-
-  margin-top: 5px;
-
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  margin-top: var(--space-1);
 }
 
+h2 {
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
 
+h3 {
+  font-size: 17px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+a {
+  color: inherit;
+}
 
 hr {
-
-  border: 1px solid rgba(13, 13, 13, 0.047);
-
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
 }
 
-
-
-
-
 /* ========================================
-
    LAYOUT CONTAINERS
-
    ======================================== */
 
-
-
 .bg,
-
 .bg-list,
-
 .bg-page {
-
   width: 100%;
   min-height: 100%;
-
-
+  max-width: var(--page-width);
   margin: 0 auto;
-
-
-
-  background: #ffffff;
-
-  animation: breathing-gradient 4s ease-in-out infinite alternate;
-
-  /* border-radius: 42px; */
-
-  padding: 16px 16px 0 16px;
-
+  background: var(--color-bg);
+  padding: calc(var(--header-height) + var(--space-6)) var(--space-5) var(--space-12);
   box-sizing: border-box;
-
   display: flex;
-
   flex-direction: column;
-
-  justify-content: space-between;
-
-  text-align: center;
-
-      padding-top: 66px;
-    padding-bottom: 50px;
-
+  text-align: left;
 }
 
 section#home {
-    height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.main-list {
-
-  flex-grow: 1;
-
-  min-height: 0;
-
+  min-height: 62vh;
   display: flex;
-
   flex-direction: column;
-
-  overflow-y: auto;
-
+  justify-content: center;
+  padding: var(--space-8) 0 var(--space-12);
 }
-/* asset/style.css 수정 (예시) */
+
 .main-list {
   flex-grow: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
-  /* ⬇️ 이 부분을 제거하거나 변경합니다. */
-  /* overflow-y: auto; */ 
 }
-
-.main-list #list .list-container .item .card-image{
-  display: flex;
-}
-.main-list #list .list-container .item {
-  padding: 1rem;
-}
-.main-list #list .list-container .item p{
-  margin: 0;
-}
-.main-list #list .list-container #itemList .item {
-border-radius: 24px ;
-}
-
-
- .card-image .appicon{
-  width: 4rem; 
-
-}
-.card-image-sub {
-    display: flex;
-    gap: 8px;
-}
-
-.card-image-sub > * {
-    flex: 1;
-    min-width: 0;
-}
-
-.card-image-sub img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.6rem;
-    display: block;
-}
-
-
-
 
 #list {
-
-  margin-top: 8px;
-
+  margin-top: var(--space-2);
   flex-grow: 1;
-
-
-
-  padding-bottom: 16px;
-
+  padding-bottom: var(--space-4);
 }
-
-
-
-
 
 /* ========================================
-
-   COMPONENTS
-
-   ======================================== */
-
-
-
-/* Notification Box */
-
-.notibox {
-
-  max-width: 320px;
-
-  margin: 8px auto;
-
-  color: #444;
-
-  background: #fff;
-
-  border-radius: 8px;
-
-  overflow: hidden;
-
-  font-size: 12px;
-
-  padding: 8px;
-
-  display: none;
-
-  justify-content: space-between;
-
-  min-height: 20px;
-
-  align-content: center;
-
-}
-
-
-
-.notibox i {
-
-  padding: 3px;
-
-  color: #aaa;
-
-}
-
-
-
-.notibox b {
-
-  color: #aaa;
-
-}
-
-
-
-.notibox small {
-
-  font-weight: bold;
-
-  color: #aaa;
-
-  padding: 1px 4px;
-
-}
-
-
-
-/* Bubble */
-
-.bubble {
-
-  max-width: 70%;
-
-  display: inline-block;
-
-  padding: 12px 18px;
-
-  margin: 10px auto;
-
-  background: white;
-
-  border-radius: 40px;
-
-  border: solid 1px #ececec;
-
-  font-size: 12px;
-
-  font-weight: normal;
-
-  color: #333;
-
-  line-height: 1.4;
-
-}
-
-
-
-/* Callout */
-
-.callout {
-
-  background: #f3f4fa;
-
-  border-radius: 8px;
-
-  padding: 12px;
-
-  font-size: 14px;
-
-  color: #333;
-
-  font-weight: normal;
-
-}
-
-
-
-.row .callout {
-
-  flex: 1;
-
-}
-
-
-
-.row .callout b {
-
-  display: block;
-
-}
-
-
-
-
-
-/* ========================================
-
    HEADER & NAVIGATION
-
    ======================================== */
-header{
-position: fixed;
+
+header {
+  position: fixed;
   top: 0;
   left: 0;
-  /* ⚠️ 기존 padding-top: 8px; 대신, 안전 영역 높이 + 8px을 적용합니다. */
-  padding-top: calc(8px + env(safe-area-inset-top, 30px)); 
   width: 100%;
-  /* header의 배경색을 검은색으로 변경하여 상단 노치 영역을 덮습니다. */
-  background: black; 
-  z-index: 10; /* 상태바 위에 올라오도록 z-index를 10 이상으로 설정 */
-}
-/* 🚨 기존 header의 흰색 배경을 다시 살리고 싶다면, 
-   header의 자식 요소(예: ul 또는 다른 div)에 흰색 배경을 적용해야 합니다. */
-header ul{
-  /* ul만 흰색 배경을 주어 header의 검은색 배경을 가립니다. */
-  background: #ffffff; 
-  padding-bottom: 12px;
-  margin-top: 8px;
-  padding-top: 8px;
-  /* (필요시) ul의 너비를 제한하여 좌우 검은색이 보이도록 조정 */
-}
-header .mask-top{
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  top: 16px;
-  z-index: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 10;
+  box-sizing: border-box;
 }
 
+/* Header title block: "Intro" + subtitle */
+header ul {
+  background: none;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-5);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-align: left;
+  box-sizing: border-box;
+}
 
 header li {
-
-  font-size: 10px;
-
-  font-weight: bold;
-
-  color: #36363669;
-
-}
-header ul{
-  padding-bottom: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text-subtle);
+  margin-top: 2px;
 }
 
+/* Decorative black-frame corner masks — obsolete in the light theme */
+header .mask-top,
+footer .mask-bottom {
+  display: none;
+}
 
+.menu-icon-btn,
+.back-icon-btn {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + var(--space-2));
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  background: none;
+  color: var(--color-text-muted);
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  z-index: 11;
+}
+
+.menu-icon-btn:hover,
+.back-icon-btn:hover {
+  background: var(--color-bg-muted);
+  color: var(--color-text);
+}
 
 .menu-icon-btn {
-
-  position: fixed;
-
-  right: 8px;
-
-  top: 26px;
-
-  padding: 9px 10px;
-
-  border-radius: 50%;
-
-  background: none;
-
-  color: #3e414583;
-
-  border: none;
-
-  font-size: 16px;
-
-  cursor: pointer;
-
+  right: var(--space-3);
 }
-
-
-
-.menu-icon-btn.hide {
-
-  display: none;
-
-}
-
-
 
 .back-icon-btn {
-
-  position: fixed;
-
-  left: 8px;
-
-  top: 26px;
-
-  padding: 9px 10px;
-
-  border-radius: 50%;
-
-  background: none;
-
-  color: #3e414583;
-
-  border: none;
-
-  font-size: 16px;
-
+  left: var(--space-3);
 }
 
-
-
-
+.menu-icon-btn.hide {
+  display: none;
+}
 
 /* ========================================
-
    OVERLAY MENU
-
    ======================================== */
 
-
-
 .overlay {
-    position: fixed;
-    top: 18px;
-    right: 4px;
-    /* height: 0; */
-    z-index: 100;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
+  position: fixed;
+  top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+  right: var(--space-3);
+  z-index: 100;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
 }
 
-/* 새로 추가: 메뉴가 열렸을 때 적용할 클래스 */
 .overlay.open {
-    /* 메뉴 컨텐츠의 최대 예상 높이보다 충분히 큰 값으로 설정 */
-    /* 예를 들어, 메뉴 아이템이 5개이고 각각 50px 정도라고 가정하면 300px 이상 설정 */
-    max-height: 600px; 
+  max-height: 600px;
 }
 
 .overlay .closebtn {
-
-  position: absolute;
-
-  top: 9px;
-
-  right: 8px;
-
-  font-size: 20px;
-
-  color: #ffffff;
-  border-radius: 50px;
-  padding: 2px 6px;
-  text-decoration: none;
-
-   background-color: rgba(0, 0, 0, 0.172);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
+  display: none;
 }
-
-
 
 .overlay-content {
-
   position: relative;
-
-
-
-  width: 100%;
-
-  text-align: center;
-
-  margin-top: 54px;
-  padding: 0 12px 38px 20px;
-
+  min-width: 200px;
+  text-align: left;
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(3, 7, 18, 0.1), 0 2px 6px rgba(3, 7, 18, 0.05);
 }
-
 
 .overlay-content a {
-    padding: 12px 16px;
-    text-decoration: none;
-    font-size: 16px;
-    color: #ffffff;
-    border-radius: 24px;
-    margin-top: 8px;
-    margin-right: 30px;
-    display: block;
-    transition: 0.3s;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
-
-    /* 배경 투명도 조절 → 더 유리 느낌 */
-    background: rgba(0, 0, 0, 0.15);
-
-    /* 유리 질감 핵심 */
-    backdrop-filter: blur(14px) saturate(180%);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-
-    /* 글래스모피즘 스타일 경계 */
-    border: 1px solid rgba(255, 255, 255, 0.25);
-
-    /* 은은한 빛 반사 */
-    box-shadow: 
-       0 4px 12px rgb(111 119 132 / 32%), inset 0 1px 1px rgb(255 255 255 / 35%), inset 0 -1px 3px rgb(246 45 45 / 0%);
-
-    /* 라이트 하이라이트(유리의 두께 느낌) */
-    position: relative;
+  padding: var(--space-3) var(--space-4);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  border-radius: var(--radius);
+  display: block;
+  transition: background-color 0.15s ease;
 }
-
-
 
 .overlay-content a:hover,
-
 .overlay-content a:focus {
-
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.5);
-
+  background: var(--color-bg-muted);
 }
-
-
-
-@media screen and (max-height: 450px) {
-
-  .overlay-content {
-
-    margin-top: 15%;
-
-  }
-
-  .overlay-content a {
-
-    font-size: 20px;
-
-  }
-
-  .overlay .closebtn {
-
-    font-size: 40px;
-
-    top: 15px;
-
-    right: 35px;
-
-  }
-
-}
-
-
-
-
 
 /* ========================================
-
-   BUTTONS
-
+   COMPONENTS
    ======================================== */
 
+/* Notification Box */
+.notibox {
+  max-width: var(--content-width);
+  margin: var(--space-2) 0;
+  color: var(--color-text-muted);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 13px;
+  padding: var(--space-3) var(--space-4);
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.notibox i {
+  padding-right: var(--space-1);
+  color: var(--color-text-subtle);
+}
+
+.notibox b {
+  color: var(--color-text);
+  font-weight: 600;
+  margin-right: var(--space-2);
+}
+
+.notibox small {
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+/* Bubble — shrink-wraps its text instead of stretching in the flex column */
+.bubble {
+  max-width: var(--content-width);
+  width: fit-content;
+  display: inline-block;
+  align-self: flex-start;
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-4) 0;
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Callout */
+.callout {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.callout b {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.row .callout {
+  flex: 1;
+}
+
+.row .callout b {
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
 
 /* Filter Buttons */
-
 #filterButtons {
-
   display: flex;
-
   flex-wrap: nowrap;
-
   overflow-x: auto;
-
   overflow-y: hidden;
-
-  padding: 8px 16px;
-
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
   scrollbar-width: none;
-
   -ms-overflow-style: none;
-
-  mask-image: linear-gradient(to right,
-
-      rgba(0, 0, 0, 0) 0%,
-
-      rgba(0, 0, 0, 1) 5%,
-
-      rgba(0, 0, 0, 1) 95%,
-
-      rgba(0, 0, 0, 0) 100%);
-
-  -webkit-mask-image: linear-gradient(to right,
-
-      rgba(0, 0, 0, 0) 0%,
-
-      rgba(0, 0, 0, 1) 5%,
-
-      rgba(0, 0, 0, 1) 95%,
-
-      rgba(0, 0, 0, 0) 100%);
-
 }
-
-
 
 #filterButtons::-webkit-scrollbar {
-
   display: none;
-
   width: 0;
-
   height: 0;
-
 }
 
-
-
-.filter-btn {
-
-  background: #f4f4f4;
-
-  color: #66666677;
-
-  font-weight: bold;
-
-  border: none;
-
-  border-radius: 20px;
-
-  padding: 8px 12px;
-
-  font-size: 12px;
-
+.filter-btn,
+.tag-btn {
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  font-size: 13px;
+  letter-spacing: -0.01em;
   cursor: pointer;
-
-  transition: background-color 0.2s, color 0.2s, transform 0.1s;
-
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   flex-shrink: 0;
-
-  margin-right: 4px;
-
-  margin-bottom: 0;
-
 }
 
-
-
-.filter-btn.active {
-
-  background: #4a86f7;
-
-  color: white;
-
-  border-color: #4a86f7;
-
+.filter-btn:hover,
+.tag-btn:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
 }
 
-
+.filter-btn.active,
+.tag-btn.selected {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
 
 /* Tag Buttons */
-
 .tag-container {
-
   display: flex;
-  padding: 16px 0;
+  padding: var(--space-4) 0;
   flex-wrap: wrap;
-
-  gap: 8px;
-
-  justify-content: center;
-
+  gap: var(--space-2);
 }
-
-
-
-.tag-btn {
-
-  background: #eeeeee;
-
-  color: #66666677;
-
-  border: none;
-
-  border-radius: 20px;
-
-  padding: 8px 12px;
-
-  font-size: 12px;
-
-  cursor: pointer;
-
-  transition: background-color 0.2s, color 0.2s, transform 0.1s;
-
-  flex-shrink: 0;
-
-  font-weight: bold;
-
-}
-
-
-
-.tag-btn.selected {
-
-  background: #4a86f7;
-
-  color: white;
-
-  border-color: #4a86f7;
-
-}
-
-
 
 /* Next Button */
-
 .nextBtn {
-
   text-align: left;
-
   display: flex;
-
   justify-content: flex-start;
-
   flex-direction: column;
-
   opacity: 0;
-
-  transition: opacity 0.5s;
-
-  padding: 16px;
-
-  width: 80%;
-
-  font-size: 14px;
-
-  background: white;
-
-  box-shadow: 1px 8px 8px #eee;
-
-  border-radius: 24px;
-
-  border: 1px solid #ddd;
-
-  font-weight: bold;
-
+  transition: opacity 0.5s, border-color 0.15s ease, transform 0.15s ease;
+  padding: var(--space-5);
+  width: 100%;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  background: var(--color-bg);
+  box-shadow: none;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
-
+.nextBtn:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-1px);
+}
 
 .nextBtn span {
-
   display: block;
-
-  font-weight: normal;
-
-  color: #666;
-
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
 }
-
-
 
 .nextBtn .row {
-
   align-items: center;
-
-  margin-bottom: 8px;
-
+  margin-bottom: var(--space-2);
 }
-
-
 
 .nextBtn .row i {
-
-  margin-right: 6px;
-
+  margin-right: var(--space-2);
   border-radius: 50%;
-
   line-height: 1;
-
+  color: var(--color-text-muted);
 }
-
-
 
 /* Explore & Back Buttons */
-
 .explore-btn,
-
 .back-btn {
-
   opacity: 0;
-
   width: 100%;
-
 }
-
-
 
 .explore-btn {
-
-  margin-bottom: 32px;
-
-  background: #4a86f7;
-
-  color: white;
-
-  box-shadow: 0 4px 8px rgba(74, 134, 247, 0.3);
-
+  margin-bottom: var(--space-8);
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+  box-shadow: none;
 }
 
-
-
-.explore-btn span {
-
-  color: white;
-
+.explore-btn:hover {
+  border-color: var(--color-accent);
+  filter: brightness(0.96);
 }
 
-
+.explore-btn span,
+.explore-btn .row i {
+  color: rgba(255, 255, 255, 0.85);
+}
 
 .explore-btn .oneline {
-
   display: flex;
-
-  justify-content: space-around;
-
+  justify-content: space-between;
+  align-items: center;
 }
-
-
 
 .explore-btn .oneline .row {
-
   width: 100%;
-
+  margin-bottom: 0;
 }
-
-
 
 .back-btn {
-
   box-shadow: none;
-
-  background: #00000009;
-
-  border: none;
-
+  background: var(--color-bg-subtle);
 }
 
-
-
-
-
 /* ========================================
-
    FILTER SECTION
-
    ======================================== */
-
-
 
 .custom-filter-section {
-
   display: flex;
-
   flex-direction: column;
-
-  gap: 16px;
-
-  padding: 0 16px;
-
-  max-width: 420px;
-
-  margin: 0 auto;
-
+  gap: var(--space-4);
+  padding: 0;
+  max-width: var(--content-width);
 }
-
-
 
 .hidden-fade {
-
   opacity: 0;
-
   max-height: 0;
-
   overflow: hidden;
-
-  transition: opacity 0.4s, max-height 0.4s;
-
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, max-height 0.4s ease, transform 0.4s ease;
 }
-
-
 
 .visible-fade {
-
   opacity: 1;
-
   max-height: 500px;
-
+  transform: translateY(0);
+  transition: opacity 0.4s ease, max-height 0.4s ease, transform 0.4s ease;
 }
 
-
-
+/* JS toggles hidden-fade → visible-fade. Drive this with the transition that
+   .hidden-fade/.visible-fade already declare — a keyframe animation here stays
+   stuck on its `from` state (opacity 0) and hides the tag buttons inside. */
 .custom-filter-section.visible-fade {
-
   opacity: 1;
-
   max-height: 500px;
-
-  animation: slideUpFadeIn 0.5s ease-out forwards;
-
+  transform: translateY(0);
 }
-
-
-
-
 
 /* ========================================
-
    CARDS
-
    ======================================== */
-
-
 
 .card-image {
-
-  height: 60%;
-
   width: 100%;
-
   overflow: hidden;
-
   position: relative;
-
 }
-
-
 
 .card-image img {
-
   width: 100%;
-
   height: 100%;
-
   object-fit: cover;
-
   display: block;
-
 }
 
+.card-image .appicon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
 
+.card-image-sub {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.card-image-sub > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-image-sub img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  display: block;
+}
 
 .card-content {
-
   flex-grow: 1;
-
-  flex-basis: 20%;
-
-  padding: 10px;
-
+  padding: var(--space-3) 0 0;
   box-sizing: border-box;
-
   text-align: left;
-
 }
 
+.card-tags span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text-subtle);
+}
 
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  color: var(--color-text);
+}
 
 .card-title small {
-
   display: block;
-
-  font-size: 12px;
-  font-weight: normal;
-  color: #ccc;
-
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-subtle);
   width: 100%;
-
-  text-align: right;
-
+  text-align: left;
+  margin-top: 2px;
 }
-
-
-
-
 
 /* ========================================
-
    ITEM LISTS
-
    ======================================== */
 
-
-
 .item {
-
   transition: opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease, padding 0.5s ease;
-
   overflow: hidden;
-
   max-height: 500px;
-
 }
-
-
 
 .hidden {
-
   opacity: 0 !important;
-
   max-height: 0 !important;
-
   margin-top: 0 !important;
-
   margin-bottom: 0 !important;
-
   padding-top: 0 !important;
-
   padding-bottom: 0 !important;
-
   border-bottom: none;
-
 }
 
-
-
-/* itemList (Grid Layout) */
-
+/* itemList — project grid */
 #itemList {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 10px;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-6);
   padding: 0;
-
-  justify-content: center;
-
-  max-width: 650px;
-
-  margin: 8px auto;
-
+  margin: var(--space-6) 0;
+  max-width: none;
 }
-
-
 
 #itemList .item {
-
-  width: calc(80% - 5px);
-
   list-style: none;
-
   display: block;
-
-  background: #f4f4f4;
-
-  min-height: 200px;
-
-  height: 100%;
-
-  border-radius: 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-sizing: border-box;
+  cursor: pointer;
   opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.2s ease, border-color 0.2s ease;
 }
-#itemList .item.hidden{
+
+#itemList .item:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+#itemList .item.hidden {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.98);
 }
 
+#itemList .item .card-image {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
 
+#itemList .item .card-image .card-content {
+  padding: 0;
+}
+
+#itemList .item .card-image-sub {
+  margin-top: var(--space-4);
+}
+
+#itemList .item p {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
 
 #itemList .item span {
   display: block;
-  font-weight: normal;
-
+  font-weight: 500;
   font-size: 12px;
-
   white-space: nowrap;
-
   overflow: hidden;
-
   text-overflow: ellipsis;
-
-  padding: 0 2px;
-
-  color: rgba(97, 97, 97, 0.381);
-
+  color: var(--color-text-subtle);
 }
 
-
-
-#itemList .item p {
-
-  font-size: 14px;
-
-}
-
-
-
-/* itemListBlog (Horizontal Layout) */
-
+/* itemListBlog — two-column editorial rows */
 #itemListBlog {
-  padding: 8px 0;
-  flex-direction: column;
-
+  padding: var(--space-4) 0 0;
+  display: block;
+  max-width: 900px;
+  border-top: 1px solid var(--color-border);
 }
-
-
 
 #itemListBlog .item {
-
-  display: flex !important;
-
-  flex-direction: row;
-
-  align-items: center;
-
-  justify-content: space-between;
-
+  display: grid !important;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-8);
+  align-items: start;
   width: 100%;
-
-  max-width: 420px;
-
+  max-width: none;
   list-style: none;
-
-  margin: 0 auto;
-  margin-bottom: 10px;
-
-  background: #f4f4f4;
-
-  padding: 8px;
-
+  margin: 0;
+  background: none;
+  padding: var(--space-8) 0;
   box-sizing: border-box;
-
-  border-radius: 12px;
-
+  border-radius: 0;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
 }
 
-
-
+/* Left column: the thumbnail anchors the meta column */
 #itemListBlog .item .card-image {
+  border: 1px solid var(--color-border);
+  width: 72px;
+  min-width: 72px;
+  height: 72px;
+  border-radius: var(--radius);
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-bg-muted);
+}
 
-  border: 1px solid #ddd;
-
-  width: 52px;
-
-  min-width: 32px;
-
-  height: 52px;
-
+#itemListBlog .item .card-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-
   object-position: center;
-
-  border-radius: 8px;
-
-  margin: 8px;
-
-  align-self: flex-start;
-
+  display: block;
 }
 
-
-
+/* Right column: title, excerpt, date */
 #itemListBlog .item .card-content {
-
+  display: flex;
   flex-direction: column;
-
   flex-grow: 1;
-
   min-width: 0;
-
-  padding: 0 8px;
-
-  justify-content: space-between;
-
+  padding: 0;
 }
-
-
 
 #itemListBlog .item .card-content .card-tags {
-
-  display: inline-block;
-
-  min-height: 44px;
-
-  width: fit-content;
-
-}
-
-
-
-#itemListBlog .item .card-content .card-tags span {
-
   display: block;
-
-  font-weight: bold;
-
+  min-height: 0;
+  width: auto;
 }
 
-
-
+/* The post title lives in `.card-title > span` — it is the row's headline */
 #itemListBlog .item .card-content .card-title {
-
-  margin-top: auto;
-
-  justify-content: space-between;
-
-}
-
-
-
-#itemListBlog .item .card-content .card-tags .card-title {
-
   display: block;
-
   margin: 0;
-
-  font-size: 14px;
-
-  font-weight: normal;
-
-  white-space: normal;
-
-  overflow-wrap: break-word;
-
-  word-break: break-word;
-
-  line-height: 1.4;
-
-  padding: 4px 0;
-
-}
-
-
-
-#itemListBlog .item .card-content small {
-
-  font-size: 12px;
-
-  font-weight: normal;
-
-  text-align: right;
-
-  display: block;
-
-  color: #bbb;
-
-  min-width: fit-content;
-
-  margin-left: auto;
-
   padding: 0;
-
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+  color: var(--color-text);
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  transition: color 0.15s ease;
 }
 
+#itemListBlog .item .card-content .card-title span {
+  display: inline;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  white-space: normal;
+}
 
+#itemListBlog .item:hover .card-content .card-title {
+  color: var(--color-accent);
+}
 
-#itemListBlog .item .card-content .card-tags .card-title small {
-
+/* `.date` sits outside `.card-tags` and reads as the row's metadata */
+#itemListBlog .item .card-content small {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
   display: block;
-
-  text-align: right;
-
+  color: var(--color-text-subtle);
+  min-width: 0;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  letter-spacing: -0.01em;
 }
 
-
-
-/* itemListAbout (Image Background) */
-
+/* itemListAbout — full-bleed image cards */
 #itemListAbout {
-
-  max-width: 440px;
-  margin: 0 auto;
-  ;
-
+  max-width: var(--content-width);
+  margin: 0;
 }
 
 #itemListAbout li {
-
   background: var(--img) center/cover no-repeat;
-
   width: 100%;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: flex-end;
-
   min-height: 470px;
-
   position: relative;
-
-  margin-bottom: 10px;
-
-  border-radius: 16px;
-
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-
 }
-
-
 
 #itemListAbout li::after {
-
   content: "";
-
   position: absolute;
-
   top: 0;
-
   left: 0;
-
   width: 100%;
-
   height: 100%;
-
   z-index: 1;
-
   pointer-events: none;
-
   background: linear-gradient(to bottom,
-
       rgba(0, 0, 0, 0) 0%,
-
       rgba(0, 0, 0, 0.05) 50%,
-
       rgba(0, 0, 0, 0.5) 75%,
-
-      rgba(0, 0, 0, 0.8) 100%);
-
+      rgba(0, 0, 0, 0.85) 100%);
 }
-
-
 
 #itemListAbout .card-content {
-
   position: relative;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: flex-end;
-
   z-index: 3;
-
   background: none;
-
   backdrop-filter: none;
-
   -webkit-backdrop-filter: none;
-
-  color: white;
-
+  color: #ffffff;
   border-radius: 0;
-
-  padding: 20px;
-
+  padding: var(--space-6);
   overflow: hidden;
-
   text-align: left;
-
 }
 
-
-
-
-
 #itemListAbout .card-content span,
-
 #itemListAbout .card-content small {
-
-  color: white;
-  font-weight: bold;
-
+  color: #ffffff;
+  font-weight: 600;
   display: block;
-
 }
 
 #itemListAbout .card-content p {
-
-  font-weight: normal;
-
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-
-
-
-
 /* ========================================
-
-   PAGES LIST
-
+   PAGES LIST (detail pages)
    ======================================== */
 
+/* Detail pages reuse the #itemList id but are prose, not a card grid —
+   cancel the grid and let the content run in a single reading column. */
+#itemList.pages-list,
+.pages-list {
+  display: block;
+  grid-template-columns: none;
+  max-width: var(--content-width);
+  gap: 0;
+  margin: 0;
+}
 
+#itemList.pages-list .item,
+#itemList.pages-list > li,
+.pages-list > li {
+  display: block;
+  width: 100%;
+  max-width: none;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  transform: none;
+  cursor: default;
+}
+
+#itemList.pages-list > li:hover,
+.pages-list > li:hover {
+  border: none;
+  transform: none;
+}
 
 .pages-list ul,
-
 .pages-list li {
-
   height: 100%;
-
 }
 
+/* Body images run the full reading column, not the grid's icon row */
+.pages-list .card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  gap: 0;
+}
 
+.pages-list .card-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
 
 .pages-list .list-top .card-image img {
-
-  border-radius: 8px;
-
+  border-radius: var(--radius-lg);
   overflow: hidden;
-
 }
 
-
+.pages-list .card-content {
+  padding: var(--space-4) 0 0;
+}
 
 .pages-list .list-top .card-content .card-tags span {
-
-  font-size: 12px;
-
-  color: #0000006a;
-
-  font-weight: normal;
-
+  font-size: 13px;
+  color: var(--color-text-subtle);
+  font-weight: 500;
 }
-
-
 
 .pages-list .list-top .card-content .txt {
-
-  font-size: 15px;
-
-  font-weight: normal;
-
-  line-height: 1.6;
-
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  letter-spacing: -0.01em;
 }
-
-
 
 .list-container .endtxt {
-
-  font-size: 12px;
-
-  color: #666666a2;
-
-  padding: 24px;
-
+  font-size: 13px;
+  color: var(--color-text-subtle);
+  padding: var(--space-12) 0;
   display: block;
-
 }
 
-
-
-
-
 /* ========================================
-
    UTILITY CLASSES
-
    ======================================== */
-
-
 
 .flex {
-
   display: flex;
-
 }
-
-
 
 .row {
-
   flex-direction: row;
-
-  gap: 4px;
-
+  gap: var(--space-2);
   display: flex;
-
 }
-
-
 
 .bottom_gap {
-
-  margin-bottom: 16px;
-
-  max-width: 420px;
-
-  margin: 0 auto;
-
+  max-width: var(--content-width);
+  width: 100%;
+  margin-bottom: var(--space-4);
 }
-
-
 
 .bottom_margin {
-
-  margin-bottom: 24px;
-
+  margin-bottom: var(--space-6);
 }
-
-
 
 .txt-title {
-
   text-align: left;
-
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
-
-
 
 .txtinfo {
-
-  font-size: 12px;
-
+  font-size: 13px;
+  color: var(--color-text-subtle);
 }
-
-
 
 .blue {
-
-  background: #e3eaf1 !important;
-
+  background: var(--color-accent-soft) !important;
+  border-color: transparent !important;
 }
-
-
 
 .wait {
-
-  background: #f8e4e4;
-
-  color: #e87a7a !important;
-
-  border-radius: 16px;
-
-  padding: 4px !important;
-
+  background: #fef2f2;
+  color: #dc2626 !important;
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3) !important;
+  font-size: 12px;
+  font-weight: 500;
   position: absolute;
-
   top: 30px;
-
   left: 50%;
-
   transform: translate(-50%, -50%);
-
 }
 
-
-
-
-
 /* ========================================
-
-   ANIMATIONS
-
+   HERO / ANIMATIONS
    ======================================== */
-
-
 
 .anim img {
-
   width: 40%;
-
 }
-
-
 
 .gifimg {
-
   width: 50%;
-
-  border-radius: 16px;
-
+  border-radius: var(--radius-lg);
   overflow: hidden;
-
-  box-shadow: 1px 4px 14px #96a1d57c;
-
+  box-shadow: 0 8px 24px rgba(3, 7, 18, 0.12);
 }
-
-
 
 #anim {
-
-  width: 50%;
-
-  max-width: 200px;
-
-  margin: 0 auto;
-
-  text-align: center;
-
-}
-#anim h1{
-  font-size: 24px;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0;
+  text-align: left;
 }
 
+#anim h1 {
+  font-size: 52px;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  margin: var(--space-4) 0 var(--space-3);
+}
 
 #anim span {
-
-  background: #ffffff56;
-
-  /* border: 1px solid #ddd; */
-
-  font-size: 10px;
-
-  border-radius: 16px;
-
-  padding: 8px 10px;
-
-  font-weight: bold;
-
-  color: #00000071;
-
+  background: none;
+  font-size: 15px;
+  border-radius: 0;
+  padding: 0;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
 }
-
-
 
 #anim span b {
-
-  color: #00000009;
-
+  color: var(--color-text-faint);
 }
-
-
 
 #anim img {
-
-  width: 100%;
-
+  width: 120px;
   display: block;
-
-  margin: 0 auto;
-
+  margin: 0;
   animation: float 3s ease-in-out infinite;
-
 }
-
-
 
 #home svg {
-
   display: block;
-
-  margin: 0 auto;
-
-  
-
+  margin: 0;
+  max-width: 120px;
 }
-
-
 
 @keyframes float {
-
   0% {
-
     transform: translateY(0) rotate(0deg);
-
   }
-
   50% {
-
     transform: translateY(-10px) rotate(3deg);
-
   }
-
   100% {
-
     transform: translateY(0) rotate(0deg);
-
   }
-
 }
-
-
-
-@keyframes breathing-gradient {
-
-  0% {
-
-    background-position: 0% 0%;
-
-  }
-
-  100% {
-
-    background-position: 0% 25%;
-
-  }
-
-}
-
-
-
-@keyframes slideUpFadeIn {
-
-  from {
-
-    opacity: 0;
-
-    transform: translateY(20px);
-
-  }
-
-  to {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-  }
-
-}
-
-
-
-
 
 /* ========================================
-
-   FOOTER
-
+   TOAST
    ======================================== */
 
-footer{
+.reordering-toast {
   position: fixed;
-  bottom: 0;
+  top: calc(var(--header-height) + var(--space-8));
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(3, 7, 18, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.reordering-toast.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+  position: static;
   width: 100%;
-  
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5) var(--space-8);
+  box-sizing: border-box;
   z-index: 1;
 }
-footer .mask-bottom{
-  display: flex;
-  justify-content: space-between;
-  background: transparent;
-}
-
 
 footer p {
-  background: #000;
-  padding: 16px;
-  
-  font-size: 12px;
-
-  color: rgba(255, 255, 255, 0.479);
-
-  text-align: center;
-
+  background: none;
+  padding: var(--space-6) 0 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-text-subtle);
+  text-align: left;
   display: block;
-
-  margin: 0 auto;
-
+  margin: 0;
 }
 
-.reordering-toast {
-    position: absolute; /* list-container 기준 */
-    top: 120px; /* filterButtons 아래에 위치하도록 조정 */
-    left: 50%;
-    transform: translateX(-50%);
-    
-    /* 토스트 스타일 */
-       background-color: rgba(0, 0, 0, 0.484);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
-    color: rgba(255, 255, 255, 0.775);
-    padding: 10px 20px;
-    border-radius: 24px;
-    z-index: 1000; /* 다른 요소 위에 표시 */
-    opacity: 0; /* 기본적으로 숨김 */
-    visibility: hidden; /* 영역도 숨김 */
-    transition: opacity 0.3s, visibility 0.3s;
-    font-weight: 500;
-    font-size: 12px;
-}
-
-/* 표시 상태 */
-.reordering-toast.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-@media (min-width: 617px) {
-  .main-list #itemList{
-    max-width: 1200px;
-   
+@media (min-width: 768px) {
+  .bg,
+  .bg-list,
+  .bg-page {
+    padding-left: var(--space-10);
+    padding-right: var(--space-10);
   }
-  .main-list #list .list-container #itemList .item{
-      width: calc(33% - 5px);
-    }
+
+  header ul {
+    padding-left: var(--space-10);
+    padding-right: var(--space-10);
+  }
+
+  footer {
+    padding-left: var(--space-10);
+    padding-right: var(--space-10);
+  }
+
+  h1 {
+    font-size: 56px;
+  }
+
+  #anim h1 {
+    font-size: 60px;
+    letter-spacing: -0.055em;
+  }
+
+  .menu-icon-btn {
+    right: var(--space-6);
+  }
+
+  .back-icon-btn {
+    left: var(--space-6);
+  }
+
+  .overlay {
+    right: var(--space-6);
+  }
 }
 
-@media (min-width: 900px) {
-  .main-list #list .list-container #itemList .item{
-      width: calc(24% - 5px);
-    }
+@media (max-width: 640px) {
+  /* Blog rows collapse to a single column; the thumbnail leads the meta line */
+  #itemListBlog .item {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6) 0;
+  }
+
+  #itemListBlog .item .card-content .card-tags .card-title {
+    font-size: 18px;
+  }
+
+  #itemList {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
 }
