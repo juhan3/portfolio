@@ -240,18 +240,23 @@ footer .mask-bottom {
    OVERLAY MENU
    ======================================== */
 
+/* Reveal the panel with opacity/transform rather than a clipped max-height —
+   overflow:hidden would cut off the panel's drop shadow. */
 .overlay {
   position: fixed;
   top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
   right: var(--space-3);
   z-index: 100;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
 
 .overlay.open {
-  max-height: 600px;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .overlay .closebtn {
@@ -294,7 +299,7 @@ footer .mask-bottom {
 /* Notification Box */
 .notibox {
   max-width: var(--content-width);
-  margin: var(--space-2) 0;
+  margin: var(--space-2) auto;
   color: var(--color-text-muted);
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
@@ -328,7 +333,7 @@ footer .mask-bottom {
   max-width: var(--content-width);
   width: fit-content;
   display: inline-block;
-  align-self: flex-start;
+  align-self: center;
   padding: var(--space-3) var(--space-4);
   margin: var(--space-4) 0;
   background: var(--color-bg-subtle);
@@ -522,6 +527,8 @@ footer .mask-bottom {
   gap: var(--space-4);
   padding: 0;
   max-width: var(--content-width);
+  margin: 0 auto;
+  width: 100%;
 }
 
 .hidden-fade {
@@ -712,6 +719,8 @@ footer .mask-bottom {
   padding: var(--space-4) 0 0;
   display: block;
   max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
   border-top: 1px solid var(--color-border);
 }
 
@@ -812,7 +821,8 @@ footer .mask-bottom {
 /* itemListAbout — full-bleed image cards */
 #itemListAbout {
   max-width: var(--content-width);
-  margin: 0;
+  margin: 0 auto;
+  width: 100%;
 }
 
 #itemListAbout li {
@@ -884,7 +894,8 @@ footer .mask-bottom {
   grid-template-columns: none;
   max-width: var(--content-width);
   gap: 0;
-  margin: 0;
+  margin: 0 auto;
+  width: 100%;
 }
 
 #itemList.pages-list .item,
@@ -973,7 +984,7 @@ footer .mask-bottom {
 .bottom_gap {
   max-width: var(--content-width);
   width: 100%;
-  margin-bottom: var(--space-4);
+  margin: 0 auto var(--space-4);
 }
 
 .bottom_margin {
@@ -1028,8 +1039,8 @@ footer .mask-bottom {
 #anim {
   width: 100%;
   max-width: var(--content-width);
-  margin: 0;
-  text-align: left;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #anim h1 {
@@ -1057,13 +1068,13 @@ footer .mask-bottom {
 #anim img {
   width: 120px;
   display: block;
-  margin: 0;
+  margin: 0 auto;
   animation: float 3s ease-in-out infinite;
 }
 
 #home svg {
   display: block;
-  margin: 0;
+  margin: 0 auto;
   max-width: 120px;
 }
 
