@@ -137,9 +137,10 @@ hr {
 }
 
 /* The hero block is centred on the page, but its contents align left against a
-   shared edge — so the heading, bubble and buttons all share one baseline. */
+   shared edge — so the heading, bubble and intro all share one baseline.
+   It sizes to its content now that the two tall buttons are gone, keeping the
+   recent-work strip near the fold instead of pushing it off-screen. */
 section#home {
-  min-height: 62vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,7 +148,7 @@ section#home {
   width: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: var(--space-8) 0 var(--space-12);
+  padding: var(--space-12) 0;
 }
 
 .main-list {
@@ -1093,6 +1094,168 @@ footer .mask-bottom {
   }
   100% {
     transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* ========================================
+   INTRO TEXT
+   ======================================== */
+
+.intro-text {
+  max-width: 34em;
+  margin: var(--space-4) 0 0;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -0.015em;
+  color: var(--color-text-muted);
+}
+
+/* ========================================
+   RECENT WORK MARQUEE
+   ======================================== */
+
+#recent {
+  width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding-bottom: var(--space-16);
+}
+
+.recent-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  max-width: var(--content-width);
+  margin: 0 auto var(--space-6);
+}
+
+.recent-head h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.recent-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.recent-all-btn:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+}
+
+.recent-all-btn i {
+  font-size: 12px;
+}
+
+/* Full-bleed strip: the track scrolls edge to edge, faded at both ends */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+/* The track holds two identical sets of cards, so translating it -50% lands
+   exactly where it started and the reset is invisible. */
+.marquee-track {
+  display: flex;
+  gap: var(--space-6);
+  width: max-content;
+  padding: var(--space-2) 0;
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-track .item {
+  flex: 0 0 280px;
+  width: 280px;
+  max-height: none;
+  overflow: visible;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.marquee-track .item:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+.marquee-track .item .card-image {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: auto;
+}
+
+.marquee-track .item .card-content {
+  padding: 0;
+}
+
+.marquee-track .item .card-title {
+  font-size: 15px;
+  margin: 0;
+}
+
+.marquee-track .item .card-image-sub {
+  margin-top: var(--space-4);
+}
+
+.marquee-track .item .card-image-sub img {
+  height: 150px;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  .marquee {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .marquee-track .item {
+    flex-basis: 240px;
+    width: 240px;
+  }
+
+  .intro-text {
+    font-size: 16px;
   }
 }
 
