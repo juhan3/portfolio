@@ -1,0 +1,5 @@
+# 로컬 전용 글쓰기 관리 페이지 (저장소에 올리지 않습니다)
+admin.html
+admin/
+
+.DS_Store
