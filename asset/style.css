@@ -168,29 +168,47 @@ section#home {
    HEADER & NAVIGATION
    ======================================== */
 
+/* The bar itself spans the viewport; an inner row holds the controls and
+   title, centred at page width. Keeping the buttons in normal flow (rather
+   than pinned with position: fixed) means the header's height comes from its
+   content, so top and bottom padding stay symmetric and everything shares one
+   vertical centre line. */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: env(safe-area-inset-top, 0px);
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-5)
+    var(--space-3);
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--color-border);
   z-index: 10;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: none;
+}
+
+/* The title block sits between the two buttons and absorbs the leftover room,
+   so the menu button stays flush right without any reserved gutter. */
+header > ul {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 /* Header title block: "Intro" + subtitle */
 /* The title is a bare text node inside the <ul> with the tag line as an <li>.
    Flex lays the loose text out as an anonymous item, so the two sit on one row
    without needing a wrapper element in all 39 pages. */
+/* Title and tag line on one row. No gutter reservation is needed any more:
+   the buttons are real flex siblings, so they claim their own space. */
 header ul {
   background: none;
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding: var(--space-3) var(--space-5);
+  margin: 0;
+  padding: 0;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -199,23 +217,8 @@ header ul {
   box-sizing: border-box;
   display: flex;
   align-items: baseline;
-  gap: var(--space-3);
+  gap: var(--space-2);
   flex-wrap: wrap;
-}
-
-/* The icon buttons are fixed to the viewport edges while the title is a
-   centred max-width block, so below the page width the title runs under them.
-   Reserve the buttons' full width (edge offset + padding + glyph) plus a gap
-   on whichever side actually has one. */
-header ul {
-  padding-right: 68px;
-}
-
-/* The back button is a preceding sibling of the title, and it exists on detail
-   pages regardless of which .bg-* container wraps them — so key off the button
-   itself rather than the container class. */
-header:has(.back-icon-btn) ul {
-  padding-left: 68px;
 }
 
 header li {
@@ -231,19 +234,31 @@ footer .mask-bottom {
   display: none;
 }
 
+/* In-flow flex siblings of the title, so they centre against it vertically
+   and need no edge offsets of their own. */
 .menu-icon-btn,
 .back-icon-btn {
-  position: fixed;
-  top: calc(env(safe-area-inset-top, 0px) + var(--space-2));
-  padding: var(--space-2) var(--space-3);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   border-radius: var(--radius-full);
   background: none;
   color: var(--color-text-muted);
   border: none;
   font-size: 16px;
+  line-height: 1;
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
-  z-index: 11;
+}
+
+/* The menu button is the last child, pushed to the far edge by the title's
+   flex-grow; the back button leads the row. */
+.menu-icon-btn {
+  margin-left: auto;
 }
 
 .menu-icon-btn:hover,
@@ -252,12 +267,10 @@ footer .mask-bottom {
   color: var(--color-text);
 }
 
-.menu-icon-btn {
-  right: var(--space-3);
-}
-
+/* Pull the glyph back so its visual edge lines up with the title column
+   rather than the button's padding box. */
 .back-icon-btn {
-  left: var(--space-3);
+  margin-left: calc(var(--space-2) * -1);
 }
 
 .menu-icon-btn.hide {
@@ -1353,13 +1366,10 @@ footer p {
     padding-right: var(--space-10);
   }
 
-  header ul {
+  /* Match the body's gutter so the title lines up with the content column. */
+  header {
     padding-left: var(--space-10);
-    padding-right: 92px;
-  }
-
-  header:has(.back-icon-btn) ul {
-    padding-left: 92px;
+    padding-right: var(--space-10);
   }
 
   footer {
@@ -1374,14 +1384,6 @@ footer p {
   #anim h1 {
     font-size: 60px;
     letter-spacing: -0.055em;
-  }
-
-  .menu-icon-btn {
-    right: var(--space-6);
-  }
-
-  .back-icon-btn {
-    left: var(--space-6);
   }
 
   .overlay {

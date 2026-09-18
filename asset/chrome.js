@@ -50,13 +50,16 @@
         '<i class="fa-solid fa-chevron-left"></i></button>'
       : '';
 
+    // Order matters: back button, then the title (which grows to fill), then
+    // the menu button — so the title's flex-grow pushes the menu to the far
+    // right edge. Emitting the menu before the title would strand it on the left.
     host.innerHTML =
       backBtn +
-      '<button class="menu-icon-btn" onclick="openNav()">' +
-      '<i class="fa-solid fa-bars"></i></button>' +
       '<ul>' + escapeHtml(title) +
       (sub ? '<li>' + escapeHtml(sub) + '</li>' : '') +
-      '</ul>';
+      '</ul>' +
+      '<button class="menu-icon-btn" onclick="openNav()">' +
+      '<i class="fa-solid fa-bars"></i></button>';
 
     if (!host.hasAttribute('data-aos')) host.setAttribute('data-aos', 'fade-down');
   }
