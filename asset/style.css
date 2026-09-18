@@ -196,6 +196,18 @@ header ul {
   box-sizing: border-box;
 }
 
+/* The icon buttons are fixed to the viewport edges while the title is a
+   centred max-width block, so below the page width the title runs under them.
+   Reserve the buttons' full width (edge offset + padding + glyph) plus a gap
+   on whichever side actually has one. */
+header ul {
+  padding-right: 68px;
+}
+
+.bg-page header ul {
+  padding-left: 68px;
+}
+
 header li {
   font-size: 12px;
   font-weight: 500;
@@ -677,12 +689,14 @@ footer .mask-bottom {
   cursor: pointer;
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.4s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition: opacity 0.4s ease, transform 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 #itemList .item:hover {
   border-color: var(--color-border-strong);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(3, 7, 18, 0.06), 0 2px 4px rgba(3, 7, 18, 0.04);
 }
 
 #itemList .item.hidden {
@@ -1197,12 +1211,13 @@ footer .mask-bottom {
   padding: var(--space-4);
   box-sizing: border-box;
   cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .marquee-track .item:hover {
   border-color: var(--color-border-strong);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(3, 7, 18, 0.06), 0 2px 4px rgba(3, 7, 18, 0.04);
 }
 
 .marquee-track .item .card-image {
@@ -1326,7 +1341,11 @@ footer p {
 
   header ul {
     padding-left: var(--space-10);
-    padding-right: var(--space-10);
+    padding-right: 92px;
+  }
+
+  .bg-page header ul {
+    padding-left: 92px;
   }
 
   footer {
