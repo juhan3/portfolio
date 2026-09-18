@@ -695,8 +695,9 @@ footer .mask-bottom {
 
 #itemList .item:hover {
   border-color: var(--color-border-strong);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(3, 7, 18, 0.06), 0 2px 4px rgba(3, 7, 18, 0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(3, 7, 18, 0.12), 0 6px 12px rgba(3, 7, 18, 0.08),
+    0 2px 4px rgba(3, 7, 18, 0.04);
 }
 
 #itemList .item.hidden {
@@ -1188,11 +1189,14 @@ footer .mask-bottom {
 
 /* The track holds two identical sets of cards, so translating it -50% lands
    exactly where it started and the reset is invisible. */
+/* Vertical padding leaves room for the hover shadow (16px offset + 16px blur
+   spread + 4px lift = 36px), which the .marquee wrapper's overflow: hidden
+   would otherwise clip. */
 .marquee-track {
   display: flex;
   gap: var(--space-6);
   width: max-content;
-  padding: var(--space-2) 0;
+  padding: 40px 0;
   animation: marquee-scroll 45s linear infinite;
 }
 
@@ -1216,8 +1220,9 @@ footer .mask-bottom {
 
 .marquee-track .item:hover {
   border-color: var(--color-border-strong);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(3, 7, 18, 0.06), 0 2px 4px rgba(3, 7, 18, 0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(3, 7, 18, 0.12), 0 6px 12px rgba(3, 7, 18, 0.08),
+    0 2px 4px rgba(3, 7, 18, 0.04);
 }
 
 .marquee-track .item .card-image {
