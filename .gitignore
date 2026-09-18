@@ -3,3 +3,4 @@ admin.html
 admin/
 
 .DS_Store
+admin-import.json
