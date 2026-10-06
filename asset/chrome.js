@@ -22,10 +22,9 @@
   const PREFIX = detectPrefix();
 
   const NAV_LINKS = [
-    { href: 'index.html', label: 'Intro' },
     { href: 'list-about.html', label: 'About' },
     { href: 'mailto:sixths_misuse8p@icloud.com', label: 'Contact', external: true },
-    { href: 'list.html', label: 'Project' },
+    { href: 'index.html', label: 'Project' },
     { href: 'list-blog.html', label: 'Blog' }
   ];
 
@@ -58,7 +57,7 @@
       '<ul>' + escapeHtml(title) +
       (sub ? '<li>' + escapeHtml(sub) + '</li>' : '') +
       '</ul>' +
-      '<button class="menu-icon-btn" onclick="openNav()">' +
+      '<button class="menu-icon-btn" onclick="toggleNav()" aria-label="메뉴">' +
       '<i class="fa-solid fa-bars"></i></button>';
 
     if (!host.hasAttribute('data-aos')) host.setAttribute('data-aos', 'fade-down');
@@ -93,10 +92,32 @@
     host.innerHTML = '<p>&copy; 2025 Juhankim. All rights reserved.</p>';
   }
 
+  // 메뉴 아이콘은 열기/닫기를 오갑니다.
+  window.toggleNav = function () {
+    const nav = document.getElementById('myNav');
+    if (nav) nav.classList.toggle('open');
+  };
+
+  // 메뉴 바깥을 누르거나 Esc 를 누르면 닫습니다.
+  // 메뉴 아이콘 클릭은 toggleNav 가 처리하므로 여기서는 건너뜁니다.
+  function bindNavDismiss() {
+    document.addEventListener('click', function (e) {
+      const nav = document.getElementById('myNav');
+      if (!nav || !nav.classList.contains('open')) return;
+      if (nav.contains(e.target) || e.target.closest('.menu-icon-btn')) return;
+      nav.classList.remove('open');
+    });
+    document.addEventListener('keydown', function (e) {
+      const nav = document.getElementById('myNav');
+      if (e.key === 'Escape' && nav) nav.classList.remove('open');
+    });
+  }
+
   function init() {
     const header = document.querySelector('header');
     if (header) renderHeader(header);
     renderNav();
+    bindNavDismiss();
     const footer = document.querySelector('footer');
     if (footer) renderFooter(footer);
   }

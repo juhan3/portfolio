@@ -4,3 +4,6 @@ admin/
 
 .DS_Store
 admin-import.json
+
+# 관리 페이지 전용 로컬 서버
+admin-server.py
