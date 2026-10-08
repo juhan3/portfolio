@@ -2,692 +2,270 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juhan Kim</title>
     <link rel="stylesheet" href="asset/style.css?v=6">
+    <link rel="stylesheet" href="asset/home.css?v=5">
     <script src="asset/script.js?v=2"></script>
-    <script src="asset/chrome.js?v=4"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="asset/chrome.js?v=5"></script>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
     <link rel="stylesheet" href="asset/icon/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="bg-list">
-        <header data-title="Portfolio" data-sub="#8년차 #UX/UI #디자인 #구로구" data-aos="fade-down"></header>
+    <!-- 제목(Portfolio)을 누르면 기존 프로젝트 목록(list.html)으로 갑니다. -->
+    <header data-title="Portfolio" data-sub="#8년차 #UX/UI #디자인 #구로구" data-href="list.html"></header>
 
-        <!-- 커버: 이름과 현재 상태를 짧게 보여주고 바로 프로젝트 목록으로 이어집니다. -->
-        <section class="list-cover" data-aos="fade">
-            <h2>Juhan Kim</h2>
-            <span>현재 구직중 | Product Designer</span>
+    <main class="home">
+
+        <!-- 1. 히어로: 최근 작업 썸네일이 가운데 이름을 중심으로 나선을 따라 돕니다.
+             스크롤하면 소용돌이가 다가오며 흐려지고 아래 작업 줄이 올라옵니다. -->
+        <section class="hero-scroll" id="hero">
+            <div class="hero-sticky">
+                <svg class="orbit-rings" id="orbitRings" aria-hidden="true"></svg>
+
+                <!-- 썸네일 목록. 순서대로 나선에 고르게 놓입니다. 바꾸려면 여기만 고치면 됩니다. -->
+                <div class="orbit" id="orbit">
+                    <a class="orbit-card" href="pages/22.html" tabindex="-1"><img src="asset/imgs/24_09.png" alt="제품 디자인"></a>
+                    <a class="orbit-card" href="pages/1.html" tabindex="-1"><img src="asset/imgs/1-1.png" alt="앱테크 서비스"></a>
+                    <a class="orbit-card" href="pages/24.html" tabindex="-1"><img src="asset/imgs/27h-1.gif" alt="로티 애니메이션"></a>
+                    <a class="orbit-card" href="pages/2.html" tabindex="-1"><img src="asset/imgs/2-1.png" alt="패션SNS"></a>
+                    <a class="orbit-card" href="pages/3.html" tabindex="-1"><img src="asset/imgs/3-1.png" alt="플랫폼 앨범"></a>
+                    <a class="orbit-card" href="pages/5.html" tabindex="-1"><img src="asset/imgs/6.png" alt="페이스 트래킹"></a>
+                    <a class="orbit-card" href="pages/4.html" tabindex="-1"><img src="assets/img/img_works/2022-2024/wonder/sicpama01.png" alt=""></a>
+                    <a class="orbit-card" href="pages/6.html" tabindex="-1"><img src="assets/img/img_works/2022-2024/persneltutor/personel02.png" alt="튜터 매칭 서비스"></a>
+                    <a class="orbit-card" href="pages/7.html" tabindex="-1"><img src="assets/img/img_works/2022-2024/voicehelper/vocie02.png" alt="음성음식 강의 서비스"></a>
+                    <a class="orbit-card" href="pages/8.html" tabindex="-1"><img src="assets/img/img_works/2022-2024/aienb/aie01.png" alt="원격 강의 서비스"></a>
+                    <a class="orbit-card" href="pages/9.html" tabindex="-1"><img src="assets/img/img_works/2022-2024/osm/osm1.png" alt=""></a>
+                    <a class="orbit-card" href="pages/10.html" tabindex="-1"><img src="assets/img/img_works/2022-2024/brainelearning/brain04.png" alt=""></a>
+                    <a class="orbit-card" href="pages/28.html" tabindex="-1"><img src="asset/imgs/42.png" alt="1인 게임제작"></a>
+                    <a class="orbit-card" href="pages/26.html" tabindex="-1"><img src="asset/imgs/36.png" alt="홈페이지 디자인"></a>
+                </div>
+
+                <div class="hero-center">
+                    <h1 class="hero-title">Juhan Kim</h1>
+                    <p class="hero-lead">Product Designer <em>since 2014.</em></p>
+                    <p class="hero-desc">2014년부터 인하우스 디자이너로 일해왔으며,<br>서비스 기획과 UX/UI 디자인을 위주로 작업해오고 있습니다.</p>
+                    <div class="hero-actions">
+                        <a class="hero-btn primary" href="list.html">프로젝트 보기</a>
+                        <a class="hero-btn" href="list-about.html">About</a>
+                    </div>
+                    <div class="hero-meta">
+                        <span>UX/UI · Product</span>
+                        <span>Based in Seoul</span>
+                        <span>현재 구직중</span>
+                    </div>
+                </div>
+
+                <span class="hero-hint">Scroll <i class="fa-solid fa-arrow-down"></i></span>
+            </div>
         </section>
 
-
-    <main class="main-list" data-aos="fade-up">
-        
-        <section id="list"> 
-          <div class="list-container">
-            <div id="filterButtons">
-              <button data-filter="all" class="filter-btn active">All</button>
-              <button data-filter="mobile" class="filter-btn"># Mobile</button>
-              <button data-filter="tablet" class="filter-btn"># Tablet</button>
-              <button data-filter="web" class="filter-btn"># Web</button>
-              <button data-filter="unity" class="filter-btn"># Unity</button>
-              <button data-filter="graphic" class="filter-btn"># Graphic</button>
-              <button data-filter="animation" class="filter-btn"># Animation</button>
-              <button data-filter="video" class="filter-btn"># Video</button>
-              <button data-filter="admin" class="filter-btn"># Admin</button>
-              <button data-filter="3d" class="filter-btn"># 3d</button>
-              <button data-filter="released" class="filter-btn"># Released</button>
-              <button data-filter="strategy" class="filter-btn"># Strategy</button>
-              <button data-filter="game" class="filter-btn"># Game</button>
+        <!-- 2. 최근 작업: list.html 의 최신 카드 몇 장을 한 줄로 자동 슬라이드합니다. -->
+        <section class="home-works" id="works">
+            <div class="home-works-head">
+                <span>Recent Work</span>
+                <a href="list.html">전체보기 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div id="reorderingToast" class="reordering-toast">
-               <i class="fa-solid fa-circle-notch
- fa-spin"></i> 재정렬 중...
+
+            <!-- 카드 모양은 목록과 같도록 #itemList 스타일을 그대로 씁니다. -->
+            <div class="marquee" id="worksStrip">
+                <ul class="marquee-track" id="itemList"></ul>
             </div>
-            <ul id="itemList">
-
-
-                <li class="item 3d" onclick="location.href='pages/22.html'">
-                  <div class="card-image">
-                      <img class="appicon" src="asset/imgs/posts/96x96ia-75-3.webp" loading="lazy" alt="서비스 카드 이미지">
-                         <div class="card-content">
-                      <div class="card-tags">
-                          <span>#3d</span>
-                      </div>
-                      <p class="card-title">제품 디자인<small>2025</small></p>
-                  </div>
-                    </div>
-                   <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-7.webp" loading="lazy" alt="서비스 카드 이미지">
-                   
-                  </div>
-                 
-              </li>
-
-
-              <li class="item mobile released web strategy" onclick="location.href='pages/1.html'">
-                  <div class="card-image">
-                      <img class="appicon" src="asset/imgs/posts/96x96ia-75.webp" loading="lazy" alt="서비스 카드 이미지">
-                      <div class="card-content">
-                      <div class="card-tags">
-                          <span>#mobile #tablet #released</span>
-                      </div>
-                      <p class="card-title">앱테크 서비스<small>2025</small></p>
-                  </div>
-                  </div>
-                  <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb (1).webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb (2).webp" loading="lazy" alt="서비스 카드 이미지">
-                  
-                  </div>
-                  
-              </li>
-
-
-
-               <li class="item graphic animation" onclick="location.href='pages/24.html'">
-                  <div class="card-image">
-                      <img class="appicon" src="asset/imgs/posts/96x96ia-75-4.webp" loading="lazy" alt="서비스 카드 이미지">
-                         <div class="card-content">
-                      <div class="card-tags">
-                          <span>#lottie #animation</span>
-                      </div>
-                      <p class="card-title">로티 애니메이션<small>2025</small></p>
-                  </div>
-                    </div>
-
-
-                     <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-8.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-                  
-                 
-              </li>
-
-
-
-              <li class="item mobile released" onclick="location.href='pages/2.html'">
-                  <div class="card-image">
-                      <img  class="appicon" src="asset/imgs/posts/96x96ia-75-1.webp"  loading="lazy" alt="서비스 카드 이미지">
-                     <div class="card-content">
-                      <div class="card-tags"><span>#mobile #released</span></div>
-                      <p class="card-title">패션SNS<small>2024</small></p>
-                  </div>
-                    </div>
-
-                    <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-1.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-2.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-3.webp" loading="lazy" alt="서비스 카드 이미지">
-                  
-                  </div>
-                 
-              </li>
-
-              
-              <li class="item mobile released strategy video" onclick="location.href='pages/3.html'">
-                  <div class="card-image">
-                      <img class="appicon" src="asset/imgs/posts/96x96ia-75-2.webp"  loading="lazy" alt="서비스 카드 이미지">
-                   <div class="card-content">
-                      <div class="card-tags"><span>#mobile #released</span></div>
-                      <p class="card-title">플랫폼 앨범<small>2023</small></p>
-                  </div>
-                    </div>
-
-                    <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-4.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-5.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-6.webp" loading="lazy" alt="서비스 카드 이미지">
-                  
-                  </div>
-                 
-              </li>
-
-
-              <li class="item video released strategy" onclick="location.href='pages/23.html'">
-                  <div class="card-image">
-                      <img class="appicon" src="asset/imgs/posts/96x96ia-75-5.webp"  loading="lazy" alt="서비스 카드 이미지">
-                         <div class="card-content">
-                      <div class="card-tags"><span>#video #released</span></div>
-                      <p class="card-title">플랫폼 앨범 홍보영상<small>2023</small></p>
-                  </div>
-                    </div>
-
-
-                     <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-9.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-                 
-              </li>
-
-
-              <li class="item unity released strategy video" onclick="location.href='pages/5.html'">
-                  <div class="card-image">
-                      <img class="appicon" src="asset/imgs/posts/96x96ia-75-6.webp"  loading="lazy" alt="서비스 카드 이미지">
-                  
-                    <div class="card-content">
-                      <div class="card-tags"><span>#unity #released</span></div>
-                      <p class="card-title">페이스 트래킹<small>2023</small></p>
-                  </div>
-                  
-                    </div>
-
-
-                    <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-10.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-                  
-              </li>
-
-              <!-- <li class="item mobile tablet admin strategy video" onclick="location.href='pages/4.html'">
-                <div class="card-image">
-                    <img src="asset/imgs/4.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #tablet</span></div>
-                    <p class="card-title">테이블 오더<small>2022</small></p>
-                </div>
-              </li> -->
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/6.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/96x96ia-75-8.webp"  loading="lazy" alt="서비스 카드 이미지">
-                     <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">튜터 매칭 서비스<small>2022</small></p>
-                </div>
-                </div>
-               
-
-
-                <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-12.webp" loading="lazy" alt="서비스 카드 이미지">
-                     <img class="screen" src="asset/imgs/posts/266x576bb-13.webp" loading="lazy" alt="서비스 카드 이미지">
-                     <img class="screen" src="asset/imgs/posts/266x576bb-14.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-
-
-              </li>
-
-
-              <li class="item web strategy" onclick="location.href='pages/7.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/96x96ia-75-7.webp"  loading="lazy" alt="서비스 카드 이미지">
-                    <div class="card-content">
-                    <div class="card-tags"><span>#web #strategy</span></div>
-                    <p class="card-title">음성음식 강의 서비스<small>2023</small></p>
-                </div>
-                
-                </div>
-
-
-                    <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-11.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-                
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/8.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/96x96ia-75-9.webp"  loading="lazy" alt="서비스 카드 이미지">
-                    <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
-                </div>
-                </div>
-
-                  <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-15.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-16.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-                
-              </li>
-
-
-
-              <li class="item tablet strategy" onclick="location.href='pages/9.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/96x96ia-75-10.webp"  loading="lazy" alt="서비스 카드 이미지">
-                     <div class="card-content">
-                    <div class="card-tags"><span>#tablet #strategy</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
-                </div>
-                </div>
-               
-                  <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-17.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-              </li>
-
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/10.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/96x96ia-75-11.webp"  loading="lazy" alt="서비스 카드 이미지">
-                     <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2022</small></p>
-                </div>
-                </div>
-
-                  <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-18.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/266x576bb-19.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-               
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/11.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/appicon1.webp"  loading="lazy" alt="서비스 카드 이미지">
-                     <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2021</small></p>
-                </div>
-                </div>
-               
-
-                 <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/screen1.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/screen2.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/screen3.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/12.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/appicon2.webp"  loading="lazy" alt="서비스 카드 이미지">
-                    <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">원격 강의 서비스<small>2021</small></p>
-                </div>
-                </div>
-
-                 <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/screen4.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/screen5.webp" loading="lazy" alt="서비스 카드 이미지">
-                    <img class="screen" src="asset/imgs/posts/screen6.webp" loading="lazy" alt="서비스 카드 이미지">
-                    
-                  </div>
-
-                
-              </li>
-
-
-              <li class="item web strategy" onclick="location.href='pages/13.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/96x96ia-75-7.webp"  loading="lazy" alt="서비스 카드 이미지">
-                    <div class="card-content">
-                    <div class="card-tags"><span>#web #strategy</span></div>
-                    <p class="card-title">한국어 자격증 취득<small>2021</small></p>
-                </div>
-                </div>
-
-                <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/screen7.webp" loading="lazy" alt="서비스 카드 이미지">
-                   
-                  </div>
-                
-              </li>
-
-              <li class="item mobile unity released" onclick="location.href='pages/14.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/appicon3.webp"  loading="lazy" alt="서비스 카드 이미지">
-                     <div class="card-content">
-                    <div class="card-tags"><span>#mobile #unity</span></div>
-                    <p class="card-title">영어 게임 서비스<small>2020</small></p>
-                </div>
-                </div>
-
-                 <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/screen8.webp" loading="lazy" alt="서비스 카드 이미지">
-                   
-                  </div>
-               
-              </li>
-
-
-              <li class="item mobile strategy" onclick="location.href='pages/15.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/appicon4.webp"  loading="lazy" alt="서비스 카드 이미지">
-                    
-                     <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
-                </div>
-                </div>
-
-                 <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/screen10.webp" loading="lazy" alt="서비스 카드 이미지">
-                   <img class="screen" src="asset/imgs/posts/screen11.webp" loading="lazy" alt="서비스 카드 이미지">
-                   <img class="screen" src="asset/imgs/posts/screen12.webp" loading="lazy" alt="서비스 카드 이미지">
-                   
-                  </div>
-               
-              </li>
-              
-
-
-              <li class="item web strategy" onclick="location.href='pages/16.html'">
-                <div class="card-image">
-                    <img class="appicon" src="asset/imgs/posts/96x96ia-75-7.webp"  loading="lazy" alt="서비스 카드 이미지">
-                    <div class="card-content">
-                    <div class="card-tags"><span>#web #strategy</span></div>
-                    <p class="card-title">마케팅 솔루션<small>2020</small></p>
-                </div>
-                </div>
-
-                 <div class="card-image-sub">
-                    <img class="screen" src="asset/imgs/posts/screen9.webp" loading="lazy" alt="서비스 카드 이미지">
-                   
-                  </div>
-                
-              </li>
-
-
-              <li class="item mobile strategy">
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/18.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item web released" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/19.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web</span></div>
-                    <p class="card-title">로보 어드바이저<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile strategy" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/20.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #strategy</span></div>
-                    <p class="card-title">사내 기획 제안서<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile released" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/21.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile</span></div>
-                    <p class="card-title">영어 단어장<small>2020</small></p>
-                </div>
-              </li>
-
-
-              <li class="item released mobile" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/22.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile</span></div>
-                    <p class="card-title">영어 단어장<small>2020</small></p>
-                </div>
-              </li>
-              
-
-
-              <li class="item mobile released" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/23.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile</span></div>
-                    <p class="card-title">학습 서비스<small>2020</small></p>
-                </div>
-              </li>
-
-              <li class="item 3d" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/25.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#3d</span></div>
-                    <p class="card-title">제품 디자인<small>2023</small></p>
-                </div>
-              </li>
-
-
-              <li class="item 3d" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/26.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#3d</span></div>
-                    <p class="card-title">제품 디자인<small>2021</small></p>
-                </div>
-              </li>
-
-
-
-              <li class="item mobile web" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/39.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile</span></div>
-                    <p class="card-title">인터넷 전화 상점<small>2019</small></p>
-                </div>
-              </li>
-
-
-              <li class="item mobile" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/29.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile</span></div>
-                    <p class="card-title">영어 만화 서비스<small>2019</small></p>
-                </div>
-              </li>
-
-
-
-              <li class="item web released" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/30.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web</span></div>
-                    <p class="card-title">온라인 모의고사<small>2019</small></p>
-                </div>
-              </li>
-
-
-               <li class="item mobile released" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/32.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile</span></div>
-                    <p class="card-title">학습용 스캔펜 어플<small>2019</small></p>
-                </div>
-              </li>
-
-
-               <li class="item graphic released" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/33.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#graphic</span></div>
-                    <p class="card-title">TV 스크린 디자인<small>2018</small></p>
-                </div>
-              </li>
-
-
-
-               <li class="item mobile web" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/34.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#mobile #web</span></div>
-                    <p class="card-title">인터넷전화 기반 영어 학습<small>2018</small></p>
-                </div>
-              </li>
-
-
-
-              <li class="item 3d" >
-                <div class="card-image">
-                    <span class="wait">작성예정</span>
-                    <img src="asset/imgs/35.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#3d </span></div>
-                    <p class="card-title">제품 디자인<small>2018</small></p>
-                </div>
-              </li>
-
-
-
-
-               <li class="item web released" onclick="location.href='pages/26.html'">
-                <div class="card-image">
-                   
-                    <img src="asset/imgs/36.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web </span></div>
-                    <p class="card-title">홈페이지 디자인<small>2018</small></p>
-                </div>
-              </li>
-
-
-
-              <li class="item web released" onclick="location.href='pages/25.html'">
-                <div class="card-image">
-                    
-                    <img src="asset/imgs/38.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#web </span></div>
-                    <p class="card-title">오픈마켓 커머스<small>2014~2016</small></p>
-                </div>
-              </li>
-
-
-              <li class="item game released" onclick="location.href='https://juhankimgames.blogspot.com/p/cocus.html'">
-                <div class="card-image">
-                    
-                    <img src="asset/imgs/44.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#game #released </span></div>
-                    <p class="card-title">1인 게임제작<small>2022</small></p>
-                </div>
-              </li>
-
-
-              <li class="item game released" onclick="location.href='https://juhankimgames.blogspot.com/p/cica_11.html'">
-                <div class="card-image">
-                    
-                    <img src="asset/imgs/43.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#game #released </span></div>
-                    <p class="card-title">1인 게임제작<small>2022</small></p>
-                </div>
-              </li>
-
-
-
-              <li class="item game released" onclick="location.href='pages/28.html'">
-                <div class="card-image">
-                    
-                    <img src="asset/imgs/42.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#game #released </span></div>
-                    <p class="card-title">1인 게임제작<small>2022</small></p>
-                </div>
-              </li>
-
-              <li class="item game released" onclick="location.href='https://juhankimgames.blogspot.com/p/dolls-forst_12.html'">
-                <div class="card-image">
-                    
-                    <img src="asset/imgs/41.png"  loading="lazy" alt="서비스 카드 이미지">
-                </div>
-                <div class="card-content">
-                    <div class="card-tags"><span>#game #released </span></div>
-                    <p class="card-title">1인 게임제작<small>2022</small></p>
-                </div>
-              </li>
-
-
-              
-              
-              
-              </ul>
-              <span class="endtxt">*더 이상 항목이 없습니다.</span>
-        </div>
-        
-
         </section>
 
     </main>
 
+    <footer></footer>
 
-</div>
-<footer></footer>
+    <script>
+    (function () {
+        'use strict';
 
+        const RECENT = 6;   // 첫 화면 슬라이드에 넣을 최신 카드 수
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        // ── 소용돌이 ──────────────────────────────────────────
+        // 카드마다 나선 위의 진행도 u(0=가운데·멀리 → 1=바깥·가까이)를 두고,
+        // 시간이 흐르면 u 가 늘어나 가운데에서 바깥으로 돌며 다가옵니다.
+        // 바깥 끝에 닿으면 가운데에서 다시 시작해 끊김 없이 순환합니다.
+        const hero = document.getElementById('hero');
+        const orbit = document.getElementById('orbit');
+        const ringsSvg = document.getElementById('orbitRings');
+        const center = document.querySelector('.hero-center');
+        const hint = document.querySelector('.hero-hint');
+        const cards = [...orbit.querySelectorAll('.orbit-card')];
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init(); // 라이브러리 초기화
-</script>
+        const CYCLE = 48;          // 카드 하나가 가운데→바깥까지 가는 시간(초)
+        const TURNS = 0.9;         // 그동안 도는 바퀴 수(나선의 감김 정도)
+        const SPIN = 0.012;        // 전체가 천천히 도는 속도(바퀴/초)
+
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+        const ease = t => 1 - Math.pow(1 - t, 3);
+        const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+
+        let W = 0, H = 0, RMAX = 0, BASE = 200;
+
+        // 나선 위 위치. u 에 따라 반지름이 바깥으로 빠르게 커집니다.
+        const radiusAt = u => RMAX * (0.16 + 0.92 * Math.pow(u, 1.25));
+        const angleAt = (u, phase) => phase + u * TURNS * Math.PI * 2;
+
+        function layout() {
+            W = hero.querySelector('.hero-sticky').clientWidth;
+            H = hero.querySelector('.hero-sticky').clientHeight;
+            RMAX = Math.hypot(W, H) / 2;
+            BASE = clamp(W * 0.15, 120, 230);
+            drawRings();
+        }
+
+        // 동심원 몇 개와, 카드가 지나는 길과 같은 나선 하나를 그립니다.
+        function drawRings() {
+            const cx = W / 2, cy = H / 2;
+            let html = '';
+            for (let k = 1; k <= 7; k++) {
+                html += '<circle cx="' + cx + '" cy="' + cy + '" r="' + radiusAt(k / 7).toFixed(1) + '"/>';
+            }
+            let d = '';
+            for (let i = 0; i <= 160; i++) {
+                const u = i / 160, r = radiusAt(u), a = angleAt(u, 0);
+                d += (i ? 'L' : 'M') + (cx + Math.cos(a) * r).toFixed(1) + ' ' + (cy + Math.sin(a) * r).toFixed(1);
+            }
+            html += '<g id="spiral"><path d="' + d + '"/></g>';
+            ringsSvg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+            ringsSvg.innerHTML = html;
+        }
+
+        let clock = 0, last = performance.now(), paused = false;
+
+        function drawOrbit(now) {
+            const dt = Math.min(0.05, (now - last) / 1000);
+            last = now;
+            if (!paused && !reduce) clock += dt;
+
+            const spin = clock * SPIN * Math.PI * 2;
+            const n = cards.length;
+            const spiral = document.getElementById('spiral');
+            if (spiral) spiral.setAttribute('transform', 'rotate(' + (spin * 180 / Math.PI) + ' ' + W / 2 + ' ' + H / 2 + ')');
+
+            cards.forEach((card, i) => {
+                // 카드끼리 겹치지 않게 진행도를 고르게 나누고, 출발 각도도 황금각으로 흩어 둡니다.
+                const u = ((i / n) + clock / CYCLE) % 1;
+                const a = angleAt(u, spin + i * 2.39996);
+                const r = radiusAt(u);
+                const x = Math.cos(a) * r, y = Math.sin(a) * r;
+                const s = 0.38 + 1.05 * Math.pow(u, 1.35);
+
+                // 화면 가장자리로 갈수록 중심 쪽을 보도록 기울여 입체감을 줍니다.
+                const ry = clamp(x / (W / 2), -1.2, 1.2) * -32;
+                const rx = clamp(y / (H / 2), -1.2, 1.2) * 22;
+                const rz = Math.sin(a) * 4;
+
+                card.style.setProperty('--card-w', BASE + 'px');
+                card.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) ' +
+                    'rotateY(' + ry.toFixed(2) + 'deg) rotateX(' + rx.toFixed(2) + 'deg) rotateZ(' + rz.toFixed(2) + 'deg) ' +
+                    'scale(' + s.toFixed(3) + ')';
+                card.style.opacity = (smooth(0, 0.12, u) * (1 - smooth(0.9, 1, u))).toFixed(3);
+
+                // 가까운 카드는 이름 위로, 먼 카드는 이름 뒤로 지나갑니다.
+                card.style.zIndex = u > 0.62 ? 3 : 1;
+                card.classList.toggle('far', u < 0.22);
+                card.classList.toggle('mid', u >= 0.22 && u < 0.4);
+            });
+
+            if (!reduce) requestAnimationFrame(drawOrbit);
+        }
+
+        // 카드에 마우스를 올리면 잠시 멈춰 누를 수 있게 합니다.
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => { paused = true; });
+            card.addEventListener('mouseleave', () => { paused = false; });
+        });
+
+        // ── 히어로 스크롤 전환 ───────────────────────────────
+        // 히어로 구간(170vh)을 지나는 비율 p(0→1)에 따라
+        // 소용돌이는 다가오듯 커지며 흐려지고, 가운데 글은 위로 밀리며 사라집니다.
+        function render() {
+            const r = hero.getBoundingClientRect();
+            const range = hero.offsetHeight - window.innerHeight;
+            const p = range > 0 ? clamp(-r.top / range, 0, 1) : 0;
+            const e = ease(p);
+
+            const zoom = 'scale(' + (1 + e * 0.7) + ')';
+            orbit.style.transform = zoom;
+            ringsSvg.style.transform = zoom;
+            orbit.style.opacity = ringsSvg.style.opacity = String(1 - clamp(p * 1.2, 0, 1));
+
+            center.style.transform = 'translateY(' + (-e * 120) + 'px)';
+            center.style.opacity = String(1 - clamp(p * 1.5, 0, 1));
+            hint.style.opacity = String(1 - clamp(p * 4, 0, 1));
+        }
+
+        layout();
+        window.addEventListener('resize', () => { layout(); render(); });
+        requestAnimationFrame(t => { last = t; drawOrbit(t); });
+
+        if (!reduce) {
+            let queued = false;
+            const onScroll = () => {
+                if (queued) return;
+                queued = true;
+                requestAnimationFrame(() => { queued = false; render(); revealVisible(); });
+            };
+            // style.css 는 body 가 스크롤 컨테이너라, 캡처 단계에서 모든 스크롤을 받습니다.
+            document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+        }
+        render();
+
+        // ── 최근 작업 슬라이드 ────────────────────────────────
+        // 카드 마크업을 따로 두지 않고 list.html 에서 가져옵니다.
+        // 목록을 고치면 첫 화면도 따라 바뀝니다.
+        const strip = document.getElementById('worksStrip');
+        const list = document.getElementById('itemList');
+
+        // body 가 스크롤 컨테이너라 IntersectionObserver 가 스크롤 중에 갱신되지 않는
+        // 경우가 있어, 히어로와 같은 스크롤 처리에서 위치로 직접 판정합니다.
+        let stripShown = false;
+
+        function revealVisible() {
+            if (stripShown || !list.children.length) return;
+            if (strip.getBoundingClientRect().top > window.innerHeight * 0.92) return;
+            strip.classList.add('in');
+            stripShown = true;
+        }
+
+        fetch('list.html', { cache: 'no-cache' })
+            .then(res => { if (!res.ok) throw new Error(res.status); return res.text(); })
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const items = [...doc.querySelectorAll('#itemList > li.item')]
+                    .slice(0, RECENT).map(li => document.importNode(li, true));
+                // 흐르는 줄이라 화면 밖 카드도 곧 들어옵니다. 지연 로딩을 풀어
+                // 들어오는 순간 빈 이미지가 보이지 않게 합니다.
+                items.forEach(li => li.querySelectorAll('img[loading]').forEach(img => img.removeAttribute('loading')));
+                items.forEach(li => list.appendChild(li));
+
+                // 같은 카드를 한 벌 더 붙여 두면 -50% 지점이 처음과 같아져
+                // 되감을 때 이음매가 보이지 않습니다.
+                items.forEach(li => {
+                    const clone = li.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    list.appendChild(clone);
+                });
+
+                if (reduce) strip.classList.add('in'), stripShown = true;
+                else revealVisible();
+            })
+            .catch(() => {
+                // 파일을 직접 열어(file://) fetch 가 막힌 경우 등
+                strip.outerHTML = '<p class="home-works-empty">작업 목록은 <a href="list.html">전체보기</a>에서 볼 수 있습니다.</p>';
+            });
+    })();
+    </script>
 </body>
 </html>

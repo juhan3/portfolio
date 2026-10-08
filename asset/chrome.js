@@ -4,6 +4,7 @@
 //   <header data-title="Blog" data-sub="블로그" data-back></header>
 //   <footer></footer>
 // data-back 이 있으면 뒤로가기 버튼이 함께 렌더링됩니다.
+// data-href 가 있으면 제목이 그 페이지로 가는 링크가 됩니다.
 // data-title 을 생략하면 기존 내용(예: 스크립트가 채우는 제목)을 건드리지 않습니다.
 //
 // 경로 깊이(root / 하위 디렉터리)는 스타일시트 링크를 보고 스스로 판단하므로
@@ -24,7 +25,7 @@
   const NAV_LINKS = [
     { href: 'list-about.html', label: 'About' },
     { href: 'mailto:sixths_misuse8p@icloud.com', label: 'Contact', external: true },
-    { href: 'index.html', label: 'Project' },
+    { href: 'list.html', label: 'Project' },
     { href: 'list-blog.html', label: 'Blog' }
   ];
 
@@ -42,6 +43,11 @@
     if (title === undefined) return;
 
     const sub = host.dataset.sub || '';
+    // data-href 가 있으면 제목을 그 페이지로 가는 링크로 만듭니다.
+    const href = host.dataset.href;
+    const titleHtml = href
+      ? '<a class="header-title-link" href="' + escapeHtml(PREFIX + href) + '">' + escapeHtml(title) + '</a>'
+      : escapeHtml(title);
     const back = host.hasAttribute('data-back');
 
     const backBtn = back
@@ -54,7 +60,7 @@
     // right edge. Emitting the menu before the title would strand it on the left.
     host.innerHTML =
       backBtn +
-      '<ul>' + escapeHtml(title) +
+      '<ul>' + titleHtml +
       (sub ? '<li>' + escapeHtml(sub) + '</li>' : '') +
       '</ul>' +
       '<button class="menu-icon-btn" onclick="toggleNav()" aria-label="메뉴">' +
