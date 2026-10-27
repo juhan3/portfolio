@@ -22,11 +22,12 @@
 
   const PREFIX = detectPrefix();
 
+  // Project 가 사실상 홈이라 맨 앞에 둡니다.
   const NAV_LINKS = [
+    { href: 'index.html', label: 'Project' },
     { href: 'list-about.html', label: 'About' },
-    { href: 'mailto:sixths_misuse8p@icloud.com', label: 'Contact', external: true },
-    { href: 'list.html', label: 'Project' },
-    { href: 'list-blog.html', label: 'Blog' }
+    { href: 'list-blog.html', label: 'Blog' },
+    { href: 'mailto:sixths_misuse8p@icloud.com', label: 'Contact', external: true }
   ];
 
   function escapeHtml(value) {
@@ -85,9 +86,11 @@
       '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>' +
       '<div class="overlay-content">' + links + '</div>';
 
+    // 헤더 안에 넣어야 넓은 화면에서 제목 옆 가로 메뉴로 펼 수 있습니다.
+    // 좁은 화면에서는 CSS 가 다시 고정 위치 드롭다운으로 되돌립니다.
     const header = document.querySelector('header');
-    if (header && header.parentNode) {
-      header.parentNode.insertBefore(nav, header.nextSibling);
+    if (header) {
+      header.appendChild(nav);
     } else {
       document.body.appendChild(nav);
     }
